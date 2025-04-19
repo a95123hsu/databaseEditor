@@ -6,18 +6,17 @@ from supabase import create_client, Client
 SUPABASE_URL = st.secrets["SUPABASE_URL"]
 SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-# Initialize Supabase client
 @st.cache_resource
 def init_connection():
     return create_client(SUPABASE_URL, SUPABASE_KEY)
 
 supabase: Client = init_connection()
 
-# Auth functions
+# --- Auth functions ---
 def sign_up_user(email, password):
     try:
         supabase.auth.sign_up({"email": email, "password": password})
-        return True, "Signup successful. Please check your email to confirm."
+        return True, "Signup successful. Check your email to confirm."
     except Exception as e:
         return False, str(e)
 
@@ -28,13 +27,13 @@ def login_user(email, password):
     except Exception as e:
         return False, str(e)
 
-# Session setup
+# --- Session setup ---
 if "session" not in st.session_state:
     st.session_state.session = None
 if "user" not in st.session_state:
     st.session_state.user = None
 
-# Login/Signup Interface
+# --- UI for login/signup ---
 if st.session_state.session is None:
     st.title("🔐 Supabase Login")
 
@@ -63,21 +62,22 @@ if st.session_state.session is None:
             else:
                 st.error(f"Sign up failed: {msg}")
 
-# Main app after login
+# --- Main app logic ---
 else:
     st.title("🧠 Pump Selection Data Editor")
 
-    table_name = "pump_selection_data"  # ✅ Your actual table name in Supabase
+    # ✅ Replace this with the EXACT case-sensitive name as shown in Supabase Table Editor
+    table_name = '"Pump_Selection_Data"'  # <- keep the quotes if your table name uses capitals or underscores
 
     try:
-        data = supabase.table(table_name).select("*").execute()
-        df = pd.DataFrame(data.data)
+        response = supabase.table(table_name).select("*").execute()
+        df = pd.DataFrame(response.data)
 
         if df.empty:
-            st.warning("No data found in the table.")
+            st.info("No data found in the table.")
         else:
             st.subheader("Edit Pump Selection Data")
-            st.write("💡 Tip: Click on cells to edit and press Update below.")
+            st.write("💡 Click on cells to edit, then press Update below.")
 
             edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
 
