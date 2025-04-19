@@ -68,7 +68,7 @@ else:
     st.title("🧠 Pump Selection Data Editor")
 
     # ✅ Replace with your actual table name, exactly as it appears in Supabase (case-sensitive)
-    table_name = '"Pump_Selection_Data"'  # Example: quoted to support case-sensitive table names
+    table_name = "pump_selection_data"  # Example: quoted to support case-sensitive table names
 
     try:
         data = supabase.table(table_name).select("*").execute()
