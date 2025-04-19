@@ -2,17 +2,18 @@ import streamlit as st
 import pandas as pd
 from supabase import create_client, Client
 
-# Load Supabase credentials
+# --- Load Supabase credentials from Streamlit secrets ---
 SUPABASE_URL = st.secrets["SUPABASE_URL"]
 SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
+# --- Initialize Supabase connection ---
 @st.cache_resource
 def init_connection():
     return create_client(SUPABASE_URL, SUPABASE_KEY)
 
 supabase: Client = init_connection()
 
-# --- Auth functions ---
+# --- Authentication functions ---
 def sign_up_user(email, password):
     try:
         supabase.auth.sign_up({"email": email, "password": password})
@@ -33,7 +34,7 @@ if "session" not in st.session_state:
 if "user" not in st.session_state:
     st.session_state.user = None
 
-# --- UI for login/signup ---
+# --- Login/Signup screen ---
 if st.session_state.session is None:
     st.title("🔐 Supabase Login")
 
@@ -62,23 +63,22 @@ if st.session_state.session is None:
             else:
                 st.error(f"Sign up failed: {msg}")
 
-# --- Main app logic ---
+# --- Main App Content ---
 else:
     st.title("🧠 Pump Selection Data Editor")
 
-    # ✅ Replace this with the EXACT case-sensitive name as shown in Supabase Table Editor
-    table_name = '"Pump_Selection_Data"'  # <- keep the quotes if your table name uses capitals or underscores
+    # ✅ Replace with your actual table name, exactly as it appears in Supabase (case-sensitive)
+    table_name = '"Pump_Selection_Data"'  # Example: quoted to support case-sensitive table names
 
     try:
-        response = supabase.table(table_name).select("*").execute()
-        df = pd.DataFrame(response.data)
+        data = supabase.table(table_name).select("*").execute()
+        df = pd.DataFrame(data.data)
 
         if df.empty:
             st.info("No data found in the table.")
         else:
             st.subheader("Edit Pump Selection Data")
             st.write("💡 Click on cells to edit, then press Update below.")
-
             edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
 
             if st.button("Update Table"):
