@@ -2,11 +2,11 @@ import streamlit as st
 import pandas as pd
 from supabase import create_client, Client
 
-# --- Load Supabase credentials from secrets ---
+# --- Load Supabase credentials securely ---
 SUPABASE_URL = st.secrets["SUPABASE_URL"]
 SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-# --- Connect to Supabase ---
+# --- Initialize Supabase client ---
 @st.cache_resource
 def init_connection():
     return create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -17,7 +17,7 @@ supabase: Client = init_connection()
 def sign_up_user(email, password):
     try:
         result = supabase.auth.sign_up({"email": email, "password": password})
-        return True, "Signup successful. Please check your email to confirm."
+        return True, "Signup successful. Check your email to confirm."
     except Exception as e:
         return False, str(e)
 
@@ -34,7 +34,7 @@ if "session" not in st.session_state:
 if "user" not in st.session_state:
     st.session_state.user = None
 
-# --- Login/Signup UI ---
+# --- Login / Signup UI ---
 if st.session_state.session is None:
     st.title("🔐 Supabase Login")
 
@@ -62,28 +62,33 @@ if st.session_state.session is None:
                 st.success(msg)
             else:
                 st.error(f"Sign up failed: {msg}")
+
+# --- Main App ---
 else:
     st.title("📊 Supabase Table Editor")
 
-    # Change this to your actual table name
+    # Replace with your actual table name
     table_name = "my_table"
 
     try:
         data = supabase.table(table_name).select("*").execute()
         df = pd.DataFrame(data.data)
 
-        st.subheader("Edit Table")
-        edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
+        if df.empty:
+            st.info("This table is currently empty.")
+        else:
+            st.subheader("Edit Table")
+            edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
 
-        if st.button("Update Table"):
-            for row in edited_df.to_dict("records"):
-                row_id = row.get("id")
-                if row_id:
-                    supabase.table(table_name).update(row).eq("id", row_id).execute()
-            st.success("Table updated!")
+            if st.button("Update Table"):
+                for row in edited_df.to_dict("records"):
+                    row_id = row.get("id")
+                    if row_id:
+                        supabase.table(table_name).update(row).eq("id", row_id).execute()
+                st.success("Table updated!")
 
     except Exception as e:
-        st.error(f"Error loading data: {e}")
+        st.error(f"Error accessing Supabase table: {e}")
 
     if st.button("Logout"):
         st.session_state.session = None
