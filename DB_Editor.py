@@ -2,18 +2,18 @@ import streamlit as st
 import pandas as pd
 from supabase import create_client, Client
 
-# Load credentials
+# Load Supabase credentials
 SUPABASE_URL = st.secrets["SUPABASE_URL"]
 SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-# Initialize Supabase
+# Initialize Supabase client
 @st.cache_resource
 def init_connection():
     return create_client(SUPABASE_URL, SUPABASE_KEY)
 
 supabase: Client = init_connection()
 
-# Auth: login & signup
+# Auth functions
 def sign_up_user(email, password):
     try:
         supabase.auth.sign_up({"email": email, "password": password})
@@ -28,13 +28,13 @@ def login_user(email, password):
     except Exception as e:
         return False, str(e)
 
-# Session
+# Session setup
 if "session" not in st.session_state:
     st.session_state.session = None
 if "user" not in st.session_state:
     st.session_state.user = None
 
-# Auth UI
+# Login/Signup Interface
 if st.session_state.session is None:
     st.title("🔐 Supabase Login")
 
@@ -63,20 +63,22 @@ if st.session_state.session is None:
             else:
                 st.error(f"Sign up failed: {msg}")
 
-# Table editor (if logged in)
+# Main app after login
 else:
-    st.title("📊 Supabase Table Editor")
+    st.title("🧠 Pump Selection Data Editor")
 
-    table_name = "my_table"  # Replace with your table name
+    table_name = "pump_selection_data"  # ✅ Your actual table name in Supabase
 
     try:
         data = supabase.table(table_name).select("*").execute()
         df = pd.DataFrame(data.data)
 
         if df.empty:
-            st.info("No data found.")
+            st.warning("No data found in the table.")
         else:
-            st.subheader("Edit Table")
+            st.subheader("Edit Pump Selection Data")
+            st.write("💡 Tip: Click on cells to edit and press Update below.")
+
             edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
 
             if st.button("Update Table"):
@@ -87,7 +89,7 @@ else:
                 st.success("Table updated!")
 
     except Exception as e:
-        st.error(f"Error accessing data: {e}")
+        st.error(f"Error accessing Supabase table: {e}")
 
     if st.button("Logout"):
         st.session_state.session = None
