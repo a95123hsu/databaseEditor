@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from supabase import create_client, Client
 import re
+import traceback
 
 # --- Load Supabase credentials from secrets.toml ---
 @st.cache_resource(show_spinner=False)
@@ -37,7 +38,7 @@ def fetch_all_pump_data():
     for start_idx in range(0, total_count, page_size):
         with st.spinner(f"Loading records {start_idx+1}-{min(start_idx+page_size, total_count)}..."):
             # Order by DB ID to ensure consistent sorting
-            response = supabase.table("pump_selection_data").select("*").order("DB ID").range(start_idx, start_idx + page_size - 1).execute()
+            response = supabase.table("pump_selection_data").select("*").order('"DB ID"').range(start_idx, start_idx + page_size - 1).execute()
             
             if response.data:
                 all_data.extend(response.data)
@@ -72,7 +73,8 @@ def insert_pump_data(pump_data):
         
         # First, get the maximum DB ID to generate a new one
         try:
-            max_id_response = supabase.table("pump_selection_data").select("DB ID").order("DB ID", desc=True).limit(1).execute()
+            # Use double quotes around column name with space
+            max_id_response = supabase.table("pump_selection_data").select('"DB ID"').order('"DB ID"', desc=True).limit(1).execute()
             if max_id_response.data:
                 max_id = max_id_response.data[0]["DB ID"]
                 new_id = max_id + 1
@@ -84,6 +86,7 @@ def insert_pump_data(pump_data):
             st.write(f"Generated new DB ID: {new_id}")
         except Exception as id_error:
             st.error(f"Error generating DB ID: {id_error}")
+            st.error(traceback.format_exc())
             return False, "Could not generate a new DB ID. Please check database permissions."
         
         # Convert and clean each field individually
@@ -130,7 +133,6 @@ def insert_pump_data(pump_data):
         return True, f"Pump data added successfully with DB ID: {new_id}!"
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
-        import traceback
         st.error(traceback.format_exc())
         return False, f"Error adding pump data: {e}"
 
@@ -191,7 +193,7 @@ def update_pump_data(db_id, pump_data):
             
             try:
                 # Simulate update with just this field
-                test_response = supabase.table("pump_selection_data").update(single_field).eq("DB ID", db_id).execute()
+                test_response = supabase.table("pump_selection_data").update(single_field).eq('"DB ID"', db_id).execute()
             except Exception as field_error:
                 st.error(f"Field '{key}' failed: {str(field_error)}")
                 problem_keys.append(key)
@@ -205,20 +207,22 @@ def update_pump_data(db_id, pump_data):
         if not clean_data:
             return False, "No valid fields to update after cleaning data."
         
-        # Update with the cleaned data
-        response = supabase.table("pump_selection_data").update(clean_data).eq("DB ID", db_id).execute()
+        # Update with the cleaned data - note the double quotes around DB ID
+        response = supabase.table("pump_selection_data").update(clean_data).eq('"DB ID"', db_id).execute()
         return True, "Pump data updated successfully!"
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
-        import traceback
         st.error(traceback.format_exc())
         return False, f"Error updating pump data: {e}"
 
 def delete_pump_data(db_id):
     try:
-        response = supabase.table("pump_selection_data").delete().eq("DB ID", db_id).execute()
+        # Note the double quotes around DB ID
+        response = supabase.table("pump_selection_data").delete().eq('"DB ID"', db_id).execute()
         return True, "Pump data deleted successfully!"
     except Exception as e:
+        st.error(f"Error details for debugging: {str(e)}")
+        st.error(traceback.format_exc())
         return False, f"Error deleting pump data: {e}"
 
 # --- Page Configuration ---
@@ -246,6 +250,7 @@ try:
         df['Model Group'] = df['Model No.'].apply(extract_model_group)
 except Exception as e:
     st.error(f"Error fetching data: {e}")
+    st.error(traceback.format_exc())
     df = pd.DataFrame()
 
 # --- Sidebar for actions and filters ---
@@ -351,6 +356,7 @@ if action == "View Data":
                     
     except Exception as e:
         st.error(f"Error: {e}")
+        st.error(traceback.format_exc())
 
 elif action == "Add New Pump":
     st.subheader("Add New Pump")
@@ -532,7 +538,7 @@ elif action == "Edit Pump":
     
     except Exception as e:
         st.error(f"Error setting up edit form: {e}")
-        st.exception(e)  # This will show the detailed error in development
+        st.error(traceback.format_exc())  # This will show the detailed error in development
 
 elif action == "Delete Pump":
     st.subheader("Delete Pump")
@@ -607,7 +613,7 @@ elif action == "Delete Pump":
     
     except Exception as e:
         st.error(f"Error setting up delete form: {e}")
-        st.exception(e)  # This will show the detailed error in development
+        st.error(traceback.format_exc())  # This will show the detailed error in development
 
 # --- Footer ---
 st.markdown("---")
