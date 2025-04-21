@@ -166,6 +166,8 @@ def insert_pump_data(pump_data):
         # Show the data being sent to Supabase
         st.write("Sending the following data to Supabase:")
         st.write(clean_data)
+
+        clean_data["updated_by"] = user_email  # Add this before insert
         
         # Insert the data
         response = supabase.table("pump_selection_data").insert(clean_data).execute()
@@ -247,6 +249,7 @@ def update_pump_data(db_id, pump_data):
             return False, "No valid fields to update after cleaning data."
         
         # Update with the cleaned data - note the double quotes around DB ID
+        clean_data["updated_by"] = user_email  # Add before update
         response = supabase.table("pump_selection_data").update(clean_data).eq('"DB ID"', db_id).execute()
         return True, "Pump data updated successfully!"
     except Exception as e:
@@ -256,7 +259,8 @@ def update_pump_data(db_id, pump_data):
 
 def delete_pump_data(db_id):
     try:
-        # Note the double quotes around DB ID
+        # Set updated_by before delete for audit log
+        supabase.table("pump_selection_data").update({"updated_by": user_email}).eq('"DB ID"', db_id).execute()
         response = supabase.table("pump_selection_data").delete().eq('"DB ID"', db_id).execute()
         return True, "Pump data deleted successfully!"
     except Exception as e:
@@ -464,7 +468,7 @@ elif action == "Add New Pump":
             if not new_pump_data.get("Model No."):
                 st.error("Model No. is required.")
             else:
-                success, message = insert_pump_data(new_pump_data)
+                success, message = insert_pump_data(new_pump_data, user["email"])
                 if success:
                     st.success(message)
                     # Clear cache to refresh data
@@ -580,7 +584,7 @@ elif action == "Edit Pump":
                     submit_button = st.form_submit_button("Update Pump")
                     
                     if submit_button:
-                        success, message = update_pump_data(db_id, edited_data)
+                        success, message = update_pump_data(db_id, edited_data, user["email"])
                         if success:
                             st.success(message)
                             # Show new Model Group if Model No. was changed
@@ -665,7 +669,7 @@ elif action == "Delete Pump":
                 confirm_delete = st.button("Confirm Delete")
                 
                 if confirm_delete:
-                    success, message = delete_pump_data(db_id)
+                    success, message = delete_pump_data(db_id, user["email"])
                     if success:
                         st.success(message)
                         # Clear cache to refresh data
