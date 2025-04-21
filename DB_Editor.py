@@ -1,68 +1,6 @@
-elif action == "Edit Pump":
-    st.subheader("Edit Pump")
-    
-    try:
-        # Fetch data to populate selection
-        df = fetch_all_pump_data()
-        
-        if df.empty:
-            st.info("No data found to edit.")
-        else:
-            # Determine which column to use for pump identification
-            # First try name, then try to find another suitable column
-            if "name" in df.columns:
-                id_column = "name"
-            elif "pump_name" in df.columns:
-                id_column = "pump_name"
-            elif "model" in df.columns:
-                id_column = "model"
-            else:
-                # Fall back to DB ID if no suitable column found
-                id_column = "DB ID"
-            
-            # Select pump to edit
-            pump_options = df[id_column].astype(str).tolist()
-            selected_pump_id = st.selectbox(f"Select pump to edit (by {id_column}):", pump_options)
-            
-            # Get selected pump data
-            selected_pump = df[df[id_column].astype(str) == selected_pump_id].iloc[0]
-            db_id = selected_pump["DB ID"]
-            
-            # Create form for editing
-            with st.form("edit_pump_form"):
-                edited_data = {}
-                
-                for column in df.columns:
-                    if column != "DB ID":  # Skip primary key
-                        current_value = selected_pump[column]
-                        
-                        if pd.isna(current_value):
-                            # Handle NaN values
-                            if column.lower().endswith(('rate', 'height', 'power', 'efficiency', 'price', 'cost')):
-                                edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=0.0)
-                            else:
-                                edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value="")
-                        elif isinstance(current_value, (int, float)):
-                            edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=current_value)
-                        elif isinstance(current_value, str) and current_value.replace('.', '', 1).isdigit():
-                            try:
-                                edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=float(current_value))
-                            except:
-                                edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value=current_value)
-                        else:
-                            edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value=str(current_value))
-                
-                submit_button = st.form_submit_button("Update Pump")
-                
-                if submit_button:
-                    success, message = update_pump_data(db_id, edited_data)
-                    if success:
-                        st.success(message)
-                        # Clear cache to refresh data
-                        stimport streamlit as st
+import streamlit as st
 import pandas as pd
 from supabase import create_client, Client
-import json
 
 # --- Load Supabase credentials from secrets.toml ---
 @st.cache_resource(show_spinner=False)
