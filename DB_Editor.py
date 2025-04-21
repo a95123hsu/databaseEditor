@@ -108,7 +108,7 @@ def update_pump_data(db_id, pump_data):
         # Print all original values for debugging
         st.write("Original data:", pump_data)
         
-        # First, let's test each field individually to find the problematic one
+        # First, let's convert and clean each field
         for key, value in pump_data.items():
             # Skip DB ID since we don't want to update that
             if key == "DB ID":
@@ -119,29 +119,31 @@ def update_pump_data(db_id, pump_data):
                 clean_data[key] = None
             # Try to intelligently convert values based on potential types
             else:
-                # For fields that are likely integers
-                if key in ["Frequency (Hz)", "Phase"]:
+                # Fields that should be integers in the database (based on error)
+                if key in ["Frequency (Hz)", "Phase", "Outlet (mm)", "Pass Solid Dia(mm)"]:
                     if isinstance(value, (int, float)) or (isinstance(value, str) and value.replace('.', '', 1).isdigit()):
                         try:
                             # Force integer conversion (truncate decimal)
-                            if isinstance(value, str):
+                            if isinstance(value, float):
+                                value = int(value)
+                            elif isinstance(value, str):
                                 # Remove any decimal part
-                                value = value.split('.')[0]
-                            clean_data[key] = int(value)
+                                value = int(float(value))
+                            clean_data[key] = value
                         except ValueError:
-                            st.error(f"ERROR in field '{key}': Cannot convert '{value}' to integer.")
+                            st.error(f"Cannot convert '{key}: {value}' to integer. Skipping this field.")
                             # Skip this field to avoid errors
                             continue
                     else:
                         clean_data[key] = None
                 
-                # For fields that are definitely floats
-                elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
+                # For fields that are floats
+                elif key in ["Max Head (M)"]:
                     if isinstance(value, (int, float)) or (isinstance(value, str) and value.replace('.', '', 1).isdigit()):
                         try:
                             clean_data[key] = float(value)
                         except ValueError:
-                            st.error(f"ERROR in field '{key}': Cannot convert '{value}' to float.")
+                            st.error(f"Cannot convert '{key}: {value}' to float. Skipping this field.")
                             # Skip this field to avoid errors
                             continue
                     else:
@@ -151,31 +153,30 @@ def update_pump_data(db_id, pump_data):
                 else:
                     clean_data[key] = str(value)
         
-        # Test for each field individually
-        st.write("Testing fields individually to find the problem:")
-        
-        # Try updating with only one field at a time to identify the problematic one
-        for key, value in clean_data.items():
+        # Final clean data to be sent
+        st.write("Final data to be sent to Supabase:", clean_data)
+            
+        # Test each field individually to find any remaining problematic ones
+        problem_keys = []
+        for key, value in list(clean_data.items()):  # Use list() to create a copy of keys for safe iteration
             single_field = {key: value}
-            st.write(f"Testing field '{key}' with value: {value} (type: {type(value)})")
             
             try:
                 # Simulate update with just this field
                 test_response = supabase.table("pump_selection_data").update(single_field).eq("DB ID", db_id).execute()
-                st.write(f"✅ Field '{key}' passed")
             except Exception as field_error:
-                st.error(f"❌ Field '{key}' failed: {str(field_error)}")
-                # Remove this field from the update to avoid errors
-                if key in clean_data:
-                    st.warning(f"Removing problematic field '{key}' from update.")
-                    del clean_data[key]
+                st.error(f"Field '{key}' failed: {str(field_error)}")
+                problem_keys.append(key)
         
-        # Final clean data to be sent
-        st.write("Final data being sent to Supabase:", clean_data)
+        # Remove any problematic fields
+        for key in problem_keys:
+            if key in clean_data:
+                st.warning(f"Removing problematic field '{key}' from update.")
+                del clean_data[key]
         
         if not clean_data:
             return False, "No valid fields to update after cleaning data."
-            
+        
         # Update with the cleaned data
         response = supabase.table("pump_selection_data").update(clean_data).eq("DB ID", db_id).execute()
         return True, "Pump data updated successfully!"
