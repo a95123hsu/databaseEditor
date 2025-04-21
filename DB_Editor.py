@@ -53,6 +53,21 @@ def fetch_all_pump_data():
 # --- CRUD Operations ---
 def insert_pump_data(pump_data):
     try:
+        # Convert numeric fields to appropriate types
+        for key, value in pump_data.items():
+            if key in ["Frequency (Hz)", "Phase"]:
+                # Convert to integer
+                if isinstance(value, (int, float)):
+                    pump_data[key] = int(value)
+                elif isinstance(value, str) and value.isdigit():
+                    pump_data[key] = int(value)
+            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
+                # Convert to float when appropriate
+                if isinstance(value, (int, float)):
+                    pump_data[key] = float(value)
+                elif isinstance(value, str) and value.replace('.', '', 1).isdigit():
+                    pump_data[key] = float(value)
+        
         response = supabase.table("pump_selection_data").insert(pump_data).execute()
         return True, "Pump data added successfully!"
     except Exception as e:
@@ -60,6 +75,21 @@ def insert_pump_data(pump_data):
 
 def update_pump_data(db_id, pump_data):
     try:
+        # Convert numeric fields to appropriate types
+        for key, value in pump_data.items():
+            if key in ["Frequency (Hz)", "Phase"]:
+                # Convert to integer
+                if isinstance(value, (int, float)):
+                    pump_data[key] = int(value)
+                elif isinstance(value, str) and value.isdigit():
+                    pump_data[key] = int(value)
+            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
+                # Convert to float when appropriate
+                if isinstance(value, (int, float)):
+                    pump_data[key] = float(value)
+                elif isinstance(value, str) and value.replace('.', '', 1).isdigit():
+                    pump_data[key] = float(value)
+        
         response = supabase.table("pump_selection_data").update(pump_data).eq("DB ID", db_id).execute()
         return True, "Pump data updated successfully!"
     except Exception as e:
