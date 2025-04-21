@@ -1,3 +1,4 @@
 streamlit
 supabase
 pandas
+streamlit-supabase-connection
