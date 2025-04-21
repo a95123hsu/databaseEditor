@@ -1,0 +1,56 @@
+import streamlit as st
+import extra_streamlit_components as stx
+from supabase import create_client
+
+@st.cache_resource(show_spinner=False)
+def get_client():
+    return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
+
+def get_cookie_manager():
+    return stx.CookieManager()
+
+def login_form():
+    with st.form("Login"):
+        st.subheader("🔐 Login to continue")
+        email = st.text_input("Email")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Login")
+        
+        if submitted:
+            if not email or not password:
+                st.error("Please enter both email and password.")
+                return None
+            supabase = get_client()
+            try:
+                result = supabase.auth.sign_in_with_password({
+                    "email": email,
+                    "password": password
+                })
+                if result.session:
+                    cookie_manager = get_cookie_manager()
+                    cookie_manager.set("supabase_session", result.session.access_token, max_age=3600)
+                    st.success("Logged in successfully!")
+                    st.experimental_rerun()
+                else:
+                    st.error("Login failed. Check your credentials.")
+            except Exception as e:
+                st.error("Authentication error.")
+                st.exception(e)
+
+def logout():
+    cookie_manager = get_cookie_manager()
+    cookie_manager.delete("supabase_session")
+    st.success("Logged out!")
+    st.experimental_rerun()
+
+def get_user_session():
+    cookie_manager = get_cookie_manager()
+    token = cookie_manager.get("supabase_session")
+    if token:
+        try:
+            supabase = get_client()
+            user = supabase.auth.get_user(token["supabase_session"])
+            return user.user
+        except:
+            logout()
+    return None
