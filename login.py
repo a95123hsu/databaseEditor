@@ -33,7 +33,7 @@ def login_form():
                     # Set session token in cookie
                     cookie_manager.set("supabase_session", result.session.access_token, max_age=3600)
                     st.success("Login successful! Refreshing...")
-                    st.experimental_rerun()  # rerun AFTER cookie is set
+                    st.rerun()  # rerun AFTER cookie is set
                 else:
                     st.error("Login failed. Check your credentials.")
             except Exception as e:
@@ -57,4 +57,4 @@ def get_user_session():
 def logout():
     cookie_manager.delete("supabase_session")
     st.success("Logged out!")
-    st.experimental_rerun()
+    st.rerun()
