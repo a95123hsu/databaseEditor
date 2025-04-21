@@ -177,7 +177,7 @@ def insert_pump_data(pump_data):
         st.error(traceback.format_exc())
         return False, f"Error adding pump data: {e}"
 
-def update_pump_data(db_id, pump_data):
+def update_pump_data(db_id, pump_data, user_email):
     try:
         # Create a copy of the data for safe modification
         clean_data = {}
