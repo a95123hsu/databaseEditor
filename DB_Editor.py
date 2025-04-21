@@ -51,7 +51,6 @@ def login(email, password):
     except Exception as e:
         return False, f"Login failed: {str(e)}"
 
-
 def logout():
     st.session_state.authenticated = False
     st.session_state.user_info = None
@@ -105,14 +104,34 @@ with st.sidebar:
         if st.button("Logout"):
             logout()
 
-# --- Initialize Supabase Client After Login ---
-supabase = create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
+# --- Initialize Supabase Client Using Auth Token ---
+supabase = create_client(
+    st.secrets["SUPABASE_URL"],
+    st.session_state.auth_token  # ✅ Authenticated access
+)
 
-# --- Now continue with your app logic here ---
-# For example:
+# --- Sample Function: Fetch Data from pump_selection_data ---
+def fetch_all_pump_data():
+    try:
+        response = supabase.table("pump_selection_data").select("*").execute()
+        if response.data:
+            return pd.DataFrame(response.data)
+        else:
+            return pd.DataFrame()
+    except Exception as e:
+        st.error(f"Failed to fetch pump data: {e}")
+        st.error(traceback.format_exc())
+        return pd.DataFrame()
+
+# --- App Content ---
 st.title("💧 Pump Selection Data Manager")
 st.write("Welcome! You are now logged in and can access the pump database.")
 
-# --- You can now safely fetch, view, add, edit, and delete data ---
-# Load your `fetch_all_pump_data()` and related CRUD functions here...
-# You can paste your previous full app logic below this comment.
+# --- Fetch and Display Data ---
+df = fetch_all_pump_data()
+
+if not df.empty:
+    st.success(f"Found {len(df)} pump entries.")
+    st.dataframe(df, use_container_width=True)
+else:
+    st.info("No data found in pump_selection_data.")
