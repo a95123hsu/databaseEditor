@@ -4,6 +4,14 @@ from supabase import create_client, Client
 import re
 import traceback
 from login import login_form, get_user_session, logout
+from login import get_user_session, login_form, logout
+
+# 🔐 Require user to log in
+user = get_user_session()
+if not user:
+    login_form()
+    st.stop()
+
 
 # --- Load Supabase credentials from secrets.toml ---
 @st.cache_resource(show_spinner=False)
