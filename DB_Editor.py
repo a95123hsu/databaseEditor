@@ -1,29 +1,39 @@
 import streamlit as st
-from st_supabase_connection import SupabaseConnection
+import pandas as pd
+from supabase import create_client, Client
 
-st.set_page_config(page_title="🐾 Pet Viewer", layout="centered")
+# --- Load Supabase credentials from secrets.toml ---
+SUPABASE_URL = st.secrets["SUPABASE_URL"]
+SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
 
-# Title
-st.title("🐾 Pet Owners Viewer")
+# --- Initialize Supabase client ---
+@st.cache_resource
+def init_connection():
+    return create_client(SUPABASE_URL, SUPABASE_KEY)
 
-# Connect to Supabase
-conn = st.connection("supabase", type=SupabaseConnection)
+supabase: Client = init_connection()
 
-# Query data from your Supabase table
+# --- Streamlit App UI ---
+st.set_page_config(page_title="Pump Selection Data", layout="wide")
+st.title("💧 Pump Selection Data Viewer")
+
 try:
-    rows = conn.query("*", table="mytable", ttl="10m").execute()
-    data = rows.data
+    # Fetch up to 2000 rows from your 'pump_selection_data' table
+    response = supabase.table("pump_selection_data").select("*").range(0, 1999).execute()
+    df = pd.DataFrame(response.data)
 
-    if not data:
-        st.info("No data found in 'mytable'. Add some rows in Supabase.")
+    if df.empty:
+        st.info("No data found in 'pump_selection_data'.")
     else:
-        st.subheader("📋 Raw Table Data")
-        st.dataframe(data, use_container_width=True)
+        st.subheader("📋 Raw Data Table")
+        st.dataframe(df, use_container_width=True)
 
-        st.subheader("🎉 Fun Format")
-        for row in data:
-            name = row.get("name", "Unknown")
-            pet = row.get("pet", "🐾")
-            st.write(f"**{name}** has a :{pet}:")
+        st.subheader("🔍 Summary View")
+        for index, row in df.iterrows():
+            name = row.get("name", "Unnamed Pump")
+            flow = row.get("flow_rate", "N/A")
+            head = row.get("head_height", "N/A")
+            st.markdown(f"- **{name}**: {flow} LPM @ {head} m head")
+
 except Exception as e:
     st.error(f"Error fetching data: {e}")
