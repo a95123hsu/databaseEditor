@@ -682,5 +682,12 @@ elif action == "Delete Pump":
         st.error(traceback.format_exc())  # This will show the detailed error in development
 
 # --- Footer ---
+if st.sidebar.button("📜 View Audit Log"):
+    logs = supabase.table("audit_log").select("*").order("created_at", desc=True).limit(20).execute().data
+    st.subheader("🕵️ Audit Log")
+    for log in logs:
+        st.markdown(f"**{log['created_at']}** — `{log['event']}` by `{log['user_email']}`")
+        st.json(log["new_data"])
+        
 st.markdown("---")
 st.markdown("💧 **Pump Selection Data Manager** | Last updated: " + pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"))
