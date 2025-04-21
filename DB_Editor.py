@@ -67,7 +67,7 @@ if st.session_state.session is None:
 else:
     st.title("🧠 Pump Selection Data Editor")
 
-    table_name = "pump_selection_data"  # Replace with your actual table name
+    table_name = "pump_selection_data"
 
     try:
         data = supabase.table(table_name).select("*").execute()
@@ -88,15 +88,25 @@ else:
                     for row in edited_df.to_dict("records"):
                         row_id = row.get("id")
                         if not row_id:
-                            st.warning("Missing 'id' in a row. Skipping.")
+                            st.warning("Skipping row without 'id'.")
                             continue
                         update_row = {k: v for k, v in row.items() if k != "id"}
-                        response = supabase.table(table_name).update(update_row).eq("id", row_id).execute()
-                        if response.status_code == 200:
-                            success_count += 1
-                        else:
-                            st.error(f"Failed to update row with id {row_id}: {response}")
-                    st.success(f"Updated {success_count} rows.")
+
+                        try:
+                            response = supabase.table(table_name)\
+                                .update(update_row)\
+                                .eq("id", row_id)\
+                                .execute()
+
+                            if response.data:
+                                success_count += 1
+                            else:
+                                st.warning(f"No update for row id {row_id}.")
+                                st.write(response)
+                        except Exception as e:
+                            st.error(f"Error updating row {row_id}: {e}")
+
+                    st.success(f"✅ Updated {success_count} rows.")
                     st.rerun()
 
     except Exception as e:
