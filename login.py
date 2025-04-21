@@ -42,14 +42,17 @@ def login_form():
 
 def get_user_session():
     token = cookie_manager.get("supabase_session")
-    if token and token.get("supabase_session"):
+    if token:
         try:
             supabase = get_client()
-            user = supabase.auth.get_user(token["supabase_session"])
+            user = supabase.auth.get_user(token)
             return user.user
-        except:
+        except Exception as e:
+            st.error("Session retrieval failed.")
+            st.exception(e)
             return None
     return None
+
 
 def logout():
     cookie_manager.delete("supabase_session")
