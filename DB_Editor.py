@@ -1,4 +1,65 @@
-import streamlit as st
+elif action == "Edit Pump":
+    st.subheader("Edit Pump")
+    
+    try:
+        # Fetch data to populate selection
+        df = fetch_all_pump_data()
+        
+        if df.empty:
+            st.info("No data found to edit.")
+        else:
+            # Determine which column to use for pump identification
+            # First try name, then try to find another suitable column
+            if "name" in df.columns:
+                id_column = "name"
+            elif "pump_name" in df.columns:
+                id_column = "pump_name"
+            elif "model" in df.columns:
+                id_column = "model"
+            else:
+                # Fall back to DB ID if no suitable column found
+                id_column = "DB ID"
+            
+            # Select pump to edit
+            pump_options = df[id_column].astype(str).tolist()
+            selected_pump_id = st.selectbox(f"Select pump to edit (by {id_column}):", pump_options)
+            
+            # Get selected pump data
+            selected_pump = df[df[id_column].astype(str) == selected_pump_id].iloc[0]
+            db_id = selected_pump["DB ID"]
+            
+            # Create form for editing
+            with st.form("edit_pump_form"):
+                edited_data = {}
+                
+                for column in df.columns:
+                    if column != "DB ID":  # Skip primary key
+                        current_value = selected_pump[column]
+                        
+                        if pd.isna(current_value):
+                            # Handle NaN values
+                            if column.lower().endswith(('rate', 'height', 'power', 'efficiency', 'price', 'cost')):
+                                edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=0.0)
+                            else:
+                                edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value="")
+                        elif isinstance(current_value, (int, float)):
+                            edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=current_value)
+                        elif isinstance(current_value, str) and current_value.replace('.', '', 1).isdigit():
+                            try:
+                                edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=float(current_value))
+                            except:
+                                edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value=current_value)
+                        else:
+                            edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value=str(current_value))
+                
+                submit_button = st.form_submit_button("Update Pump")
+                
+                if submit_button:
+                    success, message = update_pump_data(db_id, edited_data)
+                    if success:
+                        st.success(message)
+                        # Clear cache to refresh data
+                        stimport streamlit as st
 import pandas as pd
 from supabase import create_client, Client
 import json
@@ -113,10 +174,10 @@ if action == "View Data":
             st.success(f"✅ Successfully loaded {len(df)} pump records")
             
             # Add search functionality
-            search_term = st.text_input("🔍 Search by pump name:")
+            search_term = st.text_input("🔍 Search by Model No.:")
             
             if search_term:
-                filtered_df = df[df["name"].str.contains(search_term, case=False, na=False)]
+                filtered_df = df[df["Model No."].astype(str).str.contains(search_term, case=False, na=False)]
                 st.write(f"Found {len(filtered_df)} matching pumps")
             else:
                 filtered_df = df
@@ -164,56 +225,65 @@ if action == "View Data":
 elif action == "Add New Pump":
     st.subheader("Add New Pump")
     
-    # First, fetch a sample record to determine columns
-    try:
-        sample_df = fetch_all_pump_data()
-        if sample_df.empty:
-            st.warning("No existing records found. Please define the fields for your pump data:")
-            # Default fields if no existing data
-            fields = {
-                "name": "",
-                "manufacturer": "",
-                "flow_rate": 0.0,
-                "head_height": 0.0,
-                "power": 0.0,
-                "efficiency": 0.0,
-                "price": 0.0
-            }
-        else:
-            # Get fields from existing data
-            fields = {col: "" for col in sample_df.columns}
-            # Remove primary key if it exists
-            if "DB ID" in fields:
-                del fields["DB ID"]
-                
-        # Create input form for new pump
-        with st.form("add_pump_form"):
-            new_pump_data = {}
-            
-            for field, default_value in fields.items():
-                if field != "DB ID":  # Skip primary key
-                    if isinstance(default_value, (int, float)) or (isinstance(default_value, str) and default_value.replace('.', '', 1).isdigit()):
-                        new_pump_data[field] = st.number_input(f"{field.replace('_', ' ').title()}", value=0.0)
-                    else:
-                        new_pump_data[field] = st.text_input(f"{field.replace('_', ' ').title()}")
-            
-            submit_button = st.form_submit_button("Add Pump")
-            
-            if submit_button:
-                # Validate required fields
-                if not new_pump_data.get("name"):
-                    st.error("Pump name is required.")
-                else:
-                    success, message = insert_pump_data(new_pump_data)
-                    if success:
-                        st.success(message)
-                        # Clear cache to refresh data
-                        st.cache_data.clear()
-                    else:
-                        st.error(message)
+    # Define fields based on your table structure
+    fields = {
+        "Model No.": "",
+        "Frequency (Hz)": 0,
+        "Phase": 0,
+        "HP": "",
+        "Power(KW)": "",
+        "Outlet (mm)": 0.0,
+        "Outlet (inch)": "",
+        "Pass Solid Dia(mm)": 0.0,
+        "Max Flow (LPM)": "",
+        "Max Head (M)": 0.0,
+        "Max Head (ft)": "",
+        "Category": "",
+        "Product Link": ""
+    }
     
-    except Exception as e:
-        st.error(f"Error setting up add form: {e}")
+    # Create input form for new pump
+    with st.form("add_pump_form"):
+        new_pump_data = {}
+        
+        # Model No. is required
+        new_pump_data["Model No."] = st.text_input("Model No. *", help="Required field")
+        
+        # Create columns for better layout
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            new_pump_data["Frequency (Hz)"] = st.number_input("Frequency (Hz)", value=50)
+            new_pump_data["Phase"] = st.number_input("Phase", value=3)
+            new_pump_data["HP"] = st.text_input("HP")
+            new_pump_data["Power(KW)"] = st.text_input("Power(KW)")
+            new_pump_data["Outlet (mm)"] = st.number_input("Outlet (mm)", value=0.0)
+            new_pump_data["Outlet (inch)"] = st.text_input("Outlet (inch)")
+        
+        with col2:
+            new_pump_data["Pass Solid Dia(mm)"] = st.number_input("Pass Solid Dia(mm)", value=0.0)
+            new_pump_data["Max Flow (LPM)"] = st.text_input("Max Flow (LPM)")
+            new_pump_data["Max Head (M)"] = st.number_input("Max Head (M)", value=0.0)
+            new_pump_data["Max Head (ft)"] = st.text_input("Max Head (ft)")
+            new_pump_data["Category"] = st.text_input("Category")
+        
+        # Put product link in a separate row
+        new_pump_data["Product Link"] = st.text_input("Product Link")
+        
+        submit_button = st.form_submit_button("Add Pump")
+        
+        if submit_button:
+            # Validate required fields
+            if not new_pump_data.get("Model No."):
+                st.error("Model No. is required.")
+            else:
+                success, message = insert_pump_data(new_pump_data)
+                if success:
+                    st.success(message)
+                    # Clear cache to refresh data
+                    st.cache_data.clear()
+                else:
+                    st.error(message)
 
 elif action == "Edit Pump":
     st.subheader("Edit Pump")
@@ -225,12 +295,15 @@ elif action == "Edit Pump":
         if df.empty:
             st.info("No data found to edit.")
         else:
+            # Use Model No. for pump identification based on your table structure
+            id_column = "Model No."
+            
             # Select pump to edit
-            pump_options = df["name"].tolist()
-            selected_pump_name = st.selectbox("Select pump to edit:", pump_options)
+            pump_options = df[id_column].astype(str).tolist()
+            selected_pump_id = st.selectbox(f"Select pump to edit (by {id_column}):", pump_options)
             
             # Get selected pump data
-            selected_pump = df[df["name"] == selected_pump_name].iloc[0]
+            selected_pump = df[df[id_column].astype(str) == selected_pump_id].iloc[0]
             db_id = selected_pump["DB ID"]
             
             # Create form for editing
@@ -241,32 +314,37 @@ elif action == "Edit Pump":
                     if column != "DB ID":  # Skip primary key
                         current_value = selected_pump[column]
                         
-                        if isinstance(current_value, (int, float)) or (isinstance(current_value, str) and current_value.replace('.', '', 1).isdigit()):
+                        if pd.isna(current_value):
+                            # Handle NaN values
+                            if column in ["Frequency (Hz)", "Phase", "Power(KW)", "Outlet (mm)", 
+                                          "Pass Solid Dia(mm)", "Max Head (M)"]:
+                                edited_data[column] = st.number_input(f"{column}", value=0.0)
+                            else:
+                                edited_data[column] = st.text_input(f"{column}", value="")
+                        elif isinstance(current_value, (int, float)):
+                            edited_data[column] = st.number_input(f"{column}", value=current_value)
+                        elif isinstance(current_value, str) and current_value.replace('.', '', 1).isdigit():
                             try:
-                                numeric_value = float(current_value) if isinstance(current_value, str) else current_value
-                                edited_data[column] = st.number_input(f"{column.replace('_', ' ').title()}", value=numeric_value)
+                                edited_data[column] = st.number_input(f"{column}", value=float(current_value))
                             except:
-                                edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value=str(current_value))
+                                edited_data[column] = st.text_input(f"{column}", value=current_value)
                         else:
-                            edited_data[column] = st.text_input(f"{column.replace('_', ' ').title()}", value=str(current_value) if pd.notna(current_value) else "")
+                            edited_data[column] = st.text_input(f"{column}", value=str(current_value))
                 
                 submit_button = st.form_submit_button("Update Pump")
                 
                 if submit_button:
-                    # Validate required fields
-                    if not edited_data.get("name"):
-                        st.error("Pump name is required.")
+                    success, message = update_pump_data(db_id, edited_data)
+                    if success:
+                        st.success(message)
+                        # Clear cache to refresh data
+                        st.cache_data.clear()
                     else:
-                        success, message = update_pump_data(db_id, edited_data)
-                        if success:
-                            st.success(message)
-                            # Clear cache to refresh data
-                            st.cache_data.clear()
-                        else:
-                            st.error(message)
+                        st.error(message)
     
     except Exception as e:
         st.error(f"Error setting up edit form: {e}")
+        st.exception(e)  # This will show the detailed error in development
 
 elif action == "Delete Pump":
     st.subheader("Delete Pump")
@@ -278,12 +356,15 @@ elif action == "Delete Pump":
         if df.empty:
             st.info("No data found to delete.")
         else:
+            # Use Model No. for pump identification based on your table structure
+            id_column = "Model No."
+            
             # Select pump to delete
-            pump_options = df["name"].tolist()
-            selected_pump_name = st.selectbox("Select pump to delete:", pump_options)
+            pump_options = df[id_column].astype(str).tolist()
+            selected_pump_id = st.selectbox(f"Select pump to delete (by {id_column}):", pump_options)
             
             # Get selected pump data
-            selected_pump = df[df["name"] == selected_pump_name].iloc[0]
+            selected_pump = df[df[id_column].astype(str) == selected_pump_id].iloc[0]
             db_id = selected_pump["DB ID"]
             
             # Display pump details
@@ -291,17 +372,30 @@ elif action == "Delete Pump":
             details_cols = st.columns(2)
             
             with details_cols[0]:
-                st.write(f"**Name:** {selected_pump['name']}")
                 st.write(f"**DB ID:** {db_id}")
+                st.write(f"**Model No.:** {selected_pump['Model No.']}")
                 
-                if "manufacturer" in selected_pump:
-                    st.write(f"**Manufacturer:** {selected_pump['manufacturer']}")
+                if "Category" in selected_pump:
+                    st.write(f"**Category:** {selected_pump['Category']}")
+                
+                if "HP" in selected_pump:
+                    st.write(f"**HP:** {selected_pump['HP']}")
+                
+                if "Power(KW)" in selected_pump:
+                    st.write(f"**Power:** {selected_pump['Power(KW)']} KW")
             
             with details_cols[1]:
-                if "flow_rate" in selected_pump:
-                    st.write(f"**Flow Rate:** {selected_pump['flow_rate']} LPM")
-                if "head_height" in selected_pump:
-                    st.write(f"**Head Height:** {selected_pump['head_height']} m")
+                if "Max Flow (LPM)" in selected_pump:
+                    st.write(f"**Max Flow:** {selected_pump['Max Flow (LPM)']} LPM")
+                
+                if "Max Head (M)" in selected_pump:
+                    st.write(f"**Max Head:** {selected_pump['Max Head (M)']} m")
+                
+                if "Outlet (mm)" in selected_pump:
+                    st.write(f"**Outlet:** {selected_pump['Outlet (mm)']} mm")
+                
+                if "Frequency (Hz)" in selected_pump:
+                    st.write(f"**Frequency:** {selected_pump['Frequency (Hz)']} Hz")
             
             # Confirm deletion
             st.warning("⚠️ Warning: This action cannot be undone!")
@@ -318,6 +412,7 @@ elif action == "Delete Pump":
     
     except Exception as e:
         st.error(f"Error setting up delete form: {e}")
+        st.exception(e)  # This will show the detailed error in development
 
 # --- Footer ---
 st.markdown("---")
