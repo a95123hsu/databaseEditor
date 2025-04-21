@@ -32,10 +32,11 @@ def fetch_all_pump_data():
     progress_text = "Fetching data..."
     progress_bar = st.progress(0, text=progress_text)
     
-    # Fetch in batches
+    # Fetch in batches - using order() to ensure consistent sorting
     for start_idx in range(0, total_count, page_size):
         with st.spinner(f"Loading records {start_idx+1}-{min(start_idx+page_size, total_count)}..."):
-            response = supabase.table("pump_selection_data").select("*").range(start_idx, start_idx + page_size - 1).execute()
+            # Order by id to ensure consistent sorting
+            response = supabase.table("pump_selection_data").select("*").order('id').range(start_idx, start_idx + page_size - 1).execute()
             
             if response.data:
                 all_data.extend(response.data)
@@ -94,14 +95,25 @@ try:
             # Data Table with pagination controls
             st.subheader("📋 Raw Data Table")
             
+            # Add sorting options
+            sort_columns = ["id"] + [col for col in filtered_df.columns if col != "id"]
+            sort_column = st.selectbox("Sort by:", sort_columns, index=0)
+            sort_order = st.radio("Sort order:", ["Ascending", "Descending"], horizontal=True)
+            
+            # Apply sorting
+            if sort_order == "Ascending":
+                sorted_df = filtered_df.sort_values(by=sort_column)
+            else:
+                sorted_df = filtered_df.sort_values(by=sort_column, ascending=False)
+                
             # Show row count selection
             rows_per_page = st.selectbox("Rows per page:", [10, 25, 50, 100, "All"], index=1)
             
             if rows_per_page == "All":
-                st.dataframe(filtered_df, use_container_width=True)
+                st.dataframe(sorted_df, use_container_width=True)
             else:
                 # Manual pagination
-                total_rows = len(filtered_df)
+                total_rows = len(sorted_df)
                 total_pages = (total_rows + rows_per_page - 1) // rows_per_page if rows_per_page != "All" else 1
                 
                 if total_pages > 0:
@@ -109,7 +121,7 @@ try:
                     start_idx = (page - 1) * rows_per_page
                     end_idx = min(start_idx + rows_per_page, total_rows)
                     
-                    st.dataframe(filtered_df.iloc[start_idx:end_idx], use_container_width=True)
+                    st.dataframe(sorted_df.iloc[start_idx:end_idx], use_container_width=True)
                     st.write(f"Showing {start_idx+1}-{end_idx} of {total_rows} rows")
                 else:
                     st.info("No data to display")
