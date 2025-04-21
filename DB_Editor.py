@@ -70,22 +70,22 @@ else:
     table_name = "pump_selection_data"
 
     try:
-        # Load up to 1000 rows to ensure full data access
-        data = supabase.table(table_name).select("*").limit(1000).execute()
+        # Load up to 2000 rows
+        max_rows = 2000
+        data = supabase.table(table_name).select("*").range(0, max_rows - 1).execute()
         df = pd.DataFrame(data.data)
 
         if df.empty:
             st.info("No data found in the table.")
         else:
-            # Ensure all columns render correctly (convert nested values to string)
+            # Make sure nested types are stringified for display
             for col in df.columns:
                 if df[col].apply(lambda x: isinstance(x, (dict, list))).any():
                     df[col] = df[col].astype(str)
 
             st.subheader("Edit Pump Selection Data")
-            st.write("💡 Scroll horizontally to see all columns. Click to edit, then press Update below.")
+            st.write("💡 Scroll to view all columns. Edit any values, then press Update below.")
 
-            # Interactive editor with scroll
             edited_df = st.data_editor(
                 df,
                 num_rows="dynamic",
@@ -97,17 +97,25 @@ else:
                 if edited_df.equals(df):
                     st.info("No changes detected.")
                 else:
+                    original_data = df.set_index("id").to_dict("index")
                     success_count = 0
+
                     for row in edited_df.to_dict("records"):
                         row_id = row.get("id")
                         if not row_id:
                             st.warning("Skipping row without 'id'.")
                             continue
-                        update_row = {k: v for k, v in row.items() if k != "id"}
+
+                        # Merge edited row with original
+                        original_row = original_data.get(row_id, {})
+                        merged_row = {**original_row, **row}
+
+                        # Remove NaNs to avoid overwriting with nulls
+                        clean_row = {k: v for k, v in merged_row.items() if pd.notna(v)}
 
                         try:
                             response = supabase.table(table_name)\
-                                .update(update_row)\
+                                .update(clean_row)\
                                 .eq("id", row_id)\
                                 .execute()
 
@@ -115,7 +123,6 @@ else:
                                 success_count += 1
                             else:
                                 st.warning(f"No data returned on update for row id {row_id}.")
-                                st.write(response)
                         except Exception as e:
                             st.error(f"Error updating row {row_id}: {e}")
 
