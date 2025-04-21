@@ -3,6 +3,7 @@ import pandas as pd
 from supabase import create_client, Client
 import re
 import traceback
+from login import login_form, get_user_session, logout
 
 # --- Load Supabase credentials from secrets.toml ---
 @st.cache_resource(show_spinner=False)
@@ -247,6 +248,19 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+
+# Check login session
+user = get_user_session()
+if not user:
+    login_form()
+    st.stop()
+
+# Optional: Add logout button to sidebar
+with st.sidebar:
+    if st.button("🚪 Logout"):
+        logout()
+
 
 # --- App Header ---
 st.title("💧 Pump Selection Data Manager")
