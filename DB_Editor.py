@@ -584,7 +584,7 @@ elif action == "Edit Pump":
                     submit_button = st.form_submit_button("Update Pump")
                     
                     if submit_button:
-                        success, message = update_pump_data(db_id, edited_data, user["email"])
+                        success, message = update_pump_data(db_id, edited_data, user.email)
                         if success:
                             st.success(message)
                             # Show new Model Group if Model No. was changed
