@@ -52,6 +52,21 @@ def fetch_all_pump_data():
     
     return pd.DataFrame(all_data)
 
+# --- Apply filters to the dataframe ---
+def apply_filters(df, selected_group, selected_category):
+    filtered_df = df.copy()
+    
+    # Apply Model Group filter
+    if selected_group != "All":
+        filtered_df = filtered_df[filtered_df['Model Group'] == selected_group]
+    
+    # Apply Category filter if it exists
+    if "Category" in df.columns and selected_category != "All":
+        # Use exact case-insensitive matching
+        filtered_df = filtered_df[filtered_df["Category"].str.lower() == selected_category.lower()]
+    
+    return filtered_df
+
 # --- Model Categorization Function ---
 def extract_model_group(model):
     if pd.isna(model):
@@ -248,6 +263,13 @@ try:
     if not df.empty:
         # Add Model Group for categorization
         df['Model Group'] = df['Model No.'].apply(extract_model_group)
+        
+        # Clean up Category values to ensure consistent filtering
+        if "Category" in df.columns:
+            # Convert all category values to strings and strip whitespace
+            df["Category"] = df["Category"].astype(str).str.strip()
+            # Replace NaN, None, etc. with empty string for consistent handling
+            df["Category"] = df["Category"].replace(["nan", "None", "NaN"], "")
 except Exception as e:
     st.error(f"Error fetching data: {e}")
     st.error(traceback.format_exc())
@@ -270,7 +292,9 @@ with st.sidebar:
         
         # Category Filter (if exists)
         if "Category" in df.columns:
-            categories = ["All"] + sorted(df['Category'].dropna().unique().tolist())
+            # Get unique non-empty categories
+            categories = [c for c in df["Category"].unique() if c and c.strip() and c.lower() not in ["nan", "none"]]
+            categories = ["All"] + sorted(categories)
             selected_category = st.selectbox("Filter by Category", categories)
         else:
             selected_category = "All"
@@ -292,17 +316,13 @@ if action == "View Data":
             st.success(f"✅ Successfully loaded {len(df)} pump records")
             
             # Apply filters
-            filtered_df = df.copy()
+            filtered_df = apply_filters(df, selected_group, selected_category)
             
-            # Apply Model Group filter
+            # Show filter results
             if selected_group != "All":
-                filtered_df = filtered_df[filtered_df['Model Group'] == selected_group]
                 st.write(f"Filtered by Model Group: {selected_group}")
-            
-            # Apply Category filter if it exists
-            if "Category" in df.columns and selected_category != "All":
-                filtered_df = filtered_df[filtered_df['Category'] == selected_category]
-                st.write(f"Filtered by Category: {selected_category}")
+            if selected_category != "All":
+                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
             
             # Add search functionality
             search_term = st.text_input("🔍 Search by Model No.:")
@@ -409,7 +429,9 @@ elif action == "Add New Pump":
             
             # Category dropdown if we have existing categories
             if not df.empty and "Category" in df.columns:
-                categories = [""] + sorted(df["Category"].dropna().unique().tolist())
+                # Get unique non-empty categories
+                categories = [c for c in df["Category"].unique() if c and c.strip() and c.lower() not in ["nan", "none"]]
+                categories = [""] + sorted(categories)
                 new_pump_data["Category"] = st.selectbox("Category", categories)
             else:
                 new_pump_data["Category"] = st.text_input("Category")
@@ -439,102 +461,118 @@ elif action == "Edit Pump":
         if df.empty:
             st.info("No data found to edit.")
         else:
-            # Apply Model Group filter for selecting pump to edit
-            edit_df = df.copy()
+            # Apply the same filters as in View Data
+            filtered_df = apply_filters(df, selected_group, selected_category)
+            
+            # Show filter results
             if selected_group != "All":
-                edit_df = edit_df[edit_df['Model Group'] == selected_group]
-                st.info(f"Showing only pumps in Model Group: {selected_group}")
-            
-            # Use Model No. for pump identification based on your table structure
-            id_column = "Model No."
-            
-            # Select pump to edit
-            pump_options = edit_df[id_column].astype(str).tolist()
-            selected_pump_id = st.selectbox(f"Select pump to edit (by {id_column}):", pump_options)
-            
-            # Get selected pump data
-            selected_pump = edit_df[edit_df[id_column].astype(str) == selected_pump_id].iloc[0]
-            db_id = selected_pump["DB ID"]
-            
-            # Show current Model Group
-            current_group = extract_model_group(selected_pump_id)
-            st.info(f"Current Model Group: {current_group}")
-            
-            # Create form for editing
-            with st.form("edit_pump_form"):
-                edited_data = {}
+                st.write(f"Filtered by Model Group: {selected_group}")
+            if selected_category != "All":
+                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
                 
-                # Create columns for better layout
-                col1, col2 = st.columns(2)
+            if filtered_df.empty:
+                st.info("No pumps match your filter criteria.")
+            else:
+                # Use Model No. for pump identification based on your table structure
+                id_column = "Model No."
                 
-                with col1:
-                    for column in ["Model No.", "Frequency (Hz)", "Phase", "HP", "Power(KW)", "Outlet (mm)", "Outlet (inch)"]:
-                        if column in df.columns:
-                            current_value = selected_pump[column]
-                            
-                            if pd.isna(current_value):
-                                # Handle NaN values
-                                if column in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
-                                    edited_data[column] = st.number_input(f"{column}", value=0, step=1)
-                                else:
-                                    edited_data[column] = st.text_input(f"{column}", value="")
-                            elif isinstance(current_value, (int, float)) and column in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
-                                edited_data[column] = st.number_input(f"{column}", value=int(current_value), step=1)
-                            elif isinstance(current_value, str) and column not in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
-                                edited_data[column] = st.text_input(f"{column}", value=current_value)
-                            else:
-                                try:
+                # Select pump to edit
+                pump_options = filtered_df[id_column].astype(str).tolist()
+                selected_pump_id = st.selectbox(f"Select pump to edit (by {id_column}):", pump_options)
+                
+                # Get selected pump data
+                selected_pump = filtered_df[filtered_df[id_column].astype(str) == selected_pump_id].iloc[0]
+                db_id = selected_pump["DB ID"]
+                
+                # Show current Model Group
+                current_group = extract_model_group(selected_pump_id)
+                st.info(f"Current Model Group: {current_group}")
+                
+                # Create form for editing
+                with st.form("edit_pump_form"):
+                    edited_data = {}
+                    
+                    # Create columns for better layout
+                    col1, col2 = st.columns(2)
+                    
+                    with col1:
+                        for column in ["Model No.", "Frequency (Hz)", "Phase", "HP", "Power(KW)", "Outlet (mm)", "Outlet (inch)"]:
+                            if column in df.columns:
+                                current_value = selected_pump[column]
+                                
+                                if pd.isna(current_value):
+                                    # Handle NaN values
                                     if column in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
-                                        edited_data[column] = st.number_input(f"{column}", value=int(float(current_value)), step=1)
+                                        edited_data[column] = st.number_input(f"{column}", value=0, step=1)
                                     else:
-                                        edited_data[column] = st.text_input(f"{column}", value=str(current_value))
-                                except:
-                                    edited_data[column] = st.text_input(f"{column}", value=str(current_value))
-                
-                with col2:
-                    for column in ["Pass Solid Dia(mm)", "Max Flow (LPM)", "Max Head (M)", "Max Head (ft)", "Category", "Product Link"]:
-                        if column in df.columns:
-                            current_value = selected_pump[column]
-                            
-                            if pd.isna(current_value):
-                                # Handle NaN values
-                                if column in ["Pass Solid Dia(mm)"]:
-                                    edited_data[column] = st.number_input(f"{column}", value=0, step=1)
-                                elif column in ["Max Head (M)"]:
-                                    edited_data[column] = st.number_input(f"{column}", value=0.0)
+                                        edited_data[column] = st.text_input(f"{column}", value="")
+                                elif isinstance(current_value, (int, float)) and column in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
+                                    edited_data[column] = st.number_input(f"{column}", value=int(current_value), step=1)
+                                elif isinstance(current_value, str) and column not in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
+                                    edited_data[column] = st.text_input(f"{column}", value=current_value)
                                 else:
-                                    edited_data[column] = st.text_input(f"{column}", value="")
-                            elif isinstance(current_value, (int, float)) and column in ["Pass Solid Dia(mm)"]:
-                                edited_data[column] = st.number_input(f"{column}", value=int(current_value), step=1)
-                            elif isinstance(current_value, (int, float)) and column in ["Max Head (M)"]:
-                                edited_data[column] = st.number_input(f"{column}", value=float(current_value))
-                            elif isinstance(current_value, str) and column not in ["Pass Solid Dia(mm)", "Max Head (M)"]:
-                                edited_data[column] = st.text_input(f"{column}", value=current_value)
-                            else:
-                                try:
-                                    if column in ["Pass Solid Dia(mm)"]:
-                                        edited_data[column] = st.number_input(f"{column}", value=int(float(current_value)), step=1)
-                                    elif column in ["Max Head (M)"]:
-                                        edited_data[column] = st.number_input(f"{column}", value=float(current_value))
-                                    else:
+                                    try:
+                                        if column in ["Frequency (Hz)", "Phase", "Outlet (mm)"]:
+                                            edited_data[column] = st.number_input(f"{column}", value=int(float(current_value)), step=1)
+                                        else:
+                                            edited_data[column] = st.text_input(f"{column}", value=str(current_value))
+                                    except:
                                         edited_data[column] = st.text_input(f"{column}", value=str(current_value))
-                                except:
-                                    edited_data[column] = st.text_input(f"{column}", value=str(current_value))
-                
-                submit_button = st.form_submit_button("Update Pump")
-                
-                if submit_button:
-                    success, message = update_pump_data(db_id, edited_data)
-                    if success:
-                        st.success(message)
-                        # Show new Model Group if Model No. was changed
-                        if edited_data["Model No."] != selected_pump_id:
-                            new_group = extract_model_group(edited_data["Model No."])
-                            st.info(f"New Model Group: {new_group}")
-                        # Clear cache to refresh data
-                        st.cache_data.clear()
-                    else:
-                        st.error(message)
+                    
+                    with col2:
+                        for column in ["Pass Solid Dia(mm)", "Max Flow (LPM)", "Max Head (M)", "Max Head (ft)", "Category", "Product Link"]:
+                            if column in df.columns:
+                                current_value = selected_pump[column]
+                                
+                                if pd.isna(current_value) or str(current_value).lower() in ["nan", "none", ""]:
+                                    # Handle NaN values
+                                    if column in ["Pass Solid Dia(mm)"]:
+                                        edited_data[column] = st.number_input(f"{column}", value=0, step=1)
+                                    elif column in ["Max Head (M)"]:
+                                        edited_data[column] = st.number_input(f"{column}", value=0.0)
+                                    elif column == "Category":
+                                        # Get unique non-empty categories
+                                        categories = [c for c in df["Category"].unique() if c and c.strip() and c.lower() not in ["nan", "none"]]
+                                        categories = [""] + sorted(categories)
+                                        edited_data[column] = st.selectbox(f"{column}", categories)
+                                    else:
+                                        edited_data[column] = st.text_input(f"{column}", value="")
+                                elif column == "Category":
+                                    # Get unique non-empty categories
+                                    categories = [c for c in df["Category"].unique() if c and c.strip() and c.lower() not in ["nan", "none"]]
+                                    categories = [""] + sorted(categories)
+                                    edited_data[column] = st.selectbox(f"{column}", categories, index=categories.index(current_value) if current_value in categories else 0)
+                                elif isinstance(current_value, (int, float)) and column in ["Pass Solid Dia(mm)"]:
+                                    edited_data[column] = st.number_input(f"{column}", value=int(current_value), step=1)
+                                elif isinstance(current_value, (int, float)) and column in ["Max Head (M)"]:
+                                    edited_data[column] = st.number_input(f"{column}", value=float(current_value))
+                                elif isinstance(current_value, str) and column not in ["Pass Solid Dia(mm)", "Max Head (M)"]:
+                                    edited_data[column] = st.text_input(f"{column}", value=current_value)
+                                else:
+                                    try:
+                                        if column in ["Pass Solid Dia(mm)"]:
+                                            edited_data[column] = st.number_input(f"{column}", value=int(float(current_value)), step=1)
+                                        elif column in ["Max Head (M)"]:
+                                            edited_data[column] = st.number_input(f"{column}", value=float(current_value))
+                                        else:
+                                            edited_data[column] = st.text_input(f"{column}", value=str(current_value))
+                                    except:
+                                        edited_data[column] = st.text_input(f"{column}", value=str(current_value))
+                    
+                    submit_button = st.form_submit_button("Update Pump")
+                    
+                    if submit_button:
+                        success, message = update_pump_data(db_id, edited_data)
+                        if success:
+                            st.success(message)
+                            # Show new Model Group if Model No. was changed
+                            if edited_data["Model No."] != selected_pump_id:
+                                new_group = extract_model_group(edited_data["Model No."])
+                                st.info(f"New Model Group: {new_group}")
+                            # Clear cache to refresh data
+                            st.cache_data.clear()
+                        else:
+                            st.error(message)
     
     except Exception as e:
         st.error(f"Error setting up edit form: {e}")
@@ -547,69 +585,75 @@ elif action == "Delete Pump":
         if df.empty:
             st.info("No data found to delete.")
         else:
-            # Apply Model Group filter for selecting pump to delete
-            delete_df = df.copy()
+            # Apply the same filters as in View Data
+            filtered_df = apply_filters(df, selected_group, selected_category)
+            
+            # Show filter results
             if selected_group != "All":
-                delete_df = delete_df[delete_df['Model Group'] == selected_group]
-                st.info(f"Showing only pumps in Model Group: {selected_group}")
+                st.write(f"Filtered by Model Group: {selected_group}")
+            if selected_category != "All":
+                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
                 
-            # Use Model No. for pump identification based on your table structure
-            id_column = "Model No."
-            
-            # Select pump to delete
-            pump_options = delete_df[id_column].astype(str).tolist()
-            selected_pump_id = st.selectbox(f"Select pump to delete (by {id_column}):", pump_options)
-            
-            # Get selected pump data
-            selected_pump = delete_df[delete_df[id_column].astype(str) == selected_pump_id].iloc[0]
-            db_id = selected_pump["DB ID"]
-            
-            # Show current Model Group
-            current_group = extract_model_group(selected_pump_id)
-            st.info(f"Model Group: {current_group}")
-            
-            # Display pump details
-            st.write("Pump Details:")
-            details_cols = st.columns(2)
-            
-            with details_cols[0]:
-                st.write(f"**DB ID:** {db_id}")
-                st.write(f"**Model No.:** {selected_pump['Model No.']}")
+            if filtered_df.empty:
+                st.info("No pumps match your filter criteria.")
+            else:
+                # Use Model No. for pump identification based on your table structure
+                id_column = "Model No."
                 
-                if "Category" in selected_pump:
-                    st.write(f"**Category:** {selected_pump['Category']}")
+                # Select pump to delete
+                pump_options = filtered_df[id_column].astype(str).tolist()
+                selected_pump_id = st.selectbox(f"Select pump to delete (by {id_column}):", pump_options)
                 
-                if "HP" in selected_pump:
-                    st.write(f"**HP:** {selected_pump['HP']}")
+                # Get selected pump data
+                selected_pump = filtered_df[filtered_df[id_column].astype(str) == selected_pump_id].iloc[0]
+                db_id = selected_pump["DB ID"]
                 
-                if "Power(KW)" in selected_pump:
-                    st.write(f"**Power:** {selected_pump['Power(KW)']} KW")
-            
-            with details_cols[1]:
-                if "Max Flow (LPM)" in selected_pump:
-                    st.write(f"**Max Flow:** {selected_pump['Max Flow (LPM)']} LPM")
+                # Show current Model Group
+                current_group = extract_model_group(selected_pump_id)
+                st.info(f"Model Group: {current_group}")
                 
-                if "Max Head (M)" in selected_pump:
-                    st.write(f"**Max Head:** {selected_pump['Max Head (M)']} m")
+                # Display pump details
+                st.write("Pump Details:")
+                details_cols = st.columns(2)
                 
-                if "Outlet (mm)" in selected_pump:
-                    st.write(f"**Outlet:** {selected_pump['Outlet (mm)']} mm")
+                with details_cols[0]:
+                    st.write(f"**DB ID:** {db_id}")
+                    st.write(f"**Model No.:** {selected_pump['Model No.']}")
+                    
+                    if "Category" in selected_pump:
+                        st.write(f"**Category:** {selected_pump['Category']}")
+                    
+                    if "HP" in selected_pump:
+                        st.write(f"**HP:** {selected_pump['HP']}")
+                    
+                    if "Power(KW)" in selected_pump:
+                        st.write(f"**Power:** {selected_pump['Power(KW)']} KW")
                 
-                if "Frequency (Hz)" in selected_pump:
-                    st.write(f"**Frequency:** {selected_pump['Frequency (Hz)']} Hz")
-            
-            # Confirm deletion
-            st.warning("⚠️ Warning: This action cannot be undone!")
-            confirm_delete = st.button("Confirm Delete")
-            
-            if confirm_delete:
-                success, message = delete_pump_data(db_id)
-                if success:
-                    st.success(message)
-                    # Clear cache to refresh data
-                    st.cache_data.clear()
-                else:
-                    st.error(message)
+                with details_cols[1]:
+                    if "Max Flow (LPM)" in selected_pump:
+                        st.write(f"**Max Flow:** {selected_pump['Max Flow (LPM)']} LPM")
+                    
+                    if "Max Head (M)" in selected_pump:
+                        st.write(f"**Max Head:** {selected_pump['Max Head (M)']} m")
+                    
+                    if "Outlet (mm)" in selected_pump:
+                        st.write(f"**Outlet:** {selected_pump['Outlet (mm)']} mm")
+                    
+                    if "Frequency (Hz)" in selected_pump:
+                        st.write(f"**Frequency:** {selected_pump['Frequency (Hz)']} Hz")
+                
+                # Confirm deletion
+                st.warning("⚠️ Warning: This action cannot be undone!")
+                confirm_delete = st.button("Confirm Delete")
+                
+                if confirm_delete:
+                    success, message = delete_pump_data(db_id)
+                    if success:
+                        st.success(message)
+                        # Clear cache to refresh data
+                        st.cache_data.clear()
+                    else:
+                        st.error(message)
     
     except Exception as e:
         st.error(f"Error setting up delete form: {e}")
