@@ -1,27 +1,29 @@
 import streamlit as st
-import pandas as pd
-from supabase import create_client, Client
+from st_supabase_connection import SupabaseConnection
 
-# Load secrets
-SUPABASE_URL = st.secrets["SUPABASE_URL"]
-SUPABASE_KEY = st.secrets["SUPABASE_KEY"]
+st.set_page_config(page_title="🐾 Pet Viewer", layout="centered")
 
-@st.cache_resource
-def init_connection():
-    return create_client(SUPABASE_URL, SUPABASE_KEY)
+# Title
+st.title("🐾 Pet Owners Viewer")
 
-supabase: Client = init_connection()
+# Connect to Supabase
+conn = st.connection("supabase", type=SupabaseConnection)
 
-st.title("📊 Pump Data Viewer")
-
+# Query data from your Supabase table
 try:
-    response = supabase.table("pump_selection_data").select("*").range(0, 1999).execute()
-    df = pd.DataFrame(response.data)
+    rows = conn.query("*", table="mytable", ttl="10m").execute()
+    data = rows.data
 
-    if df.empty:
-        st.info("No data found.")
+    if not data:
+        st.info("No data found in 'mytable'. Add some rows in Supabase.")
     else:
-        st.dataframe(df, use_container_width=True)
+        st.subheader("📋 Raw Table Data")
+        st.dataframe(data, use_container_width=True)
 
+        st.subheader("🎉 Fun Format")
+        for row in data:
+            name = row.get("name", "Unknown")
+            pet = row.get("pet", "🐾")
+            st.write(f"**{name}** has a :{pet}:")
 except Exception as e:
-    st.error(f"Failed to load data: {e}")
+    st.error(f"Error fetching data: {e}")
