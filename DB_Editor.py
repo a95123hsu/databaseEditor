@@ -70,15 +70,28 @@ else:
     table_name = "pump_selection_data"
 
     try:
-        data = supabase.table(table_name).select("*").execute()
+        # Load up to 1000 rows to ensure full data access
+        data = supabase.table(table_name).select("*").limit(1000).execute()
         df = pd.DataFrame(data.data)
 
         if df.empty:
             st.info("No data found in the table.")
         else:
+            # Ensure all columns render correctly (convert nested values to string)
+            for col in df.columns:
+                if df[col].apply(lambda x: isinstance(x, (dict, list))).any():
+                    df[col] = df[col].astype(str)
+
             st.subheader("Edit Pump Selection Data")
-            st.write("💡 Click on cells to edit, then press Update below.")
-            edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
+            st.write("💡 Scroll horizontally to see all columns. Click to edit, then press Update below.")
+
+            # Interactive editor with scroll
+            edited_df = st.data_editor(
+                df,
+                num_rows="dynamic",
+                use_container_width=True,
+                hide_index=False
+            )
 
             if st.button("Update Table"):
                 if edited_df.equals(df):
@@ -101,7 +114,7 @@ else:
                             if response.data:
                                 success_count += 1
                             else:
-                                st.warning(f"No update for row id {row_id}.")
+                                st.warning(f"No data returned on update for row id {row_id}.")
                                 st.write(response)
                         except Exception as e:
                             st.error(f"Error updating row {row_id}: {e}")
