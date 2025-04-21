@@ -1,16 +1,14 @@
 import streamlit as st
 import pandas as pd
 from supabase import create_client
-import re
 import traceback
 import time
-from datetime import datetime, timedelta
 import extra_streamlit_components as stx
 
 # --- Page Configuration ---
 st.set_page_config(
-    page_title="Pump Selection Data Manager", 
-    page_icon="💧", 
+    page_title="Pump Selection Data Manager",
+    page_icon="💧",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -39,14 +37,12 @@ def login(email, password):
         supabase_key = st.secrets["SUPABASE_KEY"]
         supabase_client = create_client(supabase_url, supabase_key)
         auth_response = supabase_client.auth.sign_in_with_password({"email": email, "password": password})
-        
+
         st.session_state.authenticated = True
         st.session_state.user_info = auth_response.user
         st.session_state.auth_token = auth_response.session.access_token
-        
-        # Set cookie without 'expires'
+
         cookie_manager.set("auth_token", auth_response.session.access_token)
-        
         return True, "Login successful"
     except Exception as e:
         return False, f"Login failed: {str(e)}"
@@ -61,7 +57,7 @@ def logout():
 def check_auth():
     if st.session_state.authenticated and st.session_state.auth_token:
         return True
-    
+
     auth_token = cookie_manager.get("auth_token")
     if auth_token:
         try:
@@ -69,11 +65,11 @@ def check_auth():
             supabase_key = st.secrets["SUPABASE_KEY"]
             supabase_client = create_client(supabase_url, supabase_key)
             user = supabase_client.auth.get_user(auth_token)
-            
+
             st.session_state.authenticated = True
             st.session_state.user_info = user.user
             st.session_state.auth_token = auth_token
-            
+
             return True
         except:
             cookie_manager.delete("auth_token")
@@ -104,13 +100,13 @@ with st.sidebar:
         if st.button("Logout"):
             logout()
 
-# --- Initialize Supabase Client Using Auth Token ---
+# --- Initialize Supabase Client Using API Key (not access_token) ---
 supabase = create_client(
     st.secrets["SUPABASE_URL"],
-    st.session_state.auth_token  # ✅ Authenticated access
+    st.secrets["SUPABASE_KEY"]  # Use anon/service_role key
 )
 
-# --- Sample Function: Fetch Data from pump_selection_data ---
+# --- Fetch Data Function ---
 def fetch_all_pump_data():
     try:
         response = supabase.table("pump_selection_data").select("*").execute()
@@ -123,7 +119,7 @@ def fetch_all_pump_data():
         st.error(traceback.format_exc())
         return pd.DataFrame()
 
-# --- App Content ---
+# --- App UI ---
 st.title("💧 Pump Selection Data Manager")
 st.write("Welcome! You are now logged in and can access the pump database.")
 
