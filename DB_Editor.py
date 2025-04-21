@@ -166,8 +166,6 @@ def insert_pump_data(pump_data):
         # Show the data being sent to Supabase
         st.write("Sending the following data to Supabase:")
         st.write(clean_data)
-
-        clean_data["updated_by"] = user_email  # Add this before insert
         
         # Insert the data
         response = supabase.table("pump_selection_data").insert(clean_data).execute()
@@ -177,7 +175,7 @@ def insert_pump_data(pump_data):
         st.error(traceback.format_exc())
         return False, f"Error adding pump data: {e}"
 
-def update_pump_data(db_id, pump_data, user_email):
+def update_pump_data(db_id, pump_data):
     try:
         # Create a copy of the data for safe modification
         clean_data = {}
@@ -249,7 +247,6 @@ def update_pump_data(db_id, pump_data, user_email):
             return False, "No valid fields to update after cleaning data."
         
         # Update with the cleaned data - note the double quotes around DB ID
-        clean_data["updated_by"] = user_email  # Add before update
         response = supabase.table("pump_selection_data").update(clean_data).eq('"DB ID"', db_id).execute()
         return True, "Pump data updated successfully!"
     except Exception as e:
@@ -259,8 +256,7 @@ def update_pump_data(db_id, pump_data, user_email):
 
 def delete_pump_data(db_id):
     try:
-        # Set updated_by before delete for audit log
-        supabase.table("pump_selection_data").update({"updated_by": user_email}).eq('"DB ID"', db_id).execute()
+        # Note the double quotes around DB ID
         response = supabase.table("pump_selection_data").delete().eq('"DB ID"', db_id).execute()
         return True, "Pump data deleted successfully!"
     except Exception as e:
@@ -468,7 +464,7 @@ elif action == "Add New Pump":
             if not new_pump_data.get("Model No."):
                 st.error("Model No. is required.")
             else:
-                success, message = insert_pump_data(new_pump_data, user["email"])
+                success, message = insert_pump_data(new_pump_data)
                 if success:
                     st.success(message)
                     # Clear cache to refresh data
@@ -584,7 +580,7 @@ elif action == "Edit Pump":
                     submit_button = st.form_submit_button("Update Pump")
                     
                     if submit_button:
-                        success, message = update_pump_data(db_id, edited_data, user.email)
+                        success, message = update_pump_data(db_id, edited_data)
                         if success:
                             st.success(message)
                             # Show new Model Group if Model No. was changed
@@ -669,7 +665,7 @@ elif action == "Delete Pump":
                 confirm_delete = st.button("Confirm Delete")
                 
                 if confirm_delete:
-                    success, message = delete_pump_data(db_id, user["email"])
+                    success, message = delete_pump_data(db_id)
                     if success:
                         st.success(message)
                         # Clear cache to refresh data
@@ -682,12 +678,5 @@ elif action == "Delete Pump":
         st.error(traceback.format_exc())  # This will show the detailed error in development
 
 # --- Footer ---
-if st.sidebar.button("📜 View Audit Log"):
-    logs = supabase.table("audit_log").select("*").order("created_at", desc=True).limit(20).execute().data
-    st.subheader("🕵️ Audit Log")
-    for log in logs:
-        st.markdown(f"**{log['created_at']}** — `{log['event']}` by `{log['user_email']}`")
-        st.json(log["new_data"])
-        
 st.markdown("---")
 st.markdown("💧 **Pump Selection Data Manager** | Last updated: " + pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"))
