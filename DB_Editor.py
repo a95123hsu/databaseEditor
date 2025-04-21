@@ -3,6 +3,23 @@ import pandas as pd
 from supabase import create_client, Client
 import re
 import traceback
+import extra_streamlit_components as stx
+
+def get_cookie_manager():
+    return stx.CookieManager()
+def login_user(email, password):
+    try:
+        response = supabase.auth.sign_in_with_password({"email": email, "password": password})
+        return response
+    except Exception as e:
+        st.error(f"Login failed: {e}")
+        return None
+
+def logout_user(cookie_manager):
+    cookie_manager.delete("session_token")
+    st.success("Logged out successfully!")
+    st.rerun()
+
 
 # --- Load Supabase credentials from secrets.toml ---
 @st.cache_resource(show_spinner=False)
@@ -241,12 +258,38 @@ def delete_pump_data(db_id):
         return False, f"Error deleting pump data: {e}"
 
 # --- Page Configuration ---
-st.set_page_config(
-    page_title="Pump Selection Data Manager", 
-    page_icon="💧", 
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+st.set_page_config(page_title="Pump Selection Data Manager", page_icon="💧", layout="wide")
+
+# --- Init Supabase ---
+supabase = init_connection()
+
+# --- Cookie Manager ---
+cookie_manager = get_cookie_manager()
+cookie = cookie_manager.get("session_token")
+
+# --- Login Flow ---
+if not cookie:
+    st.title("🔐 Login Required")
+    with st.form("login_form"):
+        email = st.text_input("Email")
+        password = st.text_input("Password", type="password")
+        submitted = st.form_submit_button("Login")
+        
+        if submitted:
+            user = login_user(email, password)
+            if user and user.session:
+                # Store session in cookies
+                cookie_manager.set("session_token", user.session.access_token, expires_at=int(user.session.expires_at))
+                st.success("Login successful!")
+                st.rerun()
+            else:
+                st.error("Invalid credentials.")
+else:
+    # Optional logout button
+    with st.sidebar:
+        st.success("Logged in ✅")
+        if st.button("🚪 Logout"):
+            logout_user(cookie_manager)
 
 # --- App Header ---
 st.title("💧 Pump Selection Data Manager")
