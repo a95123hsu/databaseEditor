@@ -53,46 +53,100 @@ def fetch_all_pump_data():
 # --- CRUD Operations ---
 def insert_pump_data(pump_data):
     try:
-        # Convert numeric fields to appropriate types
-        for key, value in pump_data.items():
-            if key in ["Frequency (Hz)", "Phase"]:
-                # Convert to integer
-                if isinstance(value, (int, float)):
-                    pump_data[key] = int(value)
-                elif isinstance(value, str) and value.isdigit():
-                    pump_data[key] = int(value)
-            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
-                # Convert to float when appropriate
-                if isinstance(value, (int, float)):
-                    pump_data[key] = float(value)
-                elif isinstance(value, str) and value.replace('.', '', 1).isdigit():
-                    pump_data[key] = float(value)
+        # Create a copy of the data for safe modification
+        clean_data = {}
         
-        response = supabase.table("pump_selection_data").insert(pump_data).execute()
+        # Convert and clean each field individually
+        for key, value in pump_data.items():
+            # Skip empty values for optional fields
+            if value == "" or pd.isna(value):
+                clean_data[key] = None
+                continue
+                
+            # Handle integer fields
+            if key in ["DB ID", "Frequency (Hz)", "Phase"]:
+                try:
+                    # Remove any decimal points and convert to integer
+                    if isinstance(value, str):
+                        value = value.split('.')[0]  # Remove decimal portion
+                    clean_data[key] = int(value)
+                except:
+                    st.warning(f"Warning: Could not convert '{key}: {value}' to integer. Using original value.")
+                    clean_data[key] = value
+            
+            # Handle float fields
+            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
+                try:
+                    clean_data[key] = float(value)
+                except:
+                    st.warning(f"Warning: Could not convert '{key}: {value}' to float. Using original value.")
+                    clean_data[key] = value
+            
+            # Handle text fields
+            else:
+                clean_data[key] = str(value) if value is not None else None
+        
+        # Debug: log the cleaned data
+        st.write("Sending the following data to Supabase:")
+        st.write(clean_data)
+        
+        # Insert the cleaned data
+        response = supabase.table("pump_selection_data").insert(clean_data).execute()
         return True, "Pump data added successfully!"
     except Exception as e:
+        # Print detailed error info
+        st.write(f"Error details for debugging: {str(e)}")
+        import traceback
+        st.write(traceback.format_exc())
         return False, f"Error adding pump data: {e}"
 
 def update_pump_data(db_id, pump_data):
     try:
-        # Convert numeric fields to appropriate types
-        for key, value in pump_data.items():
-            if key in ["Frequency (Hz)", "Phase"]:
-                # Convert to integer
-                if isinstance(value, (int, float)):
-                    pump_data[key] = int(value)
-                elif isinstance(value, str) and value.isdigit():
-                    pump_data[key] = int(value)
-            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
-                # Convert to float when appropriate
-                if isinstance(value, (int, float)):
-                    pump_data[key] = float(value)
-                elif isinstance(value, str) and value.replace('.', '', 1).isdigit():
-                    pump_data[key] = float(value)
+        # Create a copy of the data for safe modification
+        clean_data = {}
         
-        response = supabase.table("pump_selection_data").update(pump_data).eq("DB ID", db_id).execute()
+        # Convert and clean each field individually
+        for key, value in pump_data.items():
+            # Skip empty values for optional fields
+            if value == "" or pd.isna(value):
+                clean_data[key] = None
+                continue
+                
+            # Handle integer fields
+            if key in ["DB ID", "Frequency (Hz)", "Phase"]:
+                try:
+                    # Remove any decimal points and convert to integer
+                    if isinstance(value, str):
+                        value = value.split('.')[0]  # Remove decimal portion
+                    clean_data[key] = int(value)
+                except:
+                    st.warning(f"Warning: Could not convert '{key}: {value}' to integer. Using original value.")
+                    clean_data[key] = value
+            
+            # Handle float fields
+            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
+                try:
+                    clean_data[key] = float(value)
+                except:
+                    st.warning(f"Warning: Could not convert '{key}: {value}' to float. Using original value.")
+                    clean_data[key] = value
+            
+            # Handle text fields
+            else:
+                clean_data[key] = str(value) if value is not None else None
+        
+        # Debug: log the cleaned data
+        st.write("Sending the following data to Supabase:")
+        st.write(clean_data)
+        
+        # Update with the cleaned data
+        response = supabase.table("pump_selection_data").update(clean_data).eq("DB ID", db_id).execute()
         return True, "Pump data updated successfully!"
     except Exception as e:
+        # Print detailed error info
+        st.write(f"Error details for debugging: {str(e)}")
+        import traceback
+        st.write(traceback.format_exc())
         return False, f"Error updating pump data: {e}"
 
 def delete_pump_data(db_id):
