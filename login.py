@@ -7,7 +7,8 @@ def get_client():
     return create_client(st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"])
 
 def get_cookie_manager():
-    return stx.CookieManager()
+    return stx.CookieManager(key="cookie_manager")
+
 
 def login_form():
     with st.form("Login"):
