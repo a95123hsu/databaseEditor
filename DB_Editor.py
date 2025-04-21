@@ -32,11 +32,11 @@ def fetch_all_pump_data():
     progress_text = "Fetching data..."
     progress_bar = st.progress(0, text=progress_text)
     
-    # Fetch in batches - using order() to ensure consistent sorting
+    # Fetch in batches with sorting by DB ID
     for start_idx in range(0, total_count, page_size):
         with st.spinner(f"Loading records {start_idx+1}-{min(start_idx+page_size, total_count)}..."):
-            # Order by id to ensure consistent sorting
-            response = supabase.table("pump_selection_data").select("*").order('id').range(start_idx, start_idx + page_size - 1).execute()
+            # Order by DB ID to ensure consistent sorting
+            response = supabase.table("pump_selection_data").select("*").order("DB ID").range(start_idx, start_idx + page_size - 1).execute()
             
             if response.data:
                 all_data.extend(response.data)
@@ -96,15 +96,19 @@ try:
             st.subheader("📋 Raw Data Table")
             
             # Add sorting options
-            sort_columns = ["id"] + [col for col in filtered_df.columns if col != "id"]
-            sort_column = st.selectbox("Sort by:", sort_columns, index=0)
-            sort_order = st.radio("Sort order:", ["Ascending", "Descending"], horizontal=True)
-            
-            # Apply sorting
-            if sort_order == "Ascending":
-                sorted_df = filtered_df.sort_values(by=sort_column)
+            if not filtered_df.empty:
+                # Use DB ID as the default sort column, then offer other columns
+                sort_columns = ["DB ID"] + [col for col in filtered_df.columns if col != "DB ID"]
+                sort_column = st.selectbox("Sort by:", sort_columns, index=0)
+                sort_order = st.radio("Sort order:", ["Ascending", "Descending"], horizontal=True)
+                
+                # Apply sorting
+                if sort_order == "Ascending":
+                    sorted_df = filtered_df.sort_values(by=sort_column)
+                else:
+                    sorted_df = filtered_df.sort_values(by=sort_column, ascending=False)
             else:
-                sorted_df = filtered_df.sort_values(by=sort_column, ascending=False)
+                sorted_df = filtered_df
                 
             # Show row count selection
             rows_per_page = st.selectbox("Rows per page:", [10, 25, 50, 100, "All"], index=1)
