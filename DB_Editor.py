@@ -105,48 +105,84 @@ def update_pump_data(db_id, pump_data):
         # Create a copy of the data for safe modification
         clean_data = {}
         
-        # Convert and clean each field individually
+        # Print all original values for debugging
+        st.write("Original data:", pump_data)
+        
+        # First, let's test each field individually to find the problematic one
         for key, value in pump_data.items():
-            # Skip empty values for optional fields
-            if value == "" or pd.isna(value):
-                clean_data[key] = None
+            # Skip DB ID since we don't want to update that
+            if key == "DB ID":
                 continue
                 
-            # Handle integer fields
-            if key in ["DB ID", "Frequency (Hz)", "Phase"]:
-                try:
-                    # Remove any decimal points and convert to integer
-                    if isinstance(value, str):
-                        value = value.split('.')[0]  # Remove decimal portion
-                    clean_data[key] = int(value)
-                except:
-                    st.warning(f"Warning: Could not convert '{key}: {value}' to integer. Using original value.")
-                    clean_data[key] = value
-            
-            # Handle float fields
-            elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
-                try:
-                    clean_data[key] = float(value)
-                except:
-                    st.warning(f"Warning: Could not convert '{key}: {value}' to float. Using original value.")
-                    clean_data[key] = value
-            
-            # Handle text fields
+            # Handle empty values
+            if value == "" or pd.isna(value):
+                clean_data[key] = None
+            # Try to intelligently convert values based on potential types
             else:
-                clean_data[key] = str(value) if value is not None else None
+                # For fields that are likely integers
+                if key in ["Frequency (Hz)", "Phase"]:
+                    if isinstance(value, (int, float)) or (isinstance(value, str) and value.replace('.', '', 1).isdigit()):
+                        try:
+                            # Force integer conversion (truncate decimal)
+                            if isinstance(value, str):
+                                # Remove any decimal part
+                                value = value.split('.')[0]
+                            clean_data[key] = int(value)
+                        except ValueError:
+                            st.error(f"ERROR in field '{key}': Cannot convert '{value}' to integer.")
+                            # Skip this field to avoid errors
+                            continue
+                    else:
+                        clean_data[key] = None
+                
+                # For fields that are definitely floats
+                elif key in ["Outlet (mm)", "Pass Solid Dia(mm)", "Max Head (M)"]:
+                    if isinstance(value, (int, float)) or (isinstance(value, str) and value.replace('.', '', 1).isdigit()):
+                        try:
+                            clean_data[key] = float(value)
+                        except ValueError:
+                            st.error(f"ERROR in field '{key}': Cannot convert '{value}' to float.")
+                            # Skip this field to avoid errors
+                            continue
+                    else:
+                        clean_data[key] = None
+                        
+                # Everything else is treated as string
+                else:
+                    clean_data[key] = str(value)
         
-        # Debug: log the cleaned data
-        st.write("Sending the following data to Supabase:")
-        st.write(clean_data)
+        # Test for each field individually
+        st.write("Testing fields individually to find the problem:")
         
+        # Try updating with only one field at a time to identify the problematic one
+        for key, value in clean_data.items():
+            single_field = {key: value}
+            st.write(f"Testing field '{key}' with value: {value} (type: {type(value)})")
+            
+            try:
+                # Simulate update with just this field
+                test_response = supabase.table("pump_selection_data").update(single_field).eq("DB ID", db_id).execute()
+                st.write(f"✅ Field '{key}' passed")
+            except Exception as field_error:
+                st.error(f"❌ Field '{key}' failed: {str(field_error)}")
+                # Remove this field from the update to avoid errors
+                if key in clean_data:
+                    st.warning(f"Removing problematic field '{key}' from update.")
+                    del clean_data[key]
+        
+        # Final clean data to be sent
+        st.write("Final data being sent to Supabase:", clean_data)
+        
+        if not clean_data:
+            return False, "No valid fields to update after cleaning data."
+            
         # Update with the cleaned data
         response = supabase.table("pump_selection_data").update(clean_data).eq("DB ID", db_id).execute()
         return True, "Pump data updated successfully!"
     except Exception as e:
-        # Print detailed error info
-        st.write(f"Error details for debugging: {str(e)}")
+        st.error(f"Error details for debugging: {str(e)}")
         import traceback
-        st.write(traceback.format_exc())
+        st.error(traceback.format_exc())
         return False, f"Error updating pump data: {e}"
 
 def delete_pump_data(db_id):
