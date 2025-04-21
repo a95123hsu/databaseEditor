@@ -67,8 +67,7 @@ if st.session_state.session is None:
 else:
     st.title("🧠 Pump Selection Data Editor")
 
-    # ✅ Replace with your actual table name, exactly as it appears in Supabase (case-sensitive)
-    table_name = "pump_selection_data"  # Example: quoted to support case-sensitive table names
+    table_name = "pump_selection_data"  # Replace with your actual table name
 
     try:
         data = supabase.table(table_name).select("*").execute()
@@ -82,11 +81,23 @@ else:
             edited_df = st.data_editor(df, num_rows="dynamic", use_container_width=True)
 
             if st.button("Update Table"):
-                for row in edited_df.to_dict("records"):
-                    row_id = row.get("id")
-                    if row_id:
-                        supabase.table(table_name).update(row).eq("id", row_id).execute()
-                st.success("Table updated!")
+                if edited_df.equals(df):
+                    st.info("No changes detected.")
+                else:
+                    success_count = 0
+                    for row in edited_df.to_dict("records"):
+                        row_id = row.get("id")
+                        if not row_id:
+                            st.warning("Missing 'id' in a row. Skipping.")
+                            continue
+                        update_row = {k: v for k, v in row.items() if k != "id"}
+                        response = supabase.table(table_name).update(update_row).eq("id", row_id).execute()
+                        if response.status_code == 200:
+                            success_count += 1
+                        else:
+                            st.error(f"Failed to update row with id {row_id}: {response}")
+                    st.success(f"Updated {success_count} rows.")
+                    st.rerun()
 
     except Exception as e:
         st.error(f"Error accessing Supabase table: {e}")
