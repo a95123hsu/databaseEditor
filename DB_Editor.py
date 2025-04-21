@@ -44,12 +44,13 @@ def login(email, password):
         st.session_state.user_info = auth_response.user
         st.session_state.auth_token = auth_response.session.access_token
         
-        expires = (datetime.now() + timedelta(hours=1)).timestamp()
-        cookie_manager.set("auth_token", auth_response.session.access_token, expires=expires)
+        # Set cookie without 'expires'
+        cookie_manager.set("auth_token", auth_response.session.access_token)
         
         return True, "Login successful"
     except Exception as e:
         return False, f"Login failed: {str(e)}"
+
 
 def logout():
     st.session_state.authenticated = False
