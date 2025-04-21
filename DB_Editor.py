@@ -6,11 +6,26 @@ import traceback
 from login import login_form, get_user_session, logout
 from login import get_user_session, login_form, logout
 
-# 🔐 Require user to log in
+# --- Page Configuration ---
+st.set_page_config(
+    page_title="Pump Selection Data Manager", 
+    page_icon="💧", 
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+
+# Check login session
 user = get_user_session()
 if not user:
     login_form()
     st.stop()
+
+# Optional: Add logout button to sidebar
+with st.sidebar:
+    if st.button("🚪 Logout"):
+        logout()
+
 
 
 # --- Load Supabase credentials from secrets.toml ---
@@ -249,25 +264,6 @@ def delete_pump_data(db_id):
         st.error(traceback.format_exc())
         return False, f"Error deleting pump data: {e}"
 
-# --- Page Configuration ---
-st.set_page_config(
-    page_title="Pump Selection Data Manager", 
-    page_icon="💧", 
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-
-# Check login session
-user = get_user_session()
-if not user:
-    login_form()
-    st.stop()
-
-# Optional: Add logout button to sidebar
-with st.sidebar:
-    if st.button("🚪 Logout"):
-        logout()
 
 
 # --- App Header ---
