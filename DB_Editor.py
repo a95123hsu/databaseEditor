@@ -7,6 +7,8 @@ from login import login_form, get_user_session, logout
 import bcrypt
 import uuid
 import os
+import json
+from datetime import datetime, timedelta
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -40,6 +42,148 @@ def init_connection():
     except Exception as e:
         st.error(f"Failed to initialize Supabase connection: {e}")
         st.stop()
+
+# --- Audit Trail/Version Control Functions ---
+def log_database_change(table_name, record_id, operation, old_data=None, new_data=None, description=None):
+    """
+    Log changes to the database into an audit trail table
+    
+    Parameters:
+    - table_name: The name of the table being modified
+    - record_id: The DB ID of the record being modified
+    - operation: String - "INSERT", "UPDATE", or "DELETE"
+    - old_data: JSON object representing the previous state (for updates/deletes)
+    - new_data: JSON object representing the new state (for inserts/updates)
+    - description: Optional description of the change
+    """
+    try:
+        # Get the current user from session
+        user = get_user_session()
+        user_id = user.get('id', 'anonymous') if user else 'anonymous'
+        user_email = user.get('email', 'unknown') if user else 'unknown'
+        
+        # Prepare the audit record
+        audit_record = {
+            "id": str(uuid.uuid4()),
+            "table_name": table_name,
+            "record_id": record_id,
+            "operation": operation,
+            "old_data": json.dumps(old_data) if old_data else None,
+            "new_data": json.dumps(new_data) if new_data else None,
+            "modified_by": user_email,
+            "modified_at": datetime.utcnow().isoformat(),
+            "description": description
+        }
+        
+        # Insert into audit_trail table
+        response = supabase.table("audit_trail").insert(audit_record).execute()
+        
+        # Log success for debugging
+        print(f"Audit trail entry created for {operation} on {table_name} (ID: {record_id})")
+        return True
+    except Exception as e:
+        st.error(f"Failed to create audit trail entry: {e}")
+        return False
+
+# --- Realtime Updates Component ---
+def setup_realtime_updates():
+    """Set up a live feed of database changes using Supabase realtime"""
+    
+    # Create a container for the live updates
+    live_container = st.empty()
+    
+    # Initialize session state for tracking changes
+    if 'last_changes' not in st.session_state:
+        st.session_state.last_changes = []
+    if 'last_check' not in st.session_state:
+        st.session_state.last_check = datetime.now()
+    
+    # Function to fetch recent changes
+    def fetch_recent_changes():
+        try:
+            # Get changes since last check
+            response = supabase.table("audit_trail") \
+                .select("*") \
+                .gte("modified_at", st.session_state.last_check.isoformat()) \
+                .order("modified_at", desc=True) \
+                .limit(10) \
+                .execute()
+            
+            # Update last check time
+            st.session_state.last_check = datetime.now()
+            
+            if response.data:
+                # Add new changes to the session state
+                new_changes = response.data
+                st.session_state.last_changes = new_changes + st.session_state.last_changes
+                # Keep only the 20 most recent changes
+                st.session_state.last_changes = st.session_state.last_changes[:20]
+                
+                # Return true if we found new changes
+                return True
+            return False
+        except Exception as e:
+            st.error(f"Error fetching realtime updates: {e}")
+            return False
+    
+    # Function to display the changes
+    def display_changes():
+        with live_container.container():
+            st.subheader("📡 Live Database Activity")
+            
+            if not st.session_state.last_changes:
+                st.info("No recent database activity. Changes will appear here in real-time.")
+                return
+            
+            for change in st.session_state.last_changes:
+                # Create a clean timestamp
+                try:
+                    timestamp = datetime.fromisoformat(change['modified_at'].replace('Z', '+00:00')).strftime('%H:%M:%S')
+                except:
+                    timestamp = "Unknown time"
+                
+                # Determine the icon based on operation type
+                if change['operation'] == 'INSERT':
+                    icon = "✅"
+                elif change['operation'] == 'UPDATE':
+                    icon = "🔄"
+                elif change['operation'] == 'DELETE':
+                    icon = "🗑️"
+                else:
+                    icon = "ℹ️"
+                
+                # Display the change
+                with st.container():
+                    cols = st.columns([1, 3, 2])
+                    with cols[0]:
+                        st.write(f"{icon} {timestamp}")
+                    with cols[1]:
+                        st.write(f"{change['operation']} on {change['table_name']} (ID: {change['record_id']})")
+                    with cols[2]:
+                        st.write(f"By: {change['modified_by']}")
+                
+                # Add a small divider
+                st.markdown("---")
+    
+    # Set up auto-refresh in the sidebar
+    with st.sidebar:
+        st.subheader("Realtime Updates")
+        auto_refresh = st.checkbox("Enable auto-refresh", value=True)
+        refresh_interval = st.slider("Refresh interval (seconds)", 5, 60, 15)
+        
+        if st.button("Manual Refresh"):
+            fetch_recent_changes()
+            display_changes()
+    
+    # Start with initial display
+    display_changes()
+    
+    # Store functions in session state for later use
+    st.session_state.fetch_changes = fetch_recent_changes
+    st.session_state.show_changes = display_changes
+    
+    # Return functions for auto-refresh logic elsewhere in the app
+    return fetch_recent_changes, display_changes
 
 # --- Fetch data with proper pagination to get all records ---
 def fetch_all_pump_data():
@@ -103,8 +247,7 @@ def extract_model_group(model):
     match = re.match(r'([A-Z]+)', model)
     return match.group(1) if match else 'Other'
 
-# --- CRUD Operations ---
-def insert_pump_data(pump_data):
+def insert_pump_data(pump_data, description=None):
     try:
         # Create a copy of the data for safe modification
         clean_data = {}
@@ -121,7 +264,6 @@ def insert_pump_data(pump_data):
             
             # Add the new ID to the data
             clean_data["DB ID"] = new_id
-            st.write(f"Generated new DB ID: {new_id}")
         except Exception as id_error:
             st.error(f"Error generating DB ID: {id_error}")
             st.error(traceback.format_exc())
@@ -162,20 +304,35 @@ def insert_pump_data(pump_data):
             else:
                 clean_data[key] = str(value)
         
-        # Show the data being sent to Supabase
-        st.write("Sending the following data to Supabase:")
-        st.write(clean_data)
-        
         # Insert the data
         response = supabase.table("pump_selection_data").insert(clean_data).execute()
+        
+        # Log the change in the audit trail
+        log_database_change(
+            table_name="pump_selection_data",
+            record_id=new_id,
+            operation="INSERT",
+            new_data=clean_data,
+            description=description or f"Added new pump: {clean_data.get('Model No.', 'Unknown')}"
+        )
+        
         return True, f"Pump data added successfully with DB ID: {new_id}!"
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
         st.error(traceback.format_exc())
         return False, f"Error adding pump data: {e}"
 
-def update_pump_data(db_id, pump_data):
+# Modified update function
+def update_pump_data(db_id, pump_data, description=None):
     try:
+        # First, fetch the current state of the record
+        current_record_response = supabase.table("pump_selection_data").select("*").eq('"DB ID"', db_id).execute()
+        
+        if not current_record_response.data:
+            return False, f"Record with DB ID {db_id} not found."
+            
+        old_data = current_record_response.data[0]
+        
         # Create a copy of the data for safe modification
         clean_data = {}
         
@@ -223,10 +380,10 @@ def update_pump_data(db_id, pump_data):
                 # Everything else is treated as string
                 else:
                     clean_data[key] = str(value)
-            
-        # Test each field individually to find any remaining problematic ones
+        
+        # Remove any problematic fields
         problem_keys = []
-        for key, value in list(clean_data.items()):  # Use list() to create a copy of keys for safe iteration
+        for key, value in list(clean_data.items()):
             single_field = {key: value}
             
             try:
@@ -247,16 +404,46 @@ def update_pump_data(db_id, pump_data):
         
         # Update with the cleaned data - note the double quotes around DB ID
         response = supabase.table("pump_selection_data").update(clean_data).eq('"DB ID"', db_id).execute()
+        
+        # Log the change in the audit trail
+        log_database_change(
+            table_name="pump_selection_data",
+            record_id=db_id,
+            operation="UPDATE",
+            old_data=old_data,
+            new_data=clean_data,
+            description=description or f"Updated pump: {old_data.get('Model No.', 'Unknown')}"
+        )
+        
         return True, "Pump data updated successfully!"
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
         st.error(traceback.format_exc())
         return False, f"Error updating pump data: {e}"
 
-def delete_pump_data(db_id):
+# Modified delete function
+def delete_pump_data(db_id, description=None):
     try:
+        # First, fetch the current state of the record to save in history
+        current_record_response = supabase.table("pump_selection_data").select("*").eq('"DB ID"', db_id).execute()
+        
+        if not current_record_response.data:
+            return False, f"Record with DB ID {db_id} not found."
+            
+        old_data = current_record_response.data[0]
+        
         # Note the double quotes around DB ID
         response = supabase.table("pump_selection_data").delete().eq('"DB ID"', db_id).execute()
+        
+        # Log the deletion in the audit trail
+        log_database_change(
+            table_name="pump_selection_data",
+            record_id=db_id,
+            operation="DELETE",
+            old_data=old_data,
+            description=description or f"Deleted pump: {old_data.get('Model No.', 'Unknown')}"
+        )
+        
         return True, "Pump data deleted successfully!"
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
@@ -323,6 +510,23 @@ with st.sidebar:
 
 # --- Main Content Based on Action ---
 if action == "View Data":
+    # Initialize realtime updates
+    if 'realtime_initialized' not in st.session_state:
+        st.session_state.realtime_initialized = True
+        fetch_changes, show_changes = setup_realtime_updates()
+
+    # Auto-refresh logic for realtime updates
+    if st.session_state.get('auto_refresh', True):
+        # Check for changes periodically
+        refresh_placeholder = st.empty()
+        if 'fetch_changes' in st.session_state and 'show_changes' in st.session_state:
+            has_new = st.session_state.fetch_changes()
+            if has_new:
+                st.session_state.show_changes()
+            
+            # Update the refresh message
+            refresh_placeholder.info(f"Last checked for updates: {datetime.now().strftime('%H:%M:%S')}")
+    
     try:
         if df.empty:
             st.info("No data found in 'pump_selection_data'.")
@@ -453,6 +657,7 @@ elif action == "Add New Pump":
         
         # Put product link in a separate row
         new_pump_data["Product Link"] = st.text_input("Product Link")
+        change_description = st.text_area("Change Description (optional)", placeholder="Why are you adding this pump?")
         
         submit_button = st.form_submit_button("Add Pump")
         
@@ -461,7 +666,7 @@ elif action == "Add New Pump":
             if not new_pump_data.get("Model No."):
                 st.error("Model No. is required.")
             else:
-                success, message = insert_pump_data(new_pump_data)
+                success, message = insert_pump_data(new_pump_data, description=change_description)
                 if success:
                     st.success(message)
                     # Clear cache to refresh data
@@ -574,10 +779,14 @@ elif action == "Edit Pump":
                                     except:
                                         edited_data[column] = st.text_input(f"{column}", value=str(current_value))
                     
+                    # Add change description
+                    change_description = st.text_area("Change Description (optional)", 
+                                                    placeholder="Describe why you're updating this pump...")
+                    
                     submit_button = st.form_submit_button("Update Pump")
                     
                     if submit_button:
-                        success, message = update_pump_data(db_id, edited_data)
+                        success, message = update_pump_data(db_id, edited_data, description=change_description)
                         if success:
                             st.success(message)
                             # Show new Model Group if Model No. was changed
@@ -657,12 +866,16 @@ elif action == "Delete Pump":
                     if "Frequency (Hz)" in selected_pump:
                         st.write(f"**Frequency:** {selected_pump['Frequency (Hz)']} Hz")
                 
+                # Add delete reason
+                delete_reason = st.text_area("Reason for deletion (optional)",
+                                         placeholder="Why are you deleting this pump?")
+                
                 # Confirm deletion
                 st.warning("⚠️ Warning: This action cannot be undone!")
                 confirm_delete = st.button("Confirm Delete")
                 
                 if confirm_delete:
-                    success, message = delete_pump_data(db_id)
+                    success, message = delete_pump_data(db_id, description=delete_reason)
                     if success:
                         st.success(message)
                         # Clear cache to refresh data
