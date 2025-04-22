@@ -9,7 +9,6 @@ import uuid
 import os
 import json
 from datetime import datetime, timedelta
-import pytz
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -47,7 +46,6 @@ def init_connection():
 # --- Audit Trail/Version Control Functions ---
 # --- Audit Trail/Version Control Functions ---
 # --- Audit Trail/Version Control Functions ---
-LOCAL_TIMEZONE = pytz.timezone('Asia/Taiwan')
 def log_database_change(table_name, record_id, operation, old_data=None, new_data=None, description=None):
     """
     Log changes to the database into an audit trail table
@@ -112,7 +110,6 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
             record_id = record_id.item()
         
         # Prepare the audit record
-        local_time = datetime.now(LOCAL_TIMEZONE)
         audit_record = {
             "id": str(uuid.uuid4()),
             "table_name": table_name,
@@ -121,7 +118,7 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
             "old_data": json.dumps(clean_old_data) if clean_old_data else None,
             "new_data": json.dumps(clean_new_data) if clean_new_data else None,
             "modified_by": user_email,
-            "modified_at": local_time.isoformat(),
+            "modified_at": datetime.now().isoformat(),
             "description": description
         }
         
