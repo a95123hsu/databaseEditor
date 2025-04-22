@@ -45,6 +45,7 @@ def init_connection():
 
 # --- Audit Trail/Version Control Functions ---
 # --- Audit Trail/Version Control Functions ---
+# --- Audit Trail/Version Control Functions ---
 def log_database_change(table_name, record_id, operation, old_data=None, new_data=None, description=None):
     """
     Log changes to the database into an audit trail table
@@ -79,14 +80,43 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
         else:
             user_email = 'anonymous'
         
+        # Convert numpy data types to Python native types to make them JSON serializable
+        def convert_to_serializable(obj):
+            if obj is None:
+                return None
+                
+            if isinstance(obj, dict):
+                return {k: convert_to_serializable(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [convert_to_serializable(item) for item in obj]
+            # Handle numpy data types
+            elif hasattr(obj, 'dtype') and hasattr(obj, 'item'):
+                return obj.item()  # Convert numpy types to native Python types
+            elif pd.isna(obj):
+                return None
+            
+            # Try to convert to native Python types for any other object
+            try:
+                return float(obj) if isinstance(obj, float) else int(obj) if isinstance(obj, int) else str(obj)
+            except (ValueError, TypeError):
+                return str(obj)
+        
+        # Convert the data to JSON serializable format
+        clean_old_data = convert_to_serializable(old_data) if old_data else None
+        clean_new_data = convert_to_serializable(new_data) if new_data else None
+        
+        # Convert record_id to int if it's a numpy type
+        if hasattr(record_id, 'dtype') and hasattr(record_id, 'item'):
+            record_id = record_id.item()
+        
         # Prepare the audit record
         audit_record = {
             "id": str(uuid.uuid4()),
             "table_name": table_name,
             "record_id": record_id,
             "operation": operation,
-            "old_data": json.dumps(old_data) if old_data else None,
-            "new_data": json.dumps(new_data) if new_data else None,
+            "old_data": json.dumps(clean_old_data) if clean_old_data else None,
+            "new_data": json.dumps(clean_new_data) if clean_new_data else None,
             "modified_by": user_email,
             "modified_at": datetime.utcnow().isoformat(),
             "description": description
