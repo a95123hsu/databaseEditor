@@ -4,7 +4,9 @@ from supabase import create_client, Client
 import re
 import traceback
 from login import login_form, get_user_session, logout
-from login import get_user_session, login_form, logout
+import bcrypt
+import uuid
+import os
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -13,7 +15,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
 
 # Check login session
 user = get_user_session()
@@ -25,8 +26,6 @@ if not user:
 with st.sidebar:
     if st.button("🚪 Logout"):
         logout()
-
-
 
 # --- Load Supabase credentials from secrets.toml ---
 @st.cache_resource(show_spinner=False)
@@ -263,8 +262,6 @@ def delete_pump_data(db_id):
         st.error(f"Error details for debugging: {str(e)}")
         st.error(traceback.format_exc())
         return False, f"Error deleting pump data: {e}"
-
-
 
 # --- App Header ---
 st.title("💧 Pump Selection Data Manager")
