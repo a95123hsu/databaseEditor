@@ -9,6 +9,10 @@ import uuid
 import os
 import json
 from datetime import datetime, timedelta
+import pytz  # Added for timezone support
+
+# --- Define Taiwan timezone ---
+taiwan_tz = pytz.timezone('Asia/Taipei')
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -43,8 +47,6 @@ def init_connection():
         st.error(f"Failed to initialize Supabase connection: {e}")
         st.stop()
 
-# --- Audit Trail/Version Control Functions ---
-# --- Audit Trail/Version Control Functions ---
 # --- Audit Trail/Version Control Functions ---
 def log_database_change(table_name, record_id, operation, old_data=None, new_data=None, description=None):
     """
@@ -109,7 +111,7 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
         if hasattr(record_id, 'dtype') and hasattr(record_id, 'item'):
             record_id = record_id.item()
         
-        # Prepare the audit record
+        # Prepare the audit record using Taiwan timezone
         audit_record = {
             "id": str(uuid.uuid4()),
             "table_name": table_name,
@@ -118,7 +120,7 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
             "old_data": json.dumps(clean_old_data) if clean_old_data else None,
             "new_data": json.dumps(clean_new_data) if clean_new_data else None,
             "modified_by": user_email,
-            "modified_at": datetime.now().isoformat(),
+            "modified_at": datetime.now(taiwan_tz).isoformat(),  # Use Taiwan timezone
             "description": description
         }
         
@@ -132,6 +134,7 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
         st.error(f"Failed to create audit trail entry: {e}")
         st.error(traceback.format_exc())
         return False
+
 # --- Realtime Updates Component ---
 def setup_realtime_updates():
     """Set up a live feed of database changes using Supabase realtime"""
@@ -143,7 +146,7 @@ def setup_realtime_updates():
     if 'last_changes' not in st.session_state:
         st.session_state.last_changes = []
     if 'last_check' not in st.session_state:
-        st.session_state.last_check = datetime.now()
+        st.session_state.last_check = datetime.now(taiwan_tz)  # Use Taiwan timezone
     
     # Function to fetch recent changes
     def fetch_recent_changes():
@@ -156,8 +159,8 @@ def setup_realtime_updates():
                 .limit(10) \
                 .execute()
             
-            # Update last check time
-            st.session_state.last_check = datetime.now()
+            # Update last check time using Taiwan timezone
+            st.session_state.last_check = datetime.now(taiwan_tz)
             
             if response.data:
                 # Add new changes to the session state
@@ -183,9 +186,17 @@ def setup_realtime_updates():
                 return
             
             for change in st.session_state.last_changes:
-                # Create a clean timestamp
+                # Create a clean timestamp with Taiwan time
                 try:
-                    timestamp = pd.to_datetime(change['modified_at']).strftime('%H:%M:%S')
+                    # Parse the timestamp and convert to Taiwan time if needed
+                    dt = pd.to_datetime(change['modified_at'])
+                    if dt.tz is None:
+                        # If timestamp has no timezone info, assume it's UTC and convert to Taiwan
+                        dt = dt.tz_localize('UTC').tz_convert('Asia/Taipei')
+                    elif dt.tz.zone != 'Asia/Taipei':
+                        # If it has timezone info but not Taiwan, convert it
+                        dt = dt.tz_convert('Asia/Taipei')
+                    timestamp = dt.strftime('%H:%M:%S')
                 except:
                     timestamp = "Unknown time"
                 
@@ -500,6 +511,7 @@ def delete_pump_data(db_id, description=None):
 # --- App Header ---
 st.title("💧 Pump Selection Data Manager")
 st.markdown("View, add, edit, and delete pump selection data")
+st.info(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
 
 # --- Initialize Supabase Client ---
 supabase = init_connection()
@@ -571,8 +583,8 @@ if action == "View Data":
             if has_new:
                 st.session_state.show_changes()
             
-            # Update the refresh message
-            refresh_placeholder.info(f"Last checked for updates: {datetime.now().strftime('%H:%M:%S')}")
+            # Update the refresh message with Taiwan time
+            refresh_placeholder.info(f"Last checked for updates: {datetime.now(taiwan_tz).strftime('%H:%M:%S')}")
     
     try:
         if df.empty:
@@ -723,6 +735,7 @@ elif action == "Add New Pump":
 
 elif action == "Edit Pump":
     st.subheader("Edit Pump")
+    st.caption(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
         if df.empty:
@@ -851,6 +864,7 @@ elif action == "Edit Pump":
 
 elif action == "Delete Pump":
     st.subheader("Delete Pump")
+    st.caption(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
         if df.empty:
@@ -936,4 +950,4 @@ elif action == "Delete Pump":
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("💧 **Pump Selection Data Manager** | Last updated: " + pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"))
+st.markdown("💧 **Pump Selection Data Manager** | Last updated: " + datetime.now(taiwan_tz).strftime("%Y-%m-%d %H:%M:%S"))
