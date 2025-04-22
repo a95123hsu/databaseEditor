@@ -5,6 +5,10 @@ import json
 from datetime import datetime, timedelta
 import traceback
 from login import get_user_session
+import pytz  # Added for timezone support
+
+# --- Define Taiwan timezone ---
+taiwan_tz = pytz.timezone('Asia/Taipei')
 
 # --- Page Configuration ---
 st.set_page_config(
@@ -99,10 +103,15 @@ def get_user_list():
 
 # --- Format Data for Display ---
 def format_audit_table(df):
-    # Convert timestamps to readable format
+    # Convert timestamps to readable format in Taiwan time
     if 'modified_at' in df.columns:
-        # Use format='ISO8601' to properly handle the ISO8601 format with timezone
-        df['modified_at'] = pd.to_datetime(df['modified_at'], format='ISO8601').dt.strftime('%Y-%m-%d %H:%M:%S')
+        # Parse ISO timestamps, assuming they're in UTC, and convert to Taiwan time
+        df['modified_at'] = pd.to_datetime(df['modified_at'], format='ISO8601')
+        # If timestamps don't have timezone info, localize them to UTC first
+        if df['modified_at'].dt.tz is None:
+            df['modified_at'] = df['modified_at'].dt.tz_localize('UTC')
+        # Convert to Taiwan time and format
+        df['modified_at'] = df['modified_at'].dt.tz_convert('Asia/Taipei').dt.strftime('%Y-%m-%d %H:%M:%S')
     
     # Display the table
     return df[['operation', 'table_name', 'record_id', 'modified_by', 'modified_at', 'description']]
@@ -148,9 +157,9 @@ def display_json_diff(old_data, new_data):
 with st.sidebar:
     st.header("Filters")
     
-    # Date range filter
+    # Date range filter - Modified to use Taiwan time
     st.subheader("Date Range")
-    end_date = datetime.now().date()
+    end_date = datetime.now(taiwan_tz).date()
     start_date = end_date - timedelta(days=30)
     date_range = st.date_input(
         "Select date range",
@@ -210,7 +219,7 @@ try:
         selected_idx = st.selectbox(
             "Select record", 
             range(len(df)), 
-            format_func=lambda i: f"{df.iloc[i]['operation']} - {df.iloc[i]['table_name']} (ID: {df.iloc[i]['record_id']}) - {pd.to_datetime(df.iloc[i]['modified_at'], format='ISO8601').strftime('%Y-%m-%d %H:%M:%S')}"
+            format_func=lambda i: f"{df.iloc[i]['operation']} - {df.iloc[i]['table_name']} (ID: {df.iloc[i]['record_id']}) - {pd.to_datetime(df.iloc[i]['modified_at'], format='ISO8601').tz_localize('UTC').tz_convert('Asia/Taipei').strftime('%Y-%m-%d %H:%M:%S')}"
         )
         
         if selected_idx is not None:
@@ -221,7 +230,17 @@ try:
             st.write(f"**Table:** {selected_row['table_name']}")
             st.write(f"**Record ID:** {selected_row['record_id']}")
             st.write(f"**Modified By:** {selected_row['modified_by']}")
-            st.write(f"**Modified At:** {pd.to_datetime(selected_row['modified_at'], format='ISO8601').strftime('%Y-%m-%d %H:%M:%S')}")
+            
+            # Convert timestamp to Taiwan time
+            modified_at = pd.to_datetime(selected_row['modified_at'], format='ISO8601')
+            if isinstance(modified_at, pd.Timestamp) and modified_at.tz is None:
+                modified_at = modified_at.tz_localize('UTC').tz_convert('Asia/Taipei')
+            elif isinstance(modified_at, str):
+                # If it's already been formatted as a string (from display_df)
+                st.write(f"**Modified At:** {modified_at}")
+            else:
+                st.write(f"**Modified At:** {modified_at.strftime('%Y-%m-%d %H:%M:%S')}")
+                
             st.write(f"**Description:** {selected_row['description']}")
             
             # Display data changes
@@ -234,4 +253,4 @@ except Exception as e:
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("📜 **Database History Viewer** | Last updated: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+st.markdown("📜 **Database History Viewer** | Last updated: " + datetime.now(taiwan_tz).strftime("%Y-%m-%d %H:%M:%S"))
