@@ -44,6 +44,7 @@ def init_connection():
         st.stop()
 
 # --- Audit Trail/Version Control Functions ---
+# --- Audit Trail/Version Control Functions ---
 def log_database_change(table_name, record_id, operation, old_data=None, new_data=None, description=None):
     """
     Log changes to the database into an audit trail table
@@ -59,8 +60,24 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
     try:
         # Get the current user from session
         user = get_user_session()
-        user_id = user.get('id', 'anonymous') if user else 'anonymous'
-        user_email = user.get('email', 'unknown') if user else 'unknown'
+        
+        # Extract user info - handle different user object structures
+        if user:
+            # Try to get user email with different approaches based on the object structure
+            if isinstance(user, dict):
+                # If user is a dictionary
+                user_email = user.get('email', user.get('username', 'unknown'))
+            elif hasattr(user, 'email'):
+                # If user has email attribute
+                user_email = user.email
+            elif hasattr(user, 'username'):
+                # If user has username attribute
+                user_email = user.username
+            else:
+                # Use string representation as fallback
+                user_email = str(user)
+        else:
+            user_email = 'anonymous'
         
         # Prepare the audit record
         audit_record = {
@@ -83,8 +100,8 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
         return True
     except Exception as e:
         st.error(f"Failed to create audit trail entry: {e}")
+        st.error(traceback.format_exc())
         return False
-
 # --- Realtime Updates Component ---
 def setup_realtime_updates():
     """Set up a live feed of database changes using Supabase realtime"""
