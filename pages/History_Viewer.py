@@ -101,7 +101,8 @@ def get_user_list():
 def format_audit_table(df):
     # Convert timestamps to readable format
     if 'modified_at' in df.columns:
-        df['modified_at'] = pd.to_datetime(df['modified_at']).dt.strftime('%Y-%m-%d %H:%M:%S')
+        # Use format='ISO8601' to properly handle the ISO8601 format with timezone
+        df['modified_at'] = pd.to_datetime(df['modified_at'], format='ISO8601').dt.strftime('%Y-%m-%d %H:%M:%S')
     
     # Display the table
     return df[['operation', 'table_name', 'record_id', 'modified_by', 'modified_at', 'description']]
@@ -209,7 +210,7 @@ try:
         selected_idx = st.selectbox(
             "Select record", 
             range(len(df)), 
-            format_func=lambda i: f"{df.iloc[i]['operation']} - {df.iloc[i]['table_name']} (ID: {df.iloc[i]['record_id']}) - {pd.to_datetime(df.iloc[i]['modified_at']).strftime('%Y-%m-%d %H:%M:%S')}"
+            format_func=lambda i: f"{df.iloc[i]['operation']} - {df.iloc[i]['table_name']} (ID: {df.iloc[i]['record_id']}) - {pd.to_datetime(df.iloc[i]['modified_at'], format='ISO8601').strftime('%Y-%m-%d %H:%M:%S')}"
         )
         
         if selected_idx is not None:
@@ -220,7 +221,7 @@ try:
             st.write(f"**Table:** {selected_row['table_name']}")
             st.write(f"**Record ID:** {selected_row['record_id']}")
             st.write(f"**Modified By:** {selected_row['modified_by']}")
-            st.write(f"**Modified At:** {pd.to_datetime(selected_row['modified_at']).strftime('%Y-%m-%d %H:%M:%S')}")
+            st.write(f"**Modified At:** {pd.to_datetime(selected_row['modified_at'], format='ISO8601').strftime('%Y-%m-%d %H:%M:%S')}")
             st.write(f"**Description:** {selected_row['description']}")
             
             # Display data changes
