@@ -118,7 +118,7 @@ def log_database_change(table_name, record_id, operation, old_data=None, new_dat
             "old_data": json.dumps(clean_old_data) if clean_old_data else None,
             "new_data": json.dumps(clean_new_data) if clean_new_data else None,
             "modified_by": user_email,
-            "modified_at": datetime.utcnow().isoformat(),
+            "modified_at": datetime.now().isoformat(),
             "description": description
         }
         
@@ -185,7 +185,7 @@ def setup_realtime_updates():
             for change in st.session_state.last_changes:
                 # Create a clean timestamp
                 try:
-                    timestamp = datetime.fromisoformat(change['modified_at'].replace('Z', '+00:00')).strftime('%H:%M:%S')
+                    timestamp = pd.to_datetime(change['modified_at']).strftime('%H:%M:%S')
                 except:
                     timestamp = "Unknown time"
                 
