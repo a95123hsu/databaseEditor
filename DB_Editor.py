@@ -11,9 +11,6 @@ import json
 from datetime import datetime, timedelta
 import pytz  # Added for timezone support
 
-# --- Define Taiwan timezone ---
-taiwan_tz = pytz.timezone('Asia/Taipei')
-
 # --- Page Configuration ---
 st.set_page_config(
     page_title="Pump Selection Data Manager", 
@@ -21,6 +18,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+taiwan_tz = pytz.timezone('Asia/Taipei')
 
 # Check login session
 user = get_user_session()
