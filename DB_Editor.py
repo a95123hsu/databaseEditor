@@ -1,9 +1,16 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="Pump Selection Data Manager", 
+    page_icon="💧", 
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 import pandas as pd
 from supabase import create_client, Client
 import re
 import traceback
-from login import login_form, get_user_session, logout
 import bcrypt
 import uuid
 import os
@@ -11,13 +18,7 @@ import json
 from datetime import datetime, timedelta
 import pytz  # Added for timezone support
 
-# --- Page Configuration ---
-st.set_page_config(
-    page_title="Pump Selection Data Manager", 
-    page_icon="💧", 
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+from login import login_form, get_user_session, logout
 
 taiwan_tz = pytz.timezone('Asia/Taipei')
 
