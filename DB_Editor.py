@@ -508,6 +508,79 @@ def delete_pump_data(db_id, description=None):
         st.error(traceback.format_exc())
         return False, f"Error deleting pump data: {e}"
 
+# New function for bulk delete
+def bulk_delete_pumps(db_ids, description=None):
+    """
+    Delete multiple pump records at once
+    
+    Parameters:
+    - db_ids: List of DB IDs to delete
+    - description: Optional description of the bulk delete operation
+    
+    Returns:
+    - success: Boolean indicating if all deletions were successful
+    - message: Status message
+    - success_count: Number of successfully deleted records
+    - error_count: Number of failed deletions
+    """
+    success_count = 0
+    error_count = 0
+    error_messages = []
+    
+    # Create a progress bar
+    progress_text = "Deleting records..."
+    progress_bar = st.progress(0, text=progress_text)
+    
+    # Process each ID
+    for idx, db_id in enumerate(db_ids):
+        try:
+            # Fetch the current record for audit trail
+            current_record_response = supabase.table("pump_selection_data").select("*").eq('"DB ID"', db_id).execute()
+            
+            if not current_record_response.data:
+                error_count += 1
+                error_messages.append(f"Record with DB ID {db_id} not found.")
+                continue
+                
+            old_data = current_record_response.data[0]
+            model_no = old_data.get('Model No.', 'Unknown')
+            
+            # Delete the record
+            response = supabase.table("pump_selection_data").delete().eq('"DB ID"', db_id).execute()
+            
+            # Log in audit trail
+            log_database_change(
+                table_name="pump_selection_data",
+                record_id=db_id,
+                operation="DELETE",
+                old_data=old_data,
+                description=description or f"Bulk deleted pump: {model_no}"
+            )
+            
+            success_count += 1
+            
+            # Update progress
+            progress = (idx + 1) / len(db_ids)
+            progress_bar.progress(progress, text=f"{progress_text} ({idx+1}/{len(db_ids)})")
+            
+        except Exception as e:
+            error_count += 1
+            error_messages.append(f"Error deleting DB ID {db_id}: {str(e)}")
+    
+    # Clear progress bar
+    progress_bar.empty()
+    
+    # Create result message
+    if error_count == 0:
+        return True, f"Successfully deleted all {success_count} records!", success_count, error_count
+    else:
+        error_details = "\n".join(error_messages[:5])
+        if len(error_messages) > 5:
+            error_details += f"\n... and {len(error_messages) - 5} more errors."
+        
+        message = f"Deleted {success_count} records with {error_count} errors.\n{error_details}"
+        return success_count > 0, message, success_count, error_count
+
 # --- App Header ---
 st.title("💧 Pump Selection Data Manager")
 st.markdown("View, add, edit, and delete pump selection data")
@@ -541,7 +614,7 @@ with st.sidebar:
     st.header("Actions")
     action = st.radio(
         "Choose an action:",
-        ["View Data", "Add New Pump", "Edit Pump", "Delete Pump"]
+        ["View Data", "Add New Pump", "Edit Pump", "Delete Pump", "Bulk Delete"]  # Added "Bulk Delete" option
     )
     
     if not df.empty:
@@ -946,6 +1019,165 @@ elif action == "Delete Pump":
     
     except Exception as e:
         st.error(f"Error setting up delete form: {e}")
+        st.error(traceback.format_exc())  # This will show the detailed error in development
+
+# Add Bulk Delete Feature
+elif action == "Bulk Delete":
+    st.subheader("🗑️ Bulk Delete Pumps")
+    st.caption(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    try:
+        if df.empty:
+            st.info("No data found to delete.")
+        else:
+            # Apply the same filters as in View Data
+            filtered_df = apply_filters(df, selected_group, selected_category)
+            
+            # Show filter results
+            if selected_group != "All":
+                st.write(f"Filtered by Model Group: {selected_group}")
+            if selected_category != "All":
+                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
+            
+            # Show count of filtered records
+            st.info(f"Current filter showing {len(filtered_df)} records")
+            
+            if filtered_df.empty:
+                st.info("No pumps match your filter criteria.")
+            else:
+                st.markdown("### 🔍 Select Records to Delete")
+                
+                # Selection method options
+                selection_method = st.radio(
+                    "Select deletion method:", 
+                    ["By Category", "By Model Group", "Manual Selection"]
+                )
+                
+                if selection_method == "By Category":
+                    # Delete by Category
+                    if "Category" in filtered_df.columns:
+                        # Get unique non-empty categories from filtered data
+                        categories = [c for c in filtered_df["Category"].unique() if c and c.strip() and c.lower() not in ["nan", "none", ""]]
+                        categories.sort()
+                        
+                        if not categories:
+                            st.warning("No categories found in the filtered data.")
+                        else:
+                            selected_category_to_delete = st.selectbox("Select category to delete:", categories)
+                            
+                            # Count records in the selected category
+                            category_df = filtered_df[filtered_df["Category"].str.lower() == selected_category_to_delete.lower()]
+                            record_count = len(category_df)
+                            
+                            st.warning(f"⚠️ You are about to delete {record_count} pumps in category '{selected_category_to_delete}'")
+                            
+                            # Display sample records
+                            with st.expander(f"Preview of records to be deleted ({min(5, record_count)} of {record_count})"):
+                                st.dataframe(category_df.head(5)[["DB ID", "Model No.", "Category"]])
+                            
+                            # Get DB IDs to delete
+                            db_ids_to_delete = category_df["DB ID"].tolist()
+                    else:
+                        st.error("Category column not found in the data. Please choose another deletion method.")
+                        db_ids_to_delete = []
+                
+                elif selection_method == "By Model Group":
+                    # Delete by Model Group
+                    if "Model Group" in filtered_df.columns:
+                        # Get unique model groups from filtered data
+                        model_groups = sorted(filtered_df["Model Group"].unique().tolist())
+                        
+                        if not model_groups:
+                            st.warning("No model groups found in the filtered data.")
+                        else:
+                            selected_group_to_delete = st.selectbox("Select model group to delete:", model_groups)
+                            
+                            # Count records in the selected model group
+                            group_df = filtered_df[filtered_df["Model Group"] == selected_group_to_delete]
+                            record_count = len(group_df)
+                            
+                            st.warning(f"⚠️ You are about to delete {record_count} pumps in model group '{selected_group_to_delete}'")
+                            
+                            # Display sample records
+                            with st.expander(f"Preview of records to be deleted ({min(5, record_count)} of {record_count})"):
+                                st.dataframe(group_df.head(5)[["DB ID", "Model No.", "Model Group"]])
+                            
+                            # Get DB IDs to delete
+                            db_ids_to_delete = group_df["DB ID"].tolist()
+                    else:
+                        st.error("Model Group column not found in the data. Please choose another deletion method.")
+                        db_ids_to_delete = []
+                
+                else:  # Manual Selection
+                    # Allow manual selection of records from a dataframe
+                    st.write("Select records to delete:")
+                    
+                    # Add search to narrow down results
+                    search_term = st.text_input("🔍 Search by Model No. to filter selection:")
+                    
+                    display_df = filtered_df.copy()
+                    if search_term:
+                        display_df = display_df[display_df["Model No."].astype(str).str.contains(search_term, case=False, na=False)]
+                        st.write(f"Found {len(display_df)} matching pumps")
+                    
+                    # Check if we have too many records to display for manual selection
+                    if len(display_df) > 100:
+                        st.warning(f"⚠️ Too many records ({len(display_df)}) for manual selection. Please use filters or search to narrow down the results.")
+                    else:
+                        # Create a multiselect with model numbers for selection
+                        # First, create a list of options with formatted strings for better selection
+                        selection_options = []
+                        for _, row in display_df.iterrows():
+                            model_no = row.get("Model No.", "Unknown")
+                            category = row.get("Category", "") if "Category" in row else ""
+                            db_id = row.get("DB ID", "")
+                            selection_text = f"{model_no} (ID: {db_id})"
+                            if category:
+                                selection_text += f" - {category}"
+                            selection_options.append(selection_text)
+                        
+                        # Allow selection from the list
+                        if selection_options:
+                            selected_items = st.multiselect("Select pumps to delete:", selection_options)
+                            
+                            # Extract DB IDs from selected items
+                            db_ids_to_delete = []
+                            if selected_items:
+                                for item in selected_items:
+                                    # Extract DB ID from selection text using regex
+                                    match = re.search(r"ID: (\d+)", item)
+                                    if match:
+                                        db_id = int(match.group(1))
+                                        db_ids_to_delete.append(db_id)
+                        else:
+                            st.info("No pumps match your search criteria.")
+                            db_ids_to_delete = []
+                
+                # Add delete reason
+                if 'db_ids_to_delete' in locals() and db_ids_to_delete:
+                    delete_reason = st.text_area("Reason for bulk deletion (optional)",
+                                            placeholder="Why are you deleting these pumps?")
+                    
+                    # Confirm deletion
+                    st.warning(f"⚠️ Warning: You are about to delete {len(db_ids_to_delete)} pump records! This action cannot be undone!")
+                    confirm_delete = st.button("Confirm Bulk Delete")
+                    
+                    if confirm_delete:
+                        success, message, success_count, error_count = bulk_delete_pumps(db_ids_to_delete, description=delete_reason)
+                        if success:
+                            st.success(message)
+                            # Show success/error counts
+                            if error_count > 0:
+                                st.info(f"Deleted {success_count} records successfully with {error_count} errors.")
+                            # Clear cache to refresh data
+                            st.cache_data.clear()
+                        else:
+                            st.error(message)
+                else:
+                    st.info("Please select records to delete using one of the methods above.")
+    
+    except Exception as e:
+        st.error(f"Error setting up bulk delete form: {e}")
         st.error(traceback.format_exc())  # This will show the detailed error in development
 
 # --- Footer ---
