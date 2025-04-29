@@ -264,12 +264,12 @@ def fetch_all_pump_data():
         return pd.DataFrame()
     
     # Show progress
-    progress_text = "Fetching data..."
+    progress_text = get_text("fetching_data")
     progress_bar = st.progress(0, text=progress_text)
     
     # Fetch in batches with sorting by DB ID
     for start_idx in range(0, total_count, page_size):
-        with st.spinner(f"Loading records {start_idx+1}-{min(start_idx+page_size, total_count)}..."):
+        with st.spinner(get_text("loading_records", start_idx+1, min(start_idx+page_size, total_count))):
             # Order by DB ID to ensure consistent sorting
             response = supabase.table("pump_selection_data").select("*").order('"DB ID"').range(start_idx, start_idx + page_size - 1).execute()
             
@@ -285,16 +285,30 @@ def fetch_all_pump_data():
     
     return pd.DataFrame(all_data)
 
-# --- Apply filters to the dataframe ---
+# --- Apply filters to the dataframe (UPDATED) ---
 def apply_filters(df, selected_group, selected_category):
+    """
+    Apply filters to the dataframe with language-aware comparison
+    
+    Parameters:
+    - df: The dataframe to filter
+    - selected_group: The selected model group filter value
+    - selected_category: The selected category filter value
+    
+    Returns:
+    - filtered_df: The filtered dataframe
+    """
     filtered_df = df.copy()
     
-    # Apply Model Group filter
-    if selected_group != "All":
+    # Get the translated "All" option
+    all_option = get_text("all_option")
+    
+    # Apply Model Group filter - using translated "All" value
+    if selected_group != all_option:
         filtered_df = filtered_df[filtered_df['Model Group'] == selected_group]
     
-    # Apply Category filter if it exists
-    if "Category" in df.columns and selected_category != "All":
+    # Apply Category filter if it exists - using translated "All" value
+    if "Category" in df.columns and selected_category != all_option:
         # Use exact case-insensitive matching
         filtered_df = filtered_df[filtered_df["Category"].str.lower() == selected_category.lower()]
     
@@ -675,7 +689,7 @@ if action == get_text("view_data"):
             # Display data info
             st.success(f"✅ {get_text('loaded_records', len(df))}")
             
-            # Apply filters
+            # Apply filters - using the updated function
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
@@ -714,9 +728,12 @@ if action == get_text("view_data"):
                 if rows_per_page == get_text("all_option"):
                     st.dataframe(sorted_df, use_container_width=True)
                 else:
+                    # Convert to integer if not "all_option"
+                    rows_per_page = int(rows_per_page)
+                    
                     # Manual pagination
                     total_rows = len(sorted_df)
-                    total_pages = (total_rows + rows_per_page - 1) // rows_per_page if rows_per_page != get_text("all_option") else 1
+                    total_pages = (total_rows + rows_per_page - 1) // rows_per_page
                     
                     if total_pages > 0:
                         page = st.number_input(get_text("page"), min_value=1, max_value=total_pages, value=1)
@@ -827,6 +844,7 @@ elif action == get_text("edit_pump"):
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
+            all_option = get_text("all_option")
             if selected_group != all_option:
                 st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
             if selected_category != all_option:
@@ -956,6 +974,7 @@ elif action == get_text("delete_pump"):
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
+            all_option = get_text("all_option")
             if selected_group != all_option:
                 st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
             if selected_category != all_option:
@@ -1043,6 +1062,7 @@ elif action == get_text("bulk_delete"):
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
+            all_option = get_text("all_option")
             if selected_group != all_option:
                 st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
             if selected_category != all_option:
