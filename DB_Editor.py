@@ -19,8 +19,16 @@ from datetime import datetime, timedelta
 import pytz  # Added for timezone support
 
 from login import login_form, get_user_session, logout
+from language import setup_language_selector, get_text, load_translations
 
 taiwan_tz = pytz.timezone('Asia/Taipei')
+
+# --- Set up language selector ---
+if 'translations' not in st.session_state:
+    st.session_state.translations = load_translations()
+
+# Set up the language selector in the sidebar
+active_lang = setup_language_selector()
 
 # Check login session
 user = get_user_session()
@@ -30,7 +38,7 @@ if not user:
 
 # Optional: Add logout button to sidebar
 with st.sidebar:
-    if st.button("🚪 Logout"):
+    if st.button(f"🚪 {get_text('logout')}"):
         logout()
 
 # --- Load Supabase credentials from secrets.toml ---
@@ -179,10 +187,10 @@ def setup_realtime_updates():
     # Function to display the changes
     def display_changes():
         with live_container.container():
-            st.subheader("📡 Live Database Activity")
+            st.subheader(get_text("live_database_activity"))
             
             if not st.session_state.last_changes:
-                st.info("No recent database activity. Changes will appear here in real-time.")
+                st.info(get_text("no_recent_activity"))
                 return
             
             for change in st.session_state.last_changes:
@@ -218,18 +226,18 @@ def setup_realtime_updates():
                     with cols[1]:
                         st.write(f"{change['operation']} on {change['table_name']} (ID: {change['record_id']})")
                     with cols[2]:
-                        st.write(f"By: {change['modified_by']}")
+                        st.write(f"{get_text('by')}: {change['modified_by']}")
                 
                 # Add a small divider
                 st.markdown("---")
     
     # Set up auto-refresh in the sidebar
     with st.sidebar:
-        st.subheader("Realtime Updates")
-        auto_refresh = st.checkbox("Enable auto-refresh", value=True)
-        refresh_interval = st.slider("Refresh interval (seconds)", 5, 60, 15)
+        st.subheader(get_text("realtime_updates"))
+        auto_refresh = st.checkbox(get_text("enable_auto_refresh"), value=True)
+        refresh_interval = st.slider(get_text("refresh_interval"), 5, 60, 15)
         
-        if st.button("Manual Refresh"):
+        if st.button(get_text("manual_refresh")):
             fetch_recent_changes()
             display_changes()
     
@@ -325,7 +333,7 @@ def insert_pump_data(pump_data, description=None):
         except Exception as id_error:
             st.error(f"Error generating DB ID: {id_error}")
             st.error(traceback.format_exc())
-            return False, "Could not generate a new DB ID. Please check database permissions."
+            return False, get_text("could_not_generate_db_id")
         
         # Convert and clean each field individually
         for key, value in pump_data.items():
@@ -374,11 +382,11 @@ def insert_pump_data(pump_data, description=None):
             description=description or f"Added new pump: {clean_data.get('Model No.', 'Unknown')}"
         )
         
-        return True, f"Pump data added successfully with DB ID: {new_id}!"
+        return True, get_text("pump_data_added", new_id)
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
         st.error(traceback.format_exc())
-        return False, f"Error adding pump data: {e}"
+        return False, get_text("error_adding_pump", e)
 
 # Modified update function
 def update_pump_data(db_id, pump_data, description=None):
@@ -473,11 +481,11 @@ def update_pump_data(db_id, pump_data, description=None):
             description=description or f"Updated pump: {old_data.get('Model No.', 'Unknown')}"
         )
         
-        return True, "Pump data updated successfully!"
+        return True, get_text("pump_data_updated")
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
         st.error(traceback.format_exc())
-        return False, f"Error updating pump data: {e}"
+        return False, get_text("error_updating_pump", e)
 
 # Modified delete function
 def delete_pump_data(db_id, description=None):
@@ -502,11 +510,11 @@ def delete_pump_data(db_id, description=None):
             description=description or f"Deleted pump: {old_data.get('Model No.', 'Unknown')}"
         )
         
-        return True, "Pump data deleted successfully!"
+        return True, get_text("pump_data_deleted")
     except Exception as e:
         st.error(f"Error details for debugging: {str(e)}")
         st.error(traceback.format_exc())
-        return False, f"Error deleting pump data: {e}"
+        return False, get_text("error_deleting_pump", e)
 
 # New function for bulk delete
 def bulk_delete_pumps(db_ids, description=None):
@@ -528,7 +536,7 @@ def bulk_delete_pumps(db_ids, description=None):
     error_messages = []
     
     # Create a progress bar
-    progress_text = "Deleting records..."
+    progress_text = get_text("deleting_records")
     progress_bar = st.progress(0, text=progress_text)
     
     # Process each ID
@@ -572,19 +580,19 @@ def bulk_delete_pumps(db_ids, description=None):
     
     # Create result message
     if error_count == 0:
-        return True, f"Successfully deleted all {success_count} records!", success_count, error_count
+        return True, get_text("deleted_all_successfully", success_count), success_count, error_count
     else:
         error_details = "\n".join(error_messages[:5])
         if len(error_messages) > 5:
             error_details += f"\n... and {len(error_messages) - 5} more errors."
         
-        message = f"Deleted {success_count} records with {error_count} errors.\n{error_details}"
+        message = get_text("deleted_with_errors", success_count, error_count) + f"\n{error_details}"
         return success_count > 0, message, success_count, error_count
 
 # --- App Header ---
-st.title("💧 Pump Selection Data Manager")
-st.markdown("View, add, edit, and delete pump selection data")
-st.info(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
+st.title(f"💧 {get_text('app_title')}")
+st.markdown(get_text('app_description'))
+st.info(f"{get_text('current_time')}: {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
 
 # --- Initialize Supabase Client ---
 supabase = init_connection()
@@ -611,37 +619,38 @@ except Exception as e:
 
 # --- Sidebar for actions and filters ---
 with st.sidebar:
-    st.header("Actions")
+    st.header(get_text("actions"))
     action = st.radio(
-        "Choose an action:",
-        ["View Data", "Add New Pump", "Edit Pump", "Delete Pump", "Bulk Delete"]  # Added "Bulk Delete" option
+        get_text("choose_action"),
+        [get_text("view_data"), get_text("add_new_pump"), get_text("edit_pump"), get_text("delete_pump"), get_text("bulk_delete")]
     )
     
     if not df.empty:
-        st.header("Filters")
+        st.header(get_text("filters"))
         
         # Model Group Filter
-        model_groups = ["All"] + sorted(df['Model Group'].unique().tolist())
-        selected_group = st.selectbox("Filter by Model Group", model_groups)
+        all_option = get_text("all_option")
+        model_groups = [all_option] + sorted(df['Model Group'].unique().tolist())
+        selected_group = st.selectbox(get_text("filter_by_model_group"), model_groups)
         
         # Category Filter (if exists)
         if "Category" in df.columns:
             # Get unique non-empty categories
             categories = [c for c in df["Category"].unique() if c and c.strip() and c.lower() not in ["nan", "none"]]
-            categories = ["All"] + sorted(categories)
-            selected_category = st.selectbox("Filter by Category", categories)
+            categories = [all_option] + sorted(categories)
+            selected_category = st.selectbox(get_text("filter_by_category"), categories)
         else:
-            selected_category = "All"
+            selected_category = all_option
     else:
-        selected_group = "All"
-        selected_category = "All"
+        selected_group = all_option
+        selected_category = all_option
     
-    if st.button("🔄 Refresh Data"):
+    if st.button(f"🔄 {get_text('refresh_data')}"):
         st.cache_data.clear()
         st.rerun()
 
 # --- Main Content Based on Action ---
-if action == "View Data":
+if action == get_text("view_data"):
     # Initialize realtime updates
     if 'realtime_initialized' not in st.session_state:
         st.session_state.realtime_initialized = True
@@ -657,80 +666,80 @@ if action == "View Data":
                 st.session_state.show_changes()
             
             # Update the refresh message with Taiwan time
-            refresh_placeholder.info(f"Last checked for updates: {datetime.now(taiwan_tz).strftime('%H:%M:%S')}")
+            refresh_placeholder.info(f"{get_text('last_checked')}: {datetime.now(taiwan_tz).strftime('%H:%M:%S')}")
     
     try:
         if df.empty:
-            st.info("No data found in 'pump_selection_data'.")
+            st.info(get_text("no_data_found"))
         else:
             # Display data info
-            st.success(f"✅ Successfully loaded {len(df)} pump records")
+            st.success(f"✅ {get_text('loaded_records', len(df))}")
             
             # Apply filters
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
-            if selected_group != "All":
-                st.write(f"Filtered by Model Group: {selected_group}")
-            if selected_category != "All":
-                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
+            if selected_group != all_option:
+                st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
+            if selected_category != all_option:
+                st.write(f"{get_text('filter_by_category')}: {selected_category} ({get_text('matching')} {len(filtered_df)} {get_text('records')})")
             
             # Add search functionality
-            search_term = st.text_input("🔍 Search by Model No.:")
+            search_term = st.text_input(f"🔍 {get_text('search_by_model')}")
             
             if search_term:
                 filtered_df = filtered_df[filtered_df["Model No."].astype(str).str.contains(search_term, case=False, na=False)]
-                st.write(f"Found {len(filtered_df)} matching pumps")
+                st.write(f"{get_text('found')} {len(filtered_df)} {get_text('matching_pumps')}")
             
             if filtered_df.empty:
-                st.info("No pumps match your filter criteria.")
+                st.info(get_text("no_match"))
             else:
                 # Data Table with pagination controls
-                st.subheader("📋 Pump Data Table")
+                st.subheader(f"📋 {get_text('pump_data_table')}")
                 
                 # Add sorting options
                 sort_columns = ["Model Group", "DB ID"] + [col for col in filtered_df.columns if col not in ["DB ID", "Model Group"]]
-                sort_column = st.selectbox("Sort by:", sort_columns, index=0)
-                sort_order = st.radio("Sort order:", ["Ascending", "Descending"], horizontal=True)
+                sort_column = st.selectbox(get_text("sort_by"), sort_columns, index=0)
+                sort_order = st.radio(get_text("sort_order"), [get_text("ascending"), get_text("descending")], horizontal=True)
                 
                 # Apply sorting
-                if sort_order == "Ascending":
+                if sort_order == get_text("ascending"):
                     sorted_df = filtered_df.sort_values(by=sort_column)
                 else:
                     sorted_df = filtered_df.sort_values(by=sort_column, ascending=False)
                 
                 # Show row count selection
-                rows_per_page = st.selectbox("Rows per page:", [10, 25, 50, 100, "All"], index=1)
+                rows_per_page = st.selectbox(get_text("rows_per_page"), [10, 25, 50, 100, get_text("all_option")], index=1)
                 
-                if rows_per_page == "All":
+                if rows_per_page == get_text("all_option"):
                     st.dataframe(sorted_df, use_container_width=True)
                 else:
                     # Manual pagination
                     total_rows = len(sorted_df)
-                    total_pages = (total_rows + rows_per_page - 1) // rows_per_page if rows_per_page != "All" else 1
+                    total_pages = (total_rows + rows_per_page - 1) // rows_per_page if rows_per_page != get_text("all_option") else 1
                     
                     if total_pages > 0:
-                        page = st.number_input("Page", min_value=1, max_value=total_pages, value=1)
+                        page = st.number_input(get_text("page"), min_value=1, max_value=total_pages, value=1)
                         start_idx = (page - 1) * rows_per_page
                         end_idx = min(start_idx + rows_per_page, total_rows)
                         
                         st.dataframe(sorted_df.iloc[start_idx:end_idx], use_container_width=True)
-                        st.write(f"Showing {start_idx+1}-{end_idx} of {total_rows} rows")
+                        st.write(get_text("showing_rows", start_idx+1, end_idx, total_rows))
                     else:
-                        st.info("No data to display")
+                        st.info(get_text("no_data_to_display"))
                 
                 # Show summary by group
-                st.subheader("📊 Model Group Summary")
+                st.subheader(f"📊 {get_text('model_group_summary')}")
                 group_counts = filtered_df['Model Group'].value_counts().reset_index()
-                group_counts.columns = ['Model Group', 'Count']
+                group_counts.columns = [get_text('model_group'), get_text('count')]
                 st.dataframe(group_counts, use_container_width=True)
                     
     except Exception as e:
         st.error(f"Error: {e}")
         st.error(traceback.format_exc())
 
-elif action == "Add New Pump":
-    st.subheader("Add New Pump")
+elif action == get_text("add_new_pump"):
+    st.subheader(get_text("add_new_pump"))
     
     # Define fields based on your table structure
     fields = {
@@ -754,12 +763,12 @@ elif action == "Add New Pump":
         new_pump_data = {}
         
         # Model No. is required
-        new_pump_data["Model No."] = st.text_input("Model No. *", help="Required field")
+        new_pump_data["Model No."] = st.text_input(f"Model No. *", help=get_text("required_field"))
         
         # Show predicted model group based on input
         if new_pump_data["Model No."]:
             predicted_group = extract_model_group(new_pump_data["Model No."])
-            st.info(f"Predicted Model Group: {predicted_group}")
+            st.info(get_text("predicted_model_group", predicted_group))
         
         # Create columns for better layout
         col1, col2 = st.columns(2)
@@ -789,14 +798,14 @@ elif action == "Add New Pump":
         
         # Put product link in a separate row
         new_pump_data["Product Link"] = st.text_input("Product Link")
-        change_description = st.text_area("Change Description (optional)", placeholder="Why are you adding this pump?")
+        change_description = st.text_area(get_text("change_description"), placeholder=get_text("change_description_placeholder"))
         
-        submit_button = st.form_submit_button("Add Pump")
+        submit_button = st.form_submit_button(get_text("add_pump_button"))
         
         if submit_button:
             # Validate required fields
             if not new_pump_data.get("Model No."):
-                st.error("Model No. is required.")
+                st.error(get_text("model_no_required"))
             else:
                 success, message = insert_pump_data(new_pump_data, description=change_description)
                 if success:
@@ -806,32 +815,32 @@ elif action == "Add New Pump":
                 else:
                     st.error(message)
 
-elif action == "Edit Pump":
-    st.subheader("Edit Pump")
-    st.caption(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
+elif action == get_text("edit_pump"):
+    st.subheader(get_text("edit_pump"))
+    st.caption(f"{get_text('current_time')}: {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
         if df.empty:
-            st.info("No data found to edit.")
+            st.info(get_text("no_data_found"))
         else:
             # Apply the same filters as in View Data
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
-            if selected_group != "All":
-                st.write(f"Filtered by Model Group: {selected_group}")
-            if selected_category != "All":
-                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
+            if selected_group != all_option:
+                st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
+            if selected_category != all_option:
+                st.write(f"{get_text('filter_by_category')}: {selected_category} ({get_text('matching')} {len(filtered_df)} {get_text('records')})")
                 
             if filtered_df.empty:
-                st.info("No pumps match your filter criteria.")
+                st.info(get_text("no_match"))
             else:
                 # Use Model No. for pump identification based on your table structure
                 id_column = "Model No."
                 
                 # Select pump to edit
                 pump_options = filtered_df[id_column].astype(str).tolist()
-                selected_pump_id = st.selectbox(f"Select pump to edit (by {id_column}):", pump_options)
+                selected_pump_id = st.selectbox(get_text("select_pump_edit", id_column), pump_options)
                 
                 # Get selected pump data
                 selected_pump = filtered_df[filtered_df[id_column].astype(str) == selected_pump_id].iloc[0]
@@ -839,7 +848,7 @@ elif action == "Edit Pump":
                 
                 # Show current Model Group
                 current_group = extract_model_group(selected_pump_id)
-                st.info(f"Current Model Group: {current_group}")
+                st.info(get_text("current_model_group", current_group))
                 
                 # Create form for editing
                 with st.form("edit_pump_form"):
@@ -913,10 +922,10 @@ elif action == "Edit Pump":
                                         edited_data[column] = st.text_input(f"{column}", value=str(current_value))
                     
                     # Add change description
-                    change_description = st.text_area("Change Description (optional)", 
-                                                    placeholder="Describe why you're updating this pump...")
+                    change_description = st.text_area(get_text("change_description"), 
+                                                    placeholder=get_text("edit_change_description_placeholder"))
                     
-                    submit_button = st.form_submit_button("Update Pump")
+                    submit_button = st.form_submit_button(get_text("update_pump_button"))
                     
                     if submit_button:
                         success, message = update_pump_data(db_id, edited_data, description=change_description)
@@ -925,7 +934,7 @@ elif action == "Edit Pump":
                             # Show new Model Group if Model No. was changed
                             if edited_data["Model No."] != selected_pump_id:
                                 new_group = extract_model_group(edited_data["Model No."])
-                                st.info(f"New Model Group: {new_group}")
+                                st.info(get_text("new_model_group", new_group))
                             # Clear cache to refresh data
                             st.cache_data.clear()
                         else:
@@ -935,32 +944,32 @@ elif action == "Edit Pump":
         st.error(f"Error setting up edit form: {e}")
         st.error(traceback.format_exc())  # This will show the detailed error in development
 
-elif action == "Delete Pump":
-    st.subheader("Delete Pump")
-    st.caption(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
+elif action == get_text("delete_pump"):
+    st.subheader(get_text("delete_pump"))
+    st.caption(f"{get_text('current_time')}: {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
         if df.empty:
-            st.info("No data found to delete.")
+            st.info(get_text("no_data_found"))
         else:
             # Apply the same filters as in View Data
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
-            if selected_group != "All":
-                st.write(f"Filtered by Model Group: {selected_group}")
-            if selected_category != "All":
-                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
+            if selected_group != all_option:
+                st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
+            if selected_category != all_option:
+                st.write(f"{get_text('filter_by_category')}: {selected_category} ({get_text('matching')} {len(filtered_df)} {get_text('records')})")
                 
             if filtered_df.empty:
-                st.info("No pumps match your filter criteria.")
+                st.info(get_text("no_match"))
             else:
                 # Use Model No. for pump identification based on your table structure
                 id_column = "Model No."
                 
                 # Select pump to delete
                 pump_options = filtered_df[id_column].astype(str).tolist()
-                selected_pump_id = st.selectbox(f"Select pump to delete (by {id_column}):", pump_options)
+                selected_pump_id = st.selectbox(get_text("select_pump_delete", id_column), pump_options)
                 
                 # Get selected pump data
                 selected_pump = filtered_df[filtered_df[id_column].astype(str) == selected_pump_id].iloc[0]
@@ -968,45 +977,45 @@ elif action == "Delete Pump":
                 
                 # Show current Model Group
                 current_group = extract_model_group(selected_pump_id)
-                st.info(f"Model Group: {current_group}")
+                st.info(f"{get_text('model_group')}: {current_group}")
                 
                 # Display pump details
-                st.write("Pump Details:")
+                st.write(f"{get_text('pump_details')}:")
                 details_cols = st.columns(2)
                 
                 with details_cols[0]:
                     st.write(f"**DB ID:** {db_id}")
-                    st.write(f"**Model No.:** {selected_pump['Model No.']}")
+                    st.write(f"**{get_text('model_no')}:** {selected_pump['Model No.']}")
                     
                     if "Category" in selected_pump:
-                        st.write(f"**Category:** {selected_pump['Category']}")
+                        st.write(f"**{get_text('category')}:** {selected_pump['Category']}")
                     
                     if "HP" in selected_pump:
                         st.write(f"**HP:** {selected_pump['HP']}")
                     
                     if "Power(KW)" in selected_pump:
-                        st.write(f"**Power:** {selected_pump['Power(KW)']} KW")
+                        st.write(f"**{get_text('power')}:** {selected_pump['Power(KW)']} KW")
                 
                 with details_cols[1]:
                     if "Max Flow (LPM)" in selected_pump:
-                        st.write(f"**Max Flow:** {selected_pump['Max Flow (LPM)']} LPM")
+                        st.write(f"**{get_text('max_flow')}:** {selected_pump['Max Flow (LPM)']} LPM")
                     
                     if "Max Head (M)" in selected_pump:
-                        st.write(f"**Max Head:** {selected_pump['Max Head (M)']} m")
+                        st.write(f"**{get_text('max_head')}:** {selected_pump['Max Head (M)']} m")
                     
                     if "Outlet (mm)" in selected_pump:
-                        st.write(f"**Outlet:** {selected_pump['Outlet (mm)']} mm")
+                        st.write(f"**{get_text('outlet')}:** {selected_pump['Outlet (mm)']} mm")
                     
                     if "Frequency (Hz)" in selected_pump:
-                        st.write(f"**Frequency:** {selected_pump['Frequency (Hz)']} Hz")
+                        st.write(f"**{get_text('frequency')}:** {selected_pump['Frequency (Hz)']} Hz")
                 
                 # Add delete reason
-                delete_reason = st.text_area("Reason for deletion (optional)",
-                                         placeholder="Why are you deleting this pump?")
+                delete_reason = st.text_area(get_text("reason_for_deletion"),
+                                         placeholder=get_text("delete_reason_placeholder"))
                 
                 # Confirm deletion
-                st.warning("⚠️ Warning: This action cannot be undone!")
-                confirm_delete = st.button("Confirm Delete")
+                st.warning(f"⚠️ {get_text('delete_confirmation')}")
+                confirm_delete = st.button(get_text("confirm_delete"))
                 
                 if confirm_delete:
                     success, message = delete_pump_data(db_id, description=delete_reason)
@@ -1022,38 +1031,38 @@ elif action == "Delete Pump":
         st.error(traceback.format_exc())  # This will show the detailed error in development
 
 # Add Bulk Delete Feature
-elif action == "Bulk Delete":
-    st.subheader("🗑️ Bulk Delete Pumps")
-    st.caption(f"Current time (Taiwan): {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
+elif action == get_text("bulk_delete"):
+    st.subheader(f"🗑️ {get_text('bulk_delete_title')}")
+    st.caption(f"{get_text('current_time')}: {datetime.now(taiwan_tz).strftime('%Y-%m-%d %H:%M:%S')}")
     
     try:
         if df.empty:
-            st.info("No data found to delete.")
+            st.info(get_text("no_data_found"))
         else:
             # Apply the same filters as in View Data
             filtered_df = apply_filters(df, selected_group, selected_category)
             
             # Show filter results
-            if selected_group != "All":
-                st.write(f"Filtered by Model Group: {selected_group}")
-            if selected_category != "All":
-                st.write(f"Filtered by Category: {selected_category} (matching {len(filtered_df)} records)")
+            if selected_group != all_option:
+                st.write(f"{get_text('filter_by_model_group')}: {selected_group}")
+            if selected_category != all_option:
+                st.write(f"{get_text('filter_by_category')}: {selected_category} ({get_text('matching')} {len(filtered_df)} {get_text('records')})")
             
             # Show count of filtered records
-            st.info(f"Current filter showing {len(filtered_df)} records")
+            st.info(get_text("current_filter_showing", len(filtered_df)))
             
             if filtered_df.empty:
-                st.info("No pumps match your filter criteria.")
+                st.info(get_text("no_match"))
             else:
-                st.markdown("### 🔍 Select Records to Delete")
+                st.markdown(f"### 🔍 {get_text('select_records_to_delete')}")
                 
                 # Selection method options
                 selection_method = st.radio(
-                    "Select deletion method:", 
-                    ["By Category", "By Model Group", "Manual Selection"]
+                    get_text("select_deletion_method"), 
+                    [get_text("by_category"), get_text("by_model_group"), get_text("manual_selection")]
                 )
                 
-                if selection_method == "By Category":
+                if selection_method == get_text("by_category"):
                     # Delete by Category
                     if "Category" in filtered_df.columns:
                         # Get unique non-empty categories from filtered data
@@ -1061,18 +1070,18 @@ elif action == "Bulk Delete":
                         categories.sort()
                         
                         if not categories:
-                            st.warning("No categories found in the filtered data.")
+                            st.warning(get_text("no_categories_found"))
                         else:
-                            selected_category_to_delete = st.selectbox("Select category to delete:", categories)
+                            selected_category_to_delete = st.selectbox(get_text("select_category_to_delete"), categories)
                             
                             # Count records in the selected category
                             category_df = filtered_df[filtered_df["Category"].str.lower() == selected_category_to_delete.lower()]
                             record_count = len(category_df)
                             
-                            st.warning(f"⚠️ You are about to delete {record_count} pumps in category '{selected_category_to_delete}'")
+                            st.warning(f"⚠️ {get_text('about_to_delete_category', record_count, selected_category_to_delete)}")
                             
                             # Display sample records
-                            with st.expander(f"Preview of records to be deleted ({min(5, record_count)} of {record_count})"):
+                            with st.expander(get_text("preview_records", min(5, record_count), record_count)):
                                 st.dataframe(category_df.head(5)[["DB ID", "Model No.", "Category"]])
                             
                             # Get DB IDs to delete
@@ -1081,25 +1090,25 @@ elif action == "Bulk Delete":
                         st.error("Category column not found in the data. Please choose another deletion method.")
                         db_ids_to_delete = []
                 
-                elif selection_method == "By Model Group":
+                elif selection_method == get_text("by_model_group"):
                     # Delete by Model Group
                     if "Model Group" in filtered_df.columns:
                         # Get unique model groups from filtered data
                         model_groups = sorted(filtered_df["Model Group"].unique().tolist())
                         
                         if not model_groups:
-                            st.warning("No model groups found in the filtered data.")
+                            st.warning(get_text("no_model_groups_found"))
                         else:
-                            selected_group_to_delete = st.selectbox("Select model group to delete:", model_groups)
+                            selected_group_to_delete = st.selectbox(get_text("select_model_group_to_delete"), model_groups)
                             
                             # Count records in the selected model group
                             group_df = filtered_df[filtered_df["Model Group"] == selected_group_to_delete]
                             record_count = len(group_df)
                             
-                            st.warning(f"⚠️ You are about to delete {record_count} pumps in model group '{selected_group_to_delete}'")
+                            st.warning(f"⚠️ {get_text('about_to_delete_group', record_count, selected_group_to_delete)}")
                             
                             # Display sample records
-                            with st.expander(f"Preview of records to be deleted ({min(5, record_count)} of {record_count})"):
+                            with st.expander(get_text("preview_records", min(5, record_count), record_count)):
                                 st.dataframe(group_df.head(5)[["DB ID", "Model No.", "Model Group"]])
                             
                             # Get DB IDs to delete
@@ -1110,19 +1119,19 @@ elif action == "Bulk Delete":
                 
                 else:  # Manual Selection
                     # Allow manual selection of records from a dataframe
-                    st.write("Select records to delete:")
+                    st.write(get_text("select_pumps_to_delete"))
                     
                     # Add search to narrow down results
-                    search_term = st.text_input("🔍 Search by Model No. to filter selection:")
+                    search_term = st.text_input(f"🔍 {get_text('search_by_model')}")
                     
                     display_df = filtered_df.copy()
                     if search_term:
                         display_df = display_df[display_df["Model No."].astype(str).str.contains(search_term, case=False, na=False)]
-                        st.write(f"Found {len(display_df)} matching pumps")
+                        st.write(f"{get_text('found')} {len(display_df)} {get_text('matching_pumps')}")
                     
                     # Check if we have too many records to display for manual selection
                     if len(display_df) > 100:
-                        st.warning(f"⚠️ Too many records ({len(display_df)}) for manual selection. Please use filters or search to narrow down the results.")
+                        st.warning(f"⚠️ {get_text('too_many_records', len(display_df))}")
                     else:
                         # Create a multiselect with model numbers for selection
                         # First, create a list of options with formatted strings for better selection
@@ -1138,7 +1147,7 @@ elif action == "Bulk Delete":
                         
                         # Allow selection from the list
                         if selection_options:
-                            selected_items = st.multiselect("Select pumps to delete:", selection_options)
+                            selected_items = st.multiselect(get_text("select_pumps_to_delete"), selection_options)
                             
                             # Extract DB IDs from selected items
                             db_ids_to_delete = []
@@ -1150,17 +1159,17 @@ elif action == "Bulk Delete":
                                         db_id = int(match.group(1))
                                         db_ids_to_delete.append(db_id)
                         else:
-                            st.info("No pumps match your search criteria.")
+                            st.info(get_text("no_pumps_match"))
                             db_ids_to_delete = []
                 
                 # Add delete reason
                 if 'db_ids_to_delete' in locals() and db_ids_to_delete:
-                    delete_reason = st.text_area("Reason for bulk deletion (optional)",
-                                            placeholder="Why are you deleting these pumps?")
+                    delete_reason = st.text_area(get_text("reason_for_deletion"),
+                                            placeholder=get_text("bulk_delete_reason_placeholder"))
                     
                     # Confirm deletion
-                    st.warning(f"⚠️ Warning: You are about to delete {len(db_ids_to_delete)} pump records! This action cannot be undone!")
-                    confirm_delete = st.button("Confirm Bulk Delete")
+                    st.warning(f"⚠️ {get_text('deletion_warning', len(db_ids_to_delete))}")
+                    confirm_delete = st.button(get_text("confirm_bulk_delete"))
                     
                     if confirm_delete:
                         success, message, success_count, error_count = bulk_delete_pumps(db_ids_to_delete, description=delete_reason)
@@ -1168,13 +1177,13 @@ elif action == "Bulk Delete":
                             st.success(message)
                             # Show success/error counts
                             if error_count > 0:
-                                st.info(f"Deleted {success_count} records successfully with {error_count} errors.")
+                                st.info(get_text("deleted_with_errors", success_count, error_count))
                             # Clear cache to refresh data
                             st.cache_data.clear()
                         else:
                             st.error(message)
                 else:
-                    st.info("Please select records to delete using one of the methods above.")
+                    st.info(get_text("please_select_records"))
     
     except Exception as e:
         st.error(f"Error setting up bulk delete form: {e}")
@@ -1182,4 +1191,4 @@ elif action == "Bulk Delete":
 
 # --- Footer ---
 st.markdown("---")
-st.markdown("💧 **Pump Selection Data Manager** | Last updated: " + datetime.now(taiwan_tz).strftime("%Y-%m-%d %H:%M:%S"))
+st.markdown(f"💧 **{get_text('app_title')}** | {get_text('last_updated')}: " + datetime.now(taiwan_tz).strftime("%Y-%m-%d %H:%M:%S"))
