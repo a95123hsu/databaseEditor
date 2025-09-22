@@ -1,0 +1,890 @@
+DB ID,Model No.,Frequency_Hz,Phase,HP,Power(KW),Outlet (mm),Outlet (inch),Pass Solid Dia(mm),Max Flow (LPM),Max Head (M),Max Head (ft),Category,Product Link,Head Rated/M,Q Rated/LPM,id
+1,100ADL57.5,50,3,10,7.5kW,100,"4""",80.0,300,22,72,Dirty Water,https://www.hungpump.com/adl,12.0,1850.0,60ada6e4-7363-4837-98f7-05c4c35597ef
+2,50ADVS5.75,50,1,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,ad30a017-b77e-42fb-a6bf-381db718f813
+3,50ADVS5.75,50,3,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,4b233b08-45e7-4072-8f08-05f2b8997d8d
+4,50ADVS5.75,50,3,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,e20d6d6b-bf13-4405-8036-41b0487f6d08
+6,50ADVS51.5,50,1,2,1.5kW,50,"2""",31.0,420,22,72,Dirty Water,https://www.hungpump.com/advs,12.0,250.0,ffdcc633-4a0a-45e6-b19e-0dbb0e0c6656
+7,50ADVS51.5,50,3,2,1.5kW,50,"2""",31.0,420,22,72,Dirty Water,https://www.hungpump.com/advs,12.0,250.0,9d9bc553-09a6-43be-a518-82f273c5c226
+8,65ADL51.5,50,1,2,1.5kW,65,"2-1/2""",40.0,850,15,49,Dirty Water,https://www.hungpump.com/adl,12.0,370.0,5190f355-5d46-4b57-9bfa-351445787daf
+9,65ADL51.5,50,3,2,1.5kW,65,"2-1/2""",40.0,850,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,370.0,c1bb1854-4984-4692-af1d-c58ec330f7f9
+10,65ADVS51.5,50,1,2,1.5kW,65,"2-1/2""",45.0,700,17,56,Dirty Water,https://www.hungpump.com/advs,9.0,420.0,67a1de3d-66ab-496c-a001-b29d07c0b377
+11,65ADVS51.5,50,3,2,1.5kW,65,"2-1/2""",45.0,700,17,56,Dirty Water,https://www.hungpump.com/advs,9.0,420.0,3d035f37-c25c-4bc5-8904-5901b5012fac
+12,80ADL51.5,50,1,2,1.5kW,80,"3""",50.0,1000,13,43,Dirty Water,https://www.hungpump.com/adl,9.0,450.0,698e97e8-37a4-40b6-9c9f-0f8dca3946a9
+13,80ADL51.5,50,3,2,1.5kW,80,"3""",50.0,1000,13,43,Dirty Water,https://www.hungpump.com/adl,9.0,450.0,0667e0c1-3507-4f40-acd6-94e9e9495d63
+14,80ADL52.2,50,3,3,2.2kW,80,"3""",50.0,1200,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,800.0,cafa36b9-b0b1-467f-a1a1-f1cf8b4bffae
+15,80ADL53.7,50,3,5,3.7kW,80,"3""",48.0,1680,20,66,Dirty Water,https://www.hungpump.com/adl,9.0,1080.0,46059a64-dc8a-485d-9455-5417cee1336e
+16,80ADVS52.2,50,3,3,2.2kW,80,"3""",50.0,1100,19,62,Dirty Water,https://www.hungpump.com/advs,12.0,580.0,2d54b4ea-fcba-42bb-8edb-4a2d7449b4de
+17,80ADVS53.7,50,3,5,3.7kW,80,"3""",55.0,1200,23,75,Dirty Water,https://www.hungpump.com/advs,12.0,750.0,db04cb12-22a2-412b-8b4a-654fbe004537
+18,BAH-400,50,1,1/2,400W,32,"1-1/4""",8.0,180,20,66,Dirty Water,https://www.hungpump.com/bah,12.0,115.0,d029da09-0d5d-4615-9524-3368e80cfeaa
+19,BAH-750,50,1,1,750W,50,"2""",8.0,220,25,82,Dirty Water,https://www.hungpump.com/bah,12.0,130.0,bd5abe93-0fe8-415f-8a78-1f1f603d08bf
+20,BAH-750,50,3,1,750W,50,"2""",8.0,220,25,82,Dirty Water,https://www.hungpump.com/bah,15.0,130.0,c59d332e-953c-46ef-86a5-e417a86072e2
+23,BAS-100,50,1,1/6,100W,25,"1""",7.0,90,6,20,Dirty Water,https://www.hungpump.com/bas,15.0,60.0,08a132f5-6f5c-4638-9154-af6939b6fb1a
+24,BAS-200,50,1,1/4,200W,32,"1-1/4""",7.0,140,7,23,Dirty Water,https://www.hungpump.com/bas,4.0,95.0,02cce9b4-7de9-46b0-98b4-57fdf9a27c62
+26,BAS-300,50,1,1/3,300W,40,"1-1/2""",9.0,200,8,26,Dirty Water,https://www.hungpump.com/bas,4.0,150.0,82f8d891-1a27-45bc-a234-8c034cb21294
+28,BAS-400,50,1,1/2,400W,50,"2""",12.0,270,10,33,Dirty Water,https://www.hungpump.com/bas,4.0,160.0,c371c6b3-5698-4260-bbc4-b4a3c060674f
+30,BAS-600,50,1,3/4,600W,50,"2""",15.0,300,11,36,Dirty Water,https://www.hungpump.com/bas,6.0,195.0,49a35ca0-28c5-44b0-8cde-e0e5754d14ac
+35,BAV-150,50,3,1/5,150W,32,"1-1/4""",10.0,160,6,20,Dirty Water,https://www.hungpump.com/bav,3.0,115.0,29427c58-4bde-4aa2-92ae-d02482c45466
+41,BAV-250,50,1,1/3,250W,40,"1-1/2""",25.0,200,8,26,Dirty Water,https://www.hungpump.com/bav,3.0,120.0,d8518991-f3db-43b5-ba19-92f9b502c5ac
+44,BAV-400,50,1,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,4.5,185.0,154351a2-b54c-4428-a46d-a01895c2a7fa
+45,BAV-400,50,3,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,6.0,185.0,1d8e41ea-3c18-4c7a-8932-0314d1aded64
+46,BAV-400,50,3,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,6.0,185.0,4b5ef6a4-5628-4c7e-8c41-fcb03fe52fb8
+52,BAV-550,50,1,3/4,550W,50,"2""",35.0,340,12,39,Dirty Water,https://www.hungpump.com/bav,6.0,170.0,aeede17d-45f6-4e31-bcbd-8e6e3297de87
+54,BAV-550,50,3,3/4,550W,50,"2""",35.0,340,12,39,Dirty Water,https://www.hungpump.com/bav,7.5,170.0,3d9dd738-1736-408d-adf9-73eb198aaec1
+62,BCV-1500-35,50,1,2,1.5kW,80,"3""",35.0,680,18,59,Dirty Water,https://www.hungpump.com/bcv,6.0,435.0,dfb3adaf-6b3a-49af-ad18-ce5122c2c45d
+63,BCV-1500-35,50,3,2,1.5kW,80,"3""",35.0,680,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,435.0,669e130a-42c8-401b-9c60-69b7d91db6ea
+64,BCV-1500-50,50,1,2,1.5kW,80,"3""",50.0,720,15,49,Dirty Water,https://www.hungpump.com/bcv,12.0,480.0,b9c2afa3-aeb8-4f1f-a8f2-ac4b03d2e7f6
+65,BCV-1500-50,50,3,2,1.5kW,80,"3""",50.0,720,15,49,Dirty Water,https://www.hungpump.com/bcv,9.0,480.0,143229d1-d159-467c-aeb0-7af55970c541
+66,BCV-1500-65,50,1,2,1.5kW,80,"3""",65.0,900,9,30,Dirty Water,https://www.hungpump.com/bcv,9.0,520.0,1ae438f6-80b7-435f-b31a-281f6606b3d6
+67,BCV-1500-65,50,3,2,1.5kW,80,"3""",65.0,900,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,520.0,aff5d7b7-8bc8-495a-b3fd-9df9fa14866e
+68,BCV-2200-35,50,3,3,2.2kW,80,"3""",35.0,800,20,66,Dirty Water,https://www.hungpump.com/bcv,6.0,530.0,5fb46777-dab0-4db0-9f9c-a5ee17374269
+69,BCV-2200-50,50,3,3,2.2kW,80,"3""",50.0,900,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,430.0,39951503-7174-4de6-880d-06026552609f
+70,BCV-2200-65,50,3,3,2.2kW,80,"3""",65.0,1200,11,36,Dirty Water,https://www.hungpump.com/bcv,12.0,700.0,a34f2865-cebf-4324-8f59-3f3d47856538
+71,BCV-2200-80,50,3,3,2.2kW,80,"3""",80.0,1300,8.5,28,Dirty Water,https://www.hungpump.com/bcv,6.0,600.0,79a3be55-bebd-42cc-bff6-f81766b26aa6
+72,BCV-3700-50,50,3,5,3.7kW,100,"4""",50.0,1100,21,69,Dirty Water,https://www.hungpump.com/bcv,6.0,680.0,a557e656-e67b-4afb-a317-b1079359ccf5
+73,BCV-3700-80,50,3,5,3.7kW,100,"4""",80.0,1400,10,33,Dirty Water,https://www.hungpump.com/bcv,12.0,950.0,b92a7732-65a7-46d6-bb23-d93dc2292b47
+74,BCV-400-30,50,1,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,200.0,cf357232-03f1-4c9c-a562-6ff072ba46ce
+75,BCV-400-50,50,1,1/2,400W,50,"2""",50.0,380,7,23,Dirty Water,https://www.hungpump.com/bcv,6.0,230.0,41143d37-07a5-434d-9a51-43265906acb0
+76,BCV-5500-50,50,3,7.5,5.5kW,100,"4""",50.0,1200,24,79,Dirty Water,https://www.hungpump.com/bcv,4.0,850.0,cccf111b-d26e-42be-8346-11d33be146d2
+77,BCV-750-30,50,1,1,750W,50,"2""",30.0,370,12,39,Dirty Water,https://www.hungpump.com/bcv,15.0,270.0,c28e23cd-67be-445f-b2d2-42ef1595ae3a
+78,BCV-750-50,50,1,1,750W,50,"2""",50.0,500,10,33,Dirty Water,https://www.hungpump.com/bcv,6.0,370.0,30023508-2537-464c-811b-5cc71395f1b5
+79,BCV-750-50,50,3,1,750W,50,"2""",50.0,500,10,33,Dirty Water,https://www.hungpump.com/bcv,6.0,370.0,06cf950a-ce68-457c-8f7b-2d3ca7572e32
+82,BPH-300,50,1,1/3,300W,40,"1-1/2""",3.0,95,18,59,Clean Water,https://www.hungpump.com/bph,3.0,55.0,11129fc3-1d83-4cd3-b2f4-1f954fee7113
+89,BPS-100,50,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bps,6.0,41.0,51f30e56-d094-4172-b260-370c3bb44d7a
+90,BPO-100,50,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bpo,4.0,41.0,a58edd75-f86a-4e4a-9790-7cdd7e441da2
+92,BPS-100,50,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bps,4.0,41.0,eb66c750-7717-4273-b2e7-c6e718681ff6
+106,BPS-200,50,1,1/4,200W,32,"1-1/4""",5.0,140,7,23,Clean Water,https://www.hungpump.com/bps,4.0,100.0,135387b5-7405-4dab-aee0-7638df4f29b9
+114,BPS-300,50,1,1/3,300W,40,"1-1/2""",5.0,180,8,26,Clean Water,https://www.hungpump.com/bps,4.0,120.0,e89e7ce1-8ad1-431f-bedf-e006e3c645ff
+116,BPS-400,50,1,1/2,400W,50,"2""",5.0,220,9,30,Clean Water,https://www.hungpump.com/bps,6.0,100.0,97add5a1-0d82-4447-947f-00556050b537
+119,BPS-80,50,1,1/10,80W,20,"3/4""",3.0,40,4,13,Clean Water,https://www.hungpump.com/bps,2.0,35.0,b8a48a8e-ec34-49a2-856f-9cac9b31995a
+120,DC-1812,50,1,,96W,25,"1""",5.0,115,4.6,15,Speciality Pump,https://www.hungpump.com/dc,3.0,48.0,da752577-ee23-49ba-8e03-cffaaebbc2a5
+121,DC-1824,50,1,,120W,25,"1""",5.0,115,4.6,15,Speciality Pump,https://www.hungpump.com/dc,3.0,48.0,92cf5646-72e5-4e16-a78a-8d66837f55ab
+122,DC-2312,50,1,,132W,25,"1""",5.0,145,5.2,17,Speciality Pump,https://www.hungpump.com/dc,3.0,80.0,cfcfa9c3-a000-4b48-982e-fdbd879ce2ad
+123,DC-2324,50,1,,132W,25,"1""",5.0,145,5.2,17,Speciality Pump,https://www.hungpump.com/dc,3.0,80.0,e5ab6e3a-d420-4896-be41-d127a60a2590
+124,DC-3024,50,1,,168W,32,"1-1/4""",5.0,190,5.5,18,Speciality Pump,https://www.hungpump.com/dc,3.0,120.0,96059fd1-9b8a-4049-b9a7-65d2f173d1d3
+125,DS-05,50,1,1/2,400W,50,"2""",15.0,270,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,165.0,8c29048e-e775-46cb-8094-9802b91498b7
+126,DS-05,50,3,1/2,400W,50,"2""",15.0,270,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,165.0,9fc41328-85a3-482e-8e07-75958b9f4c08
+128,DS-10,50,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,240.0,ae0186fe-a078-4f76-8e73-2e2e7301f026
+129,DS-10,50,3,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,240.0,20320eb9-c5f3-4f79-869b-2aa0db052c1f
+130,DS-100,50,3,10,7.5kW,100,"4""",27.0,1500,27,89,Dirty Water,https://www.hungpump.com/dsk,15.0,1150.0,3d7aba18-4687-4a43-8c71-ff0b5865175a
+131,DS-20,50,1,2,1.5kW,80,"3""",35.0,960,15.5,51,Dirty Water,https://www.hungpump.com/dsk,9.0,620.0,2a5225ba-c0cf-41ed-8efe-9d1e6bc451c0
+132,DS-20,50,3,2,1.5kW,80,"3""",35.0,960,15.5,51,Dirty Water,https://www.hungpump.com/dsk,9.0,620.0,3101b946-b489-45b8-b25a-5bfe6860338a
+133,DS-20,50,1,2,1.5kW,80,"3""",15.0,700,17,56,Dirty Water,https://www.hungpump.com/dsk,9.0,455.0,90999643-6f50-4fe6-ae7e-ecec02052a8e
+135,DS-20,50,3,2,1.5kW,80,"3""",15.0,700,17,56,Dirty Water,https://www.hungpump.com/dsk,9.0,455.0,8f5a6f40-5330-43f2-b861-9d99e5a45d0b
+138,DS-30,50,3,3,2.2kW,80,"3""",35.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsk,12.0,800.0,6e7c8c1f-c554-48a6-9134-39331fe94873
+139,DS-30,50,3,3,2.2kW,80,"3""",15.0,860,20,66,Dirty Water,https://www.hungpump.com/dsk,12.0,590.0,9e14811a-1db8-4879-b5a6-e99387fc263f
+142,DS-50,50,3,5,3.7kW,80,"3""",35.0,1400,26,85,Dirty Water,https://www.hungpump.com/dsk,15.0,1020.0,a0afe34e-bcf0-44b9-9637-4dd39a21e4c4
+143,DS-50,50,3,5,3.7kW,100,"4""",15.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsk,15.0,750.0,4073a5da-bd32-4472-bfbe-936ec1e0e906
+144,DS-75,50,3,7.5,5.5kW,100,"4""",20.0,1400,24,79,Dirty Water,https://www.hungpump.com/dsk,15.0,1000.0,2a80ae70-e0bb-4c6e-b3d1-abf0e78b94b0
+145,DSK-05,50,1,1/2,400W,50,"2""",15.0,270,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,165.0,35bbec08-780e-4580-ba0c-beb5872176bb
+147,DSK-05,50,3,1/2,400W,50,"2""",15.0,270,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,165.0,1a63b4f5-bd02-4c0c-9a9e-95937b152543
+148,DSK-10,50,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,240.0,63174d55-2d68-4a59-bb9d-8fe6b29c6c8b
+151,DSK-10,50,3,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,240.0,a4bc1166-b5fd-43c9-ac02-c115a6df00b8
+153,DSK-100,50,3,10,7.5kW,100,"4""",27.0,1500,27,89,Dirty Water,https://www.hungpump.com/dsk,15.0,1150.0,d1dde37f-34f0-42b8-8cea-3ca549090705
+154,DSK-20,50,1,2,1.5kW,80,"3""",15.0,700,17,56,Dirty Water,https://www.hungpump.com/dsk,9.0,455.0,1e249d1a-dc16-49ca-a866-bbb664fae361
+155,DSK-20,50,3,2,1.5kW,80,"3""",15.0,700,17,56,Dirty Water,https://www.hungpump.com/dsk,9.0,455.0,b9f1ad9f-2097-43fb-a9a3-1dc17dbadb08
+156,DSK-20,50,3,2,1.5kW,80,"3""",15.0,700,17,56,Dirty Water,https://www.hungpump.com/dsk,9.0,455.0,32b58af5-d6b5-4a1f-bc1f-510c34c192f6
+158,DSK-30,50,3,3,2.2kW,80,"3""",15.0,860,20,66,Dirty Water,https://www.hungpump.com/dsk,12.0,590.0,48429857-ea0f-4345-80b9-e7418ba4f2cd
+160,DSK-50,50,3,5,3.7kW,100,"4""",15.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsk,15.0,750.0,7818085e-2bb7-4b5e-ab31-ad40fd6e4b87
+162,DSK-75,50,3,7.5,5.5kW,100,"4""",20.0,1400,24,79,Dirty Water,https://www.hungpump.com/dsk,15.0,1000.0,f691bbce-f234-494d-8b97-df3f91078486
+164,DSP-10,50,1,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,0e847db9-2387-4a49-98c5-50f91104bb3c
+165,DSP-10,50,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,069a8e71-3f43-47d5-8167-d69cc23a0b61
+166,DSP-20,50,1,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,c13ece3e-f75c-4362-8ad6-9ec50d36a97e
+167,DSP-20,50,3,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,61998115-13e9-436d-a263-c1fa77ee0ffb
+169,DSP-30,50,3,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,09519753-a54a-4f50-a27b-450737324d41
+172,DSP-50,50,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,db8df5d3-0faf-4ed3-bf51-c08ae6da736b
+174,DSP-75,50,3,7.5,5.5kW,100,"4""",50.0,2100,24,79,Dirty Water,https://www.hungpump.com/dsp,9.0,1250.0,5922dddf-dcb1-4526-a194-24daf6a88a09
+176,DSP-100,50,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,d5933631-8fd8-4cce-80e5-73a8fecf6186
+179,DSP-150,50,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,f51297dd-191f-487a-9a5e-b9cb0deda90b
+181,DSP-150,50,3,15,11kW,100,"4""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,03fd4a61-c5c7-4538-9a07-cb959e28539a
+183,DSPK-10,50,1,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,18395ba3-bb9b-43ba-87d2-219fb5065124
+184,DSPK-10,50,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,e8d4e93f-eee1-43c6-94b4-393773a558bc
+185,DSPK-100,50,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,5495aa13-f205-48cb-9895-f607c9d91fb7
+186,DSPK-150,50,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,6481a55f-27cf-4a63-a810-203c09d9ca43
+187,DSPK-20,50,1,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,4e388dd5-b4fc-41e8-bb32-e94a2ff9d40d
+188,DSPK-20,50,3,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,feea6ebb-0dea-4f12-8e88-435162e564d9
+189,DSPK-30,50,3,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,199b8292-66ec-4591-b84f-64a7855b9608
+190,DSPK-50,50,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,3f6ff9ae-78da-4cc9-974c-ebc776d6b7a6
+191,DSPK-75,50,3,7.5,5.5kW,100,"4""",50.0,2100,24,79,Dirty Water,https://www.hungpump.com/dsp,9.0,1250.0,25e508e3-d744-451c-95d5-ac7cf6a26181
+192,FAS-150,50,1,1/5,150W,40,"1-1/2""",19.0,230,6,20,Gardening Pump,https://www.hungpump.com/fas,4.0,100.0,b26832e1-0dfc-4036-a5fd-b2410b4d0c89
+193,FAS-150,50,1,1/5,150W,50,"2""",19.0,230,6,20,,https://www.hungpump.com/fas,4.0,100.0,a54ea4ab-4199-436a-b58b-fa5a25d04920
+195,FAS-250,50,1,1/3,250W,40,"1-1/2""",19.0,270,7,23,,https://www.hungpump.com/fas,4.0,155.0,b2584303-6e1c-493b-bbb2-c5a80dc34f88
+196,FAS-250,50,1,1/3,250W,50,"2""",19.0,270,7,23,,https://www.hungpump.com/fas,4.0,155.0,3a8d42d4-b89b-456a-86f9-fcdd5eafac92
+198,FAS-400,50,1,1/2,400W,50,"2""",19.0,320,9,30,,https://www.hungpump.com/fas,6.0,200.0,209b287e-b620-4148-9dd5-b15d783a7ea9
+199,FAS-750,50,1,1,750W,50,"2""",19.0,380,12,39,,https://www.hungpump.com/fas,8.0,215.0,de7867c7-eaf8-4079-9bde-93184f92c0ba
+201,GC-07,50,1,3/4,550W,32,"1-1/4""",N/A,145,10,33,Grinder,https://www.hungpump.com/gc,6.0,110.0,edb67ed5-c98f-461f-992f-05fd34dab8e9
+202,GC-07,50,3,3/4,550W,32,"1-1/4""",N/A,145,10,33,Grinder,https://www.hungpump.com/gc,6.0,110.0,41afedad-475b-4a55-b1ff-6ab038b5522e
+203,GCB-07,50,1,3/4,550W,32,"1-1/4""",N/A,130,13,42,Grinder,https://www.hungpump.com/gcb,8.0,105.0,49808ce9-75a1-4387-9443-b4e171929908
+204,GCB-07,50,1,3/4,550W,32,"1-1/4""",N/A,130,13,42,Grinder,https://www.hungpump.com/gcb,8.0,105.0,d3f710ed-9c59-4b89-998b-9e47eecee304
+205,GC-10,50,1,1,750W,32,"1-1/4""",N/A,160,15,49,Grinder,https://www.hungpump.com/gc,9.0,115.0,0d546813-fdec-4758-a106-deace5d1f75b
+207,GC-10,50,3,1,750W,32,"1-1/4""",N/A,160,15,49,Grinder,https://www.hungpump.com/gc,9.0,115.0,21c64cd6-eca7-4e4a-a5c5-cb499cc68fc3
+208,GCB-10,50,1,1,750W,32,"1-1/4""",N/A,200,17,55,Grinder,https://www.hungpump.com/gcb,10.0,160.0,981e8295-d2e8-49e5-88e4-2e44c0f421d2
+209,GCB-10,50,1,1,750W,32,"1-1/4""",N/A,200,17,55,Grinder,https://www.hungpump.com/gcb,10.0,160.0,4ea821a2-f487-4a24-9ba5-56e49908c990
+210,GC-20,50,1,2,1.5kW,32,"1-1/4""",N/A,180,25,82,Grinder,https://www.hungpump.com/gc,15.0,150.0,0c837457-0f9b-4b62-88f4-751d9c30d42b
+211,GC-20,50,3,2,1.5kW,32,"1-1/4""",N/A,180,25,82,Grinder,https://www.hungpump.com/gc,15.0,150.0,8fa05711-093a-4926-9c77-e0b16a26312d
+212,GC-30,50,3,3,2.2kW,50,"2""",N/A,180,35,115,Grinder,https://www.hungpump.com/gc,20.0,140.0,742872b1-6a22-48cf-878c-30951f3ea37a
+215,GC-30,50,3,3,2.2kW,50,"2""",N/A,180,35,115,Grinder,https://www.hungpump.com/gc,20.0,140.0,bbf07f58-003c-416e-b0ce-bf568946e3c6
+216,GC-50,50,3,5,3.7kW,65,"2-1/2""",N/A,320,42,138,Grinder,https://www.hungpump.com/gc,30.0,220.0,ef7eaa59-d755-436f-a1a7-d21506d5cfcd
+219,GC-75,50,3,7.5,5.5kW,65,"2-1/2""",N/A,320,50,164,Grinder,https://www.hungpump.com/gc,30.0,260.0,11e3b0df-70f0-4ee0-a79a-cadef0f10b2e
+220,GD-15,50,1,1.5,1.1kW,32,"1-1/4""",N/A,230,20,66,Grinder,https://www.hungpump.com/gd,10.0,170.0,869a7a9f-7565-4e9d-9519-dbf85e5d2cb2
+221,GD-15,50,3,1.5,1.1kW,32,"1-1/4""",N/A,230,20,66,Grinder,https://www.hungpump.com/gd,10.0,170.0,dd5e2707-fa57-4c2c-b3cb-7d6876ebd16f
+222,GD-20,50,1,2,1.5kW,32,"1-1/4""",N/A,235,23,75,Grinder,https://www.hungpump.com/gd,15.0,150.0,ea78d386-ccb9-4426-8259-7e831b12657b
+223,GD-20,50,3,2,1.5kW,32,"1-1/4""",N/A,235,23,75,Grinder,https://www.hungpump.com/gd,15.0,150.0,d165f15d-7b5c-4933-a9a3-dac05d7fc6f6
+224,GD-30,50,3,3,2.2kW,32,"1-1/4""",N/A,235,28,92,Grinder,https://www.hungpump.com/gd,20.0,200.0,cc74eaa8-cac6-4bf1-a43e-5804f33912d9
+225,GDH-15,50,1,1.5,1.1kW,32,"1-1/4""",N/A,110,29,95,Grinder,https://www.hungpump.com/gdh,20.0,80.0,1668c502-7cd7-4c74-bad9-f783140fc972
+226,GDH-15,50,3,1.5,1.1kW,32,"1-1/4""",N/A,110,29,95,Grinder,https://www.hungpump.com/gdh,20.0,80.0,0f02b7ed-28f3-4e92-8e46-0e820a6bef10
+227,GDH-20,50,1,2,1.5kW,32,"1-1/4""",N/A,175,30,98,Grinder,https://www.hungpump.com/gdh,20.0,135.0,0e653fb9-a8c7-43b0-8019-1cab3d9d84c1
+228,GDH-20,50,3,2,1.5kW,32,"1-1/4""",N/A,175,30,98,Grinder,https://www.hungpump.com/gdh,20.0,135.0,9f2a4df6-2bec-45ca-a94c-32878c497fc4
+232,GS-15,50,1,1.5,1.1kW,32,"1-1/4""",N/A,50,85,280,Grinder,https://www.hungpump.com/gs,50.0,20.0,f965bb6e-b22b-4dc3-9ab1-d62ca89fd5b9
+234,GS-15,50,3,1.5,1.1kW,32,"1-1/4""",N/A,50,85,280,Grinder,https://www.hungpump.com/gs,50.0,20.0,194de8af-61da-4325-9869-3433ada1b4f7
+236,HD-10,50,1,1,750W,80,"3""",10.0,600,9.5,31,,https://www.hungpump.com/hd,6.0,320.0,f6f8f836-9b12-447d-8dae-d581b4160060
+237,HD-10,50,3,1,750W,80,"3""",10.0,600,9.5,31,,https://www.hungpump.com/hd,6.0,320.0,0a48a8a4-d7d9-403c-a017-bd9b25a3ffc6
+238,HD-15,50,1,1.5,1.1kW,80,"3""",10.0,820,10,33,,https://www.hungpump.com/hd,6.0,440.0,2bf3c164-abe8-46c9-97c7-8427288a7b07
+239,HD-15,50,3,1.5,1.1kW,80,"3""",10.0,820,10,33,,https://www.hungpump.com/hd,6.0,440.0,a3c9821f-7e20-44d0-8d2e-cf5792391fa1
+240,HD-20,50,1,2,1.5kW,80,"3""",10.0,1050,11.5,38,,https://www.hungpump.com/hd,6.0,790.0,29cb4bfd-838b-4f0e-928e-c2eecf041fc4
+241,HD-20,50,3,2,1.5kW,80,"3""",10.0,1050,11.5,38,,https://www.hungpump.com/hd,4.5,790.0,9281331c-fac2-48f0-9849-c62c49113aef
+242,HF-10,50,1,1.5,1.1kW,80,"3""",19.0,850,8,26,Sewage and Wastewater,https://www.hungpump.com/hf,4.5,550.0,6d346e4b-ec5b-4a24-8d83-6bc8f210e9aa
+243,HF-10,50,3,1.5,1.1kW,80,"3""",19.0,850,8,26,Sewage and Wastewater,https://www.hungpump.com/hf,7.5,550.0,05fa470b-887b-4da7-9e01-83c48e90353c
+244,HF-20,50,1,2,1.5kW,80,"3""",19.0,1200,12,39,Sewage and Wastewater,https://www.hungpump.com/hf,7.5,610.0,1ae6b41b-cf73-4a07-b72a-99d79bea4d7b
+245,HF-20,50,3,2,1.5kW,80,"3""",19.0,1200,12,39,Sewage and Wastewater,https://www.hungpump.com/hf,12.0,610.0,b6bfc2a8-8841-4dc1-959d-4cba366d6b3c
+246,JA-20,50,1,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/ja,12.0,410.0,67b081ae-65a8-4596-a979-38f6fd39fb4a
+247,JA-20,50,3,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/ja,12.0,410.0,61f0e41b-af13-4de4-9cd0-8791557f5a56
+248,JA-20,50,3,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/ja,10.0,410.0,7962737f-1370-4407-b95d-f42f5b5e979f
+249,JA-30,50,1,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/ja,10.0,610.0,726210bc-6c30-4727-83dd-65ac3542706e
+250,JA-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/ja,10.0,610.0,aca70de6-d125-44f0-9430-a65be4c0be9f
+251,JA-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/ja,15.0,610.0,d9398813-2a09-4056-a202-feb8a8aff830
+252,JA-50,50,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/ja,15.0,590.0,8967f580-3477-45d8-8f48-9d0738cc740b
+253,JA-50,50,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/ja,6.0,590.0,1cbbdea0-8e9d-46d4-ab09-15742ad56c74
+254,JK-05,50,1,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/jk,6.0,190.0,df82661a-45bf-4983-928f-dc202d7b09ee
+255,JK-05,50,3,1/2,400W,50,2',30.0,320,9,30,Dirty Water,https://www.hungpump.com/jk,6.0,190.0,19f8d79b-7f6f-41af-84c8-0edbeded79be
+256,JK-10,50,1,1,750W,50,"2""",30.0,400,12,39,Dirty Water,https://www.hungpump.com/jk,6.0,270.0,33d657df-6140-4e09-8fdf-c3f5e0c97e91
+257,JK-10,50,3,1,750W,50,"2""",30.0,400,11,39,Dirty Water,https://www.hungpump.com/jk,6.0,270.0,15467608-854a-425a-adf6-e81e0f03faa9
+259,JK-20,50,1,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/jk,12.0,410.0,d87e63fe-da28-4e43-8014-cf7978c0fbb0
+260,JK-20,50,3,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/jk,12.0,410.0,b8d44d22-0690-438f-b4c1-3899234c567f
+262,JK-30,50,1,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/jk,10.0,610.0,d7aea8fc-b3e1-4259-a955-466d796d79c9
+263,JK-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/jk,10.0,610.0,8184f211-4be5-41ad-9571-b37461cf8617
+265,JK-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/jk,10.0,610.0,7a6a1989-5239-4a1d-b3f4-8d19bbd14613
+266,JK-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/jk,15.0,610.0,77292383-6371-470c-ab31-66c8903e4fe4
+267,JK-50,50,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/jk,15.0,590.0,04f35818-929d-4b00-8a91-bf837a754a98
+269,JK-50,50,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/jk,15.0,590.0,1f5209cd-86a8-45d8-b6d1-bfae6f3d1c8c
+270,JK-50,50,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/jk,15.0,590.0,413a6cea-90be-4e16-a30d-1e36368c6117
+271,JK-75,50,3,7.5,5.5kW,100,"4""",50.0,1200,24,79,Dirty Water,https://www.hungpump.com/jk,10.0,770.0,4e9ad6c7-3d82-4bc2-aeb3-d25f8ed27ac3
+278,KA-2.4,50,1,1/2,400W,50,"2""",7.0,240,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,125.0,60318963-5e99-4018-9a9a-76fca5ee3b06
+279,KA-2.4A,50,1,1/2,400W,50,"2""",7.0,240,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,125.0,1959f56d-7293-48c2-a40f-52c5b53e10e8
+280,KA-2.4D,50,1,1/2,400W,50,"2""",7.0,255,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,2e21270b-eca9-40aa-b592-9708eeb25f50
+281,KA-2.4DA,50,1,1/2,400W,50,"2""",7.0,255,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,a116fc18-ebd5-4074-b0a1-c6d704d51776
+282,KA-2.4R,50,1,1/2,400W,50,"2""",2.8,150,12.5,39,Dirty Water,https://www.hungpump.com/ka,12.0,100.0,cc61cb25-9cd5-4046-bf5d-de060f0e88d4
+283,KA-2.75D,50,1,1,750W,50,"2""",7.0,240,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,140.0,425272dd-35bd-464c-b2f5-cf3d412fe97e
+284,KA-2.75D,50,1,1,750W,50,"2""",7.0,240,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,140.0,51198963-70a0-4599-8b5a-54a3d12c279c
+285,KA-2.75DA,50,1,1,750W,50,"2""",7.0,240,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,140.0,e035f7c7-da48-4b9a-8f90-5e7973193d0a
+286,KA-3.75D,50,1,1,750W,80,"3""",7.0,270,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,190.0,663e006b-4dfa-4eb1-b35b-942c4d28e978
+287,KA-3.75DA,50,1,1,750W,80,"3""",7.0,270,19,62,Dirty Water,https://www.hungpump.com/ka,20.0,190.0,f6c1ee4d-b9fc-456d-a191-8efbd72d39d5
+288,KHL-100,50,3,10,7.5kW,100,"4""",15.0,1700,35,115,Dirty Water,https://www.hungpump.com/khl,15.0,1300.0,0052eb43-b5a9-4e97-ab24-2b2dbfabdf8e
+289,KHL-20,50,1,2,1.5kW,50,"2""",12.0,415,25,82,Dirty Water,https://www.hungpump.com/khl,15.0,370.0,0718c69c-f4c8-4cdd-b0fc-b49a409e2728
+290,KHL-20,50,3,2,1.5kW,50,"2""",12.0,415,25,82,Dirty Water,https://www.hungpump.com/khl,15.0,370.0,4db795f5-5e8e-448c-9b69-53acb9ba7ae1
+292,KHL-30,50,3,3,2.2kW,50,"2""",12.0,620,28,92,Dirty Water,https://www.hungpump.com/khl,15.0,490.0,88ac9b18-6625-4ff0-b6fd-6c7f3518f6d6
+294,KHL-50,50,3,5,3.7kW,50,"2""",15.0,770,32,105,Dirty Water,https://www.hungpump.com/khl,20.0,620.0,851c2fb8-af9e-4b1b-94fd-f8dfe3cae5f1
+296,KHL-75,50,3,7.5,5.5kW,80,"3""",15.0,1450,33,108,Dirty Water,https://www.hungpump.com/khl,20.0,1100.0,46f709ab-30c1-4b20-9e02-e3c545b45baf
+298,KS-10,50,1,1,750W,50,"2""",6.0,420,14,46,Dirty Water,https://www.hungpump.com/ks,9.0,190.0,35b063db-d231-4ad3-a59e-f812568fdd13
+299,KS-10,50,3,1,750W,50,"2""",6.0,420,14,46,Dirty Water,https://www.hungpump.com/ks,9.0,190.0,032e07f5-8515-4840-b2af-d11a8d07e66d
+301,KS-20,50,1,2,1.5kW,80,"3""",9.0,700,17,56,Dirty Water,https://www.hungpump.com/ks,9.0,520.0,3f23fa2d-9f24-45a6-b160-aa174b83cf8f
+302,KS-20,50,3,2,1.5kW,80,"3""",9.0,700,17,56,Dirty Water,https://www.hungpump.com/ks,9.0,520.0,b9abdc36-3dcf-4190-a7b8-9629c7df2912
+303,KS-20,50,3,2,1.5kW,80,"3""",12.0,960,15.5,51,Dirty Water,https://www.hungpump.com/ks,9.0,620.0,19c2c568-b8b8-47e4-9656-cc111ede9eb5
+304,KS-30,50,3,3,2.2kW,80,"3""",11.0,900,18,59,Dirty Water,https://www.hungpump.com/ks,10.0,530.0,b4748303-f743-41cd-8c6c-997fd6f86212
+306,KS-30,50,3,3,2.2kW,80,"3""",11.0,900,18,59,Dirty Water,https://www.hungpump.com/ks,10.0,530.0,f1e360e7-0251-4b57-a084-8fbea2abe1df
+307,KS-30,50,3,3,2.2kW,80,"3""",11.0,900,18,59,Dirty Water,https://www.hungpump.com/ks,10.0,530.0,e4f5eb1d-393c-4e8b-84a0-0da7ae387e3c
+308,KS-30,50,3,3,2.2kW,80,"3""",12.0,1200,20,66,Dirty Water,https://www.hungpump.com/ks,12.0,800.0,2a65e40d-07d9-409f-a37f-6e09b64ad705
+309,KS-50,50,3,5,3.7kW,80,"3""",12.0,1400,26,85,Dirty Water,https://www.hungpump.com/ks,15.0,1020.0,d934cf6c-8911-4658-956a-b496e52d3583
+316,KSL-10,50,3,1,750W,80,"3""",9.0,560,13,43,Dirty Water,https://www.hungpump.com/ksl,15.0,325.0,86021edd-9f56-48db-baef-5904c1140e91
+333,KT-215,50,1,2,1.5kW,50,"2""",N/A,505,22,72,Construction,https://www.hungpump.com/kt,15.0,325.0,2da77aab-7a38-46cf-8ac8-a579571c287a
+334,KT-215,50,3,2,1.5kW,50,"2""",N/A,505,22,72,Construction,https://www.hungpump.com/kt,15.0,325.0,c38c2fff-32a5-413b-8969-2d0c0411b5c9
+335,KT-222,50,3,3,2.2kW,50,"2""",N/A,670,26,85,Construction,https://www.hungpump.com/kt,15.0,530.0,0ac4c505-1d2c-4066-8f76-aa313ad40ce4
+336,KT-237,50,3,5,3.7kW,50,"2""",N/A,550,37,121,Construction,https://www.hungpump.com/kt,20.0,500.0,ecac979d-0a74-4ec4-bdda-4669c7f6d129
+337,KT-315,50,1,2,1.5kW,80,"3""",N/A,550,15,49,Construction,https://www.hungpump.com/kt,10.0,350.0,71844270-fa3a-4aba-b17e-fbf835c9ba4e
+338,KT-315,50,3,2,1.5kW,80,"3""",N/A,550,15,49,Construction,https://www.hungpump.com/kt,10.0,350.0,c8f511c6-0fc2-4150-8cb0-8661caaa100e
+339,KT-322,50,3,3,2.2kW,80,"3""",N/A,800,22,72,Construction,https://www.hungpump.com/kt,15.0,430.0,c935e4ea-0005-4c53-83f4-e3805cbeb5ce
+340,KT-337,50,3,5,3.7kW,80,"3""",N/A,760,32,105,Construction,https://www.hungpump.com/kt,20.0,600.0,22ab8168-84ae-4ecd-bf81-2b02c82f6fbb
+341,KT-355,50,3,7.5,5.5kW,80,"3""",N/A,1360,36,118,Construction,https://www.hungpump.com/kt,25.0,910.0,2a279b75-bb86-46f2-a00a-bcc13d03b285
+342,KT-4110,50,3,15,11kW,100,"4""",N/A,1450,45,148,Construction,https://www.hungpump.com/kt,30.0,1140.0,4ce87af1-aaf7-4734-8267-e1939e8ea8bf
+343,KT-4150,50,3,20,15kW,100,"4""",N/A,1930,52,171,Construction,https://www.hungpump.com/kt,30.0,1780.0,cf1194c7-bf1b-4698-9237-a627aece24be
+344,KT-437,50,3,5,3.7kW,100,"4""",N/A,1430,19,62,Construction,https://www.hungpump.com/kt,10.0,1100.0,ce086d84-f0c5-42c0-87a9-2c6831c3baa4
+345,KT-455,50,3,7.5,5.5kW,100,"4""",N/A,1940,22,72,Construction,https://www.hungpump.com/kt,10.0,1650.0,45022c57-8e3e-49c0-b1a7-92f4529e1028
+346,KT-475,50,3,10,7.5kW,100,"4""",N/A,1550,39,128,Construction,https://www.hungpump.com/kt,20.0,1370.0,d46cd38a-b0dd-4eec-a16d-899bb32323a2
+347,KT-6110,50,3,15,11kW,150,"6""",N/A,2480,34,112,Construction,https://www.hungpump.com/kt,20.0,2000.0,9b769cc9-dca8-47a7-8605-21e060638f5d
+348,KT-6150,50,3,20,15kW,150,"6""",N/A,2950,45,148,Construction,https://www.hungpump.com/kt,30.0,2250.0,f21263b6-9932-4b53-8cf2-18fda2843820
+349,KT-675,50,3,10,7.5kW,150,"6""",N/A,2050,28,92,Construction,https://www.hungpump.com/kt,20.0,1760.0,e3863c48-1a6b-4edc-96de-1564dc3edc30
+350,MAS-150,50,1,1/5,150W,40,"1-1/2""",19.0,240,6.5,21,Clean Water,https://www.hungpump.com/mas,4.0,130.0,1e5294b6-02dd-446e-bcc1-4172020b3409
+351,MAS-250,50,1,1/3,250W,40,"1-1/2""",19.0,270,7.5,25,Clean Water,https://www.hungpump.com/mas,4.0,210.0,faff5091-f15d-4a8e-a7f3-4f3bc9adadac
+353,MAS-400,50,1,1/2,400W,50,"2""",19.0,320,9,30,Clean Water,https://www.hungpump.com/mas,6.0,200.0,ed0caed5-b7ab-4cc9-a23a-80dbc10c85c5
+354,MAS-750,50,1,1,750W,50,"2""",19.0,370,12,39,Clean Water,https://www.hungpump.com/mas,6.0,285.0,905b28f6-ad61-4b0b-83fb-990efe594f89
+357,MH-150,50,1,1/5,150W,50,"2""",6.0,240,6.5,21,Clean Water,https://www.hungpump.com/mh,4.0,160.0,a6022a68-f366-4bda-b2e4-ebea9e2ef5f0
+358,MH-150FR,50,1,1/5,150W,50,"2""",6.0,240,6.5,21,Clean Water,https://www.hungpump.com/mh,4.0,160.0,3bcd8d7c-1066-4549-baf7-225ac8a472a1
+359,MH-250,50,1,1/3,250W,50,"2""",6.0,280,7,23,Clean Water,https://www.hungpump.com/mh,4,190,002b2ddb-640a-4176-a0ae-f1d1fa61dfb1
+360,MH-250-FR,50,1,1/3,250W,50,"2""",6.0,280,7,23,Clean Water,https://www.hungpump.com/mh,4.0,190.0,7ba0d62b-6531-497c-9a12-e225184e3876
+361,MH-400,50,1,1/2,400W,50,"2""",6.0,320,8.5,28,Clean Water,https://www.hungpump.com/mh,6.0,185.0,bde2626d-e9eb-4925-b985-63f56c6e3e89
+362,MH-400-FR,50,1,1/2,400W,50,"2""",6.0,320,8.5,28,Clean Water,https://www.hungpump.com/mh,6.0,185.0,6945285b-0dd8-4a88-9688-36be924d30d8
+363,MH-750,50,1,1,750W,50,"2""",6.0,380,10,33,Clean Water,https://www.hungpump.com/mh,6.0,270.0,b58ddc22-a6b4-4b81-b0d9-84f9774763da
+364,MH-750-FR,50,1,1,750W,50,"2""",6.0,380,10,33,Clean Water,https://www.hungpump.com/mh,6.0,270.0,eca08b0a-d92d-4cf5-a0c2-3d8efe205f72
+366,MVH-10,50,1,3/4,550W,25,"1""",3.0,100,32,105,High Pressure,https://www.hungpump.com/mvh,20.0,65.0,f01eab8f-67cc-4d10-a1f1-21506559343c
+371,RS-25E,50,1,1/6,100W,25,"1""",3.0,70,6,20,,https://www.hungpump.com/rs,4.0,36.0,7a4013b5-5b88-4e32-adbd-0c95f2b699c9
+372,RS-25EA,50,1,1/6,100W,25,"1""",3.0,70,6,20,,https://www.hungpump.com/rs,4.0,36.0,e21502ee-56b2-489c-beb3-8d9f80eb2ba9
+373,RS-25S,50,1,1/6,100W,25,"1""",3.0,70,6,20,,https://www.hungpump.com/rs,4.0,36.0,b8c1b777-6b73-4c96-bead-5358fbc60788
+374,RS-32,50,1,1/4,200W,32,"1-1/4""",3.0,130,7,23,,https://www.hungpump.com/rs,4.0,78.0,b7bb4ec9-32d2-413c-928a-eaae65f55505
+375,RS-32E,50,1,1/4,200W,32,"1-1/4""",3.0,130,7,23,,https://www.hungpump.com/rs,4.0,78.0,9e5e0b20-b4b3-4e9b-8b8e-e16b6bb92a5a
+376,RS-32EA,50,1,1/4,200W,32,"1-1/4""",3.0,130,7,23,,https://www.hungpump.com/rs,4.0,78.0,f3fcfcff-d556-4472-a7ef-8bf04b507012
+377,RS-32S,50,1,1/4,200W,32,"1-1/4""",3.0,130,7,23,,https://www.hungpump.com/rs,4.0,78.0,7502d08e-544e-4f63-9bbe-d25103dfdcda
+378,RV-32,50,1,1/4,200W,32,"1-1/4""",18.0,130,6.5,21,,https://www.hungpump.com/rv,4.5,55.0,8762b5c0-8dad-40bd-a32b-12f53252fe54
+379,RV-40,50,1,1/3,250W,32,"1-1/4""",18.0,160,8,26,,https://www.hungpump.com/rv,4.5,120.0,bcfc0540-3bef-49dd-a83b-94ec0f24a0fa
+380,SB-05,50,1,1/2,400W,50,"2""",30.0,320,9,30,Sewage and Wastewater,https://www.hungpump.com/sb,6.0,180.0,0535292e-7ba2-4754-aa1b-c229321e8dab
+381,SB-05,50,3,1/2,400W,50,"2""",30.0,320,9,30,Sewage and Wastewater,https://www.hungpump.com/sb,6.0,180.0,d0de8dcd-8aaf-495b-b240-c35012dede82
+382,SB-10,50,1,1,750W,50,"2""",30.0,400,12,39,Sewage and Wastewater,https://www.hungpump.com/sb,6.0,270.0,dbd0cf1d-aa59-4646-9555-461a25b930b9
+383,SB-10,50,3,1,750W,50,"2""",30.0,400,12,39,Sewage and Wastewater,https://www.hungpump.com/sb,6.0,270.0,869d08e8-daee-45a9-b717-92e5b83721f3
+385,SB-20,50,1,2,1.5kW,80,"3""",35.0,630,16,52,Sewage and Wastewater,https://www.hungpump.com/sb,9.0,380.0,0591ddf7-c411-48a7-96a9-379f8814067c
+386,SB-20,50,3,2,1.5kW,80,"3""",35.0,630,16,52,Sewage and Wastewater,https://www.hungpump.com/sb,9.0,380.0,032473b4-c261-4f8a-8da7-b561ffc1c362
+388,SB-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Sewage and Wastewater,https://www.hungpump.com/sb,10.0,610.0,cf72e7d4-f24e-4453-8e5f-a1101c847bb9
+389,SB-30,50,3,3,2.2kW,80,"3""",35.0,780,18,59,Sewage and Wastewater,https://www.hungpump.com/sb,10.0,610.0,efc0c282-cee9-42a9-841f-cbe1cce5cbeb
+391,SB-50,50,3,5,3.7kW,100,"4""",45.0,1100,22,72,Sewage and Wastewater,https://www.hungpump.com/sb,10.0,800.0,1a71593a-9ad5-4ed9-8383-92c7e115cbaa
+393,SB-75,50,3,7.5,5.5kW,100,"4""",50.0,1200,24,79,Sewage and Wastewater,https://www.hungpump.com/sb,12.0,770.0,c247e33f-b40b-4761-a46c-b4ff85929c03
+395,SD-250,50,1,1/3,250W,50,"2""",7.0,220,9,30,,https://www.hungpump.com/sd,6.0,130.0,7cad886f-aee1-4fc3-b5e7-d12ca1ac71a7
+396,SD-400,50,1,1/2,400W,50,"2""",7.0,240,11,36,,https://www.hungpump.com/sd,6.0,180.0,31304645-162d-4890-a8ba-219ce7677906
+397,SD-750,50,1,1,750W,50,"2""",7.0,300,15,49,,https://www.hungpump.com/sd,9.0,185.0,e85afb3d-2aa1-4ce6-bbe9-3907274c5eff
+398,SD-750,50,3,1,750W,50,"2""",7.0,300,15,49,,https://www.hungpump.com/sd,9.0,185.0,3cd7e188-fbaa-4407-823d-494364ab5f65
+399,SDP-250,50,1,1/3,250W,50,"2""",7.0,200,9,30,Clean Water,https://www.hungpump.com/sdp,6.0,135.0,ebd4aa38-a5c6-4d50-8094-4bb4d7af8f0c
+400,SDP-400,50,1,1/2,400W,50,"2""",7.0,220,12,39,Clean Water,https://www.hungpump.com/sdp,6.0,180.0,1d18f980-d674-42d2-ad58-0c446b4a28dc
+401,SDP-400A,50,1,1/2,400W,50,"2""",7.0,220,12,39,Clean Water,https://www.hungpump.com/sdp,6.0,180.0,9d4b0b24-fba2-42e6-9ce0-d82dcc869f47
+402,SDP-750,50,1,1,750W,50,"2""",7.0,280,15,49,Clean Water,https://www.hungpump.com/sdp,9.0,200.0,5559a371-5ba5-4ca1-ad82-47c9237d4484
+403,SDP-750,50,3,1,750W,50,"2""",7.0,280,15,49,Clean Water,https://www.hungpump.com/sdp,9.0,200.0,f37bdca1-7e9b-40a2-9f72-68280693c2c9
+404,SG-400,50,1,1/2,400W,50,"2""",35.0,360,8,26,,https://www.hungpump.com/sg,4.0,250.0,66324c39-55ff-436c-bb6b-b3575c73ae97
+407,SG-750,50,1,1,750W,50,"2""",35.0,430,11,36,,https://www.hungpump.com/sg,6.0,300.0,1f935880-545d-436a-ad25-7e1b436d01f7
+411,SM-100,50,1,1/6,100W,25,"1""",3.0,70,6,20,,https://www.hungpump.com/sm,3.0,55.0,a7c3f5c5-34d4-4966-ad65-8241653a35ab
+412,SM-200,50,1,1/4,200W,32,"1-1/4""",3.0,140,7,23,,https://www.hungpump.com/sm,4.5,65.0,25e3d072-e921-4724-9ec0-cb6a704c79c2
+413,SM-300,50,1,1/3,300W,40,"1-1/2""",3.0,180,8,26,,https://www.hungpump.com/sm,4.5,125.0,fa24c3cb-0dfc-46e7-9573-4967d9c1b1f0
+414,SM-400,50,1,1/2,400W,50,"2""",3.0,220,10,33,,https://www.hungpump.com/sm,6.0,120.0,cdd7cfd6-66a1-48c4-ae22-b485a64208da
+415,SR-400,50,1,1/2,400W,25,"1""",7.0,170,11,36,,https://www.hungpump.com/sr,6.0,130.0,7cdd2b60-d6bf-4f51-89b8-ba08473a6fb3
+416,SR-400,50,1,1/2,400W,50,"2""",7.0,200,10,33,,https://www.hungpump.com/sr,6.0,135.0,c125d130-8c80-42f4-994b-aa7298251265
+417,SS-250,50,1,1/3,250W,50,"2""",7.0,220,9,30,Clean Water,https://www.hungpump.com/ss,6.0,130.0,406f0f7f-518a-416a-bd61-66a0b8bed5f5
+418,SS-400,50,1,1/2,400W,50,"2""",7.0,240,11,36,Clean Water,https://www.hungpump.com/ss,6.0,180.0,17f5558b-c490-4bd4-a7ea-e473162d101f
+419,SS-750,50,1,1,750W,50,"2""",7.0,300,15,49,Clean Water,https://www.hungpump.com/ss,9.0,185.0,8ca8dbf3-7872-4775-9ae2-1642c3903183
+420,SS-750,50,3,1,750W,50,"2""",7.0,300,15,49,Clean Water,https://www.hungpump.com/ss,9.0,185.0,c29d6418-5362-4af4-9f49-492f4a8a963f
+422,SV-150,50,1,1/5,150W,40,"1-1/2""",27.0,170,6,20,Dirty Water,https://www.hungpump.com/sv,3.0,140.0,0aa4917d-d4d5-4877-9f66-01e856a527ea
+423,SV-1500,50,1,2,1.5kW,80,"3""",40.0,700,16,52,Dirty Water,https://www.hungpump.com/sv,9.0,450.0,65f67c01-5a16-4ffc-a0d7-e465fa9b6b2d
+425,SV-1500,50,3,2,1.5kW,80,"3""",40.0,700,16,52,Dirty Water,https://www.hungpump.com/sv,9.0,450.0,be13abb0-778b-4fe9-8520-4e9a549a1410
+427,SV-250,50,1,1/3,250W,40,"1-1/2""",27.0,220,7.5,25,Dirty Water,https://www.hungpump.com/sv,4.5,150.0,3a3eb908-cbd2-4401-b6c3-936a6b74dcea
+429,SV-400,50,1,1/2,400W,50,"2""",35.0,350,8.5,28,Dirty Water,https://www.hungpump.com/sv,4.5,260.0,488d44f9-52fa-477f-b521-6e228b844ca8
+430,SV-400,50,1,1/2,400W,50,"2""",35.0,350,8.5,28,Dirty Water,https://www.hungpump.com/sv,4.5,260.0,bed22fe6-30b0-4ed2-a08e-48a170828504
+431,SV-550,50,1,3/4,550W,50,"2""",35.0,370,9,30,Dirty Water,https://www.hungpump.com/sv,6.0,210.0,78b380dc-fce9-457f-81b9-20dec7776ccc
+432,SV-750,50,1,1,750W,80,"3""",37.0,415,11,36,Dirty Water,https://www.hungpump.com/sv,6.0,310.0,442967ca-15eb-451e-8638-146c283fd9b8
+433,SV-750,50,3,1,750W,80,"3""",37.0,415,11,36,Dirty Water,https://www.hungpump.com/sv,6.0,310.0,23585e57-04d0-4437-ae3c-b2e9967438b5
+436,TAS-250,50,1,1/3,250W,40,"1-1/2""",14.0,270,7.5,25,Clean Water,https://www.hungpump.com/tas,4.5,210.0,51d29f98-9c76-4da9-ba58-9672ec3b5da0
+438,TAS-400,50,1,1/2,400W,50,"2""",14.0,320,10,33,Clean Water,https://www.hungpump.com/tas,6.0,230.0,1a0ce4cd-c8f5-42e0-a3c1-d580d572c59b
+440,TAS-750,50,1,1,750W,50,"2""",14.0,340,11,36,Clean Water,https://www.hungpump.com/tas,6.0,250.0,7cab7cd4-ff30-4a84-8f83-9188aaf2be32
+441,TAS-750,50,3,1,750W,50,"2""",14.0,340,11,36,Clean Water,https://www.hungpump.com/tas,6.0,250.0,3edeee36-8c99-49cb-b0aa-69779ab702ae
+442,TAS-750,50,3,1,750W,50,"2""",14.0,340,11,36,Clean Water,https://www.hungpump.com/tas,6.0,250.0,6803c3c4-2655-4f4c-8978-177392f23bf6
+447,TPS-200,50,1,1/4,200W,32,"1-1/4""",5.0,140,7,23,Clean Water,https://www.hungpump.com/tps,4.0,80.0,e5cdb9cb-ca3a-4d64-bd80-4f1dabe87a2a
+451,TPS-50,50,1,1/10,80W,20,"3/4""",5.0,40,4,13,Clean Water,https://www.hungpump.com/tps,2.0,33.0,cb59093d-9f84-453b-bacf-e6e0c1418e46
+454,TPV-200,50,1,1/4,200W,32,"1-1/4""",19.0,140,7,23,,https://www.hungpump.com/tpv,4.0,80.0,54ad6f51-d051-4af0-b12f-b060a8b54fab
+456,TPV-600,50,1,3/4,600W,32,"1-1/4""",32.0,240,6.5,21,,https://www.hungpump.com/tpv,4.0,145.0,ea09aa2b-52ad-4d0a-b632-798096ac9323
+472,100ADL65.5,60,3,7.5,5.5kW,100,"4""",80.0,"2,850",18,59,Dirty Water,https://www.hungpump.com/adl,12.0,1300.0,37369502-3974-4890-a676-ac0d56471cf3
+473,100ADL65.5,60,3,7.5,5.5kW,100,"4""",80.0,"2,850",18,59,Dirty Water,https://www.hungpump.com/adl,12.0,1300.0,d0b0a148-f3c4-4f1a-a81c-3aeb39ed14d3
+474,100ADL65.5,60,3,7.5,5.5kW,100,"4""",80.0,"2,850",18,59,Dirty Water,https://www.hungpump.com/adl,12.0,1300.0,9092f110-a569-49e6-bf34-6abb0422d4d6
+475,100ADL67.5,60,3,10,7.5kW,100,"4""",80.0,"3,050",22,72,Dirty Water,https://www.hungpump.com/adl,12.0,1850.0,956826be-0e4e-44fb-bfb3-feefc0f78a59
+476,100ADL67.5,60,3,10,7.5kW,100,"4""",80.0,"3,050",22,72,Dirty Water,https://www.hungpump.com/adl,12.0,1850.0,85f7cd45-0682-4733-ac0e-63c70ba03895
+477,100ADL67.5,60,3,10,7.5kW,100,"4""",80.0,"3,050",22,72,Dirty Water,https://www.hungpump.com/adl,12.0,1850.0,f21e01f4-96f8-4938-bf8a-03a0f4919117
+478,50ADVS5.75,60,1,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,3110df6f-ea2f-4d4d-8aa4-50e5da827045
+479,50ADVS5.75,60,1,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,99d36192-3c8a-473a-a000-95719cd39cfd
+480,50ADVS5.75,60,3,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,638945eb-e7ea-4837-bbd6-0046ae7ce888
+481,50ADVS5.75,60,3,1,750W,50,"2""",33.0,320,14,46,Dirty Water,https://www.hungpump.com/advs,9.0,140.0,49ce0fac-2bfa-4d71-9676-2b0d00cb5924
+482,50ADVS51.5,60,1,2,1.5kW,50,"2""",31.0,420,22,72,Dirty Water,https://www.hungpump.com/advs,12.0,250.0,e65eb9f0-7238-4126-a866-4532eb9b43e3
+483,50ADVS51.5,60,3,2,1.5kW,50,"2""",31.0,420,22,72,Dirty Water,https://www.hungpump.com/advs,12.0,250.0,c6afcad5-a528-4c24-a0b5-f04fe12d5ebd
+484,50ADVS51.5,60,3,2,1.5kW,50,"2""",31.0,420,22,72,Dirty Water,https://www.hungpump.com/advs,12.0,250.0,fa07e090-9290-4937-935c-470cc72f85b3
+485,50ADVS61.5,60,3,2,1.5kW,50,"2""",31.0,420,22,72,Dirty Water,https://www.hungpump.com/advs,12.0,250.0,d3c24868-ba3d-4ad7-84da-43f2b8245fc3
+486,65ADL61.5,60,1,2,1.5kW,65,"2-1/2""",40.0,850,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,370.0,7037202d-2be0-4d48-bb7e-5d7d62c92b38
+487,65ADL61.5,60,3,2,1.5kW,65,"2-1/2""",40.0,850,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,370.0,c518949f-4fa8-4992-8ee7-b3f9de7468ea
+488,65ADL61.5,60,3,2,1.5kW,65,"2-1/2""",40.0,850,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,370.0,5137a887-9d06-4efc-b932-62ec57e492b7
+489,65ADVS61.5,60,1,2,1.5kW,65,"2-1/2""",45.0,700,17,56,Dirty Water,https://www.hungpump.com/advs,9.0,420.0,fbed57e3-8ac6-4ac7-986b-1d6159ce9042
+490,65ADVS61.5,60,3,2,1.5kW,65,"2-1/2""",45.0,700,17,56,Dirty Water,https://www.hungpump.com/advs,9.0,420.0,ea4687fc-9b9f-4032-96ac-71a2373f2290
+491,65ADVS61.5,60,3,2,1.5kW,65,"2-1/2""",45.0,700,17,56,Dirty Water,https://www.hungpump.com/advs,9.0,420.0,ed39a8ff-9fbb-49f9-941f-184c856744e3
+492,80ADL61.5,60,1,2,1.5kW,80,"3""",50.0,"1,000",13,43,Dirty Water,https://www.hungpump.com/adl,9.0,450.0,759d056e-c8a5-41c0-804a-d205e55d2a62
+493,80ADL61.5,60,3,2,1.5kW,80,"3""",50.0,1000,13,43,Dirty Water,https://www.hungpump.com/adl,9.0,450.0,1f73bed8-05bd-4a86-be95-01e3cd594e72
+494,80ADL61.5,60,3,2,1.5kW,80,"3""",50.0,1000,13,43,Dirty Water,https://www.hungpump.com/adl,9.0,450.0,56d6976a-7642-4ef9-96c7-c2c63493feba
+495,80ADL62.2,60,3,3,2.2kW,80,"3""",50.0,1200,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,800.0,1510ef05-145d-4bd6-b56b-b9b3b523582f
+496,80ADL62.2,60,3,3,2.2kW,80,"3""",50.0,1200,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,800.0,092dec4f-971e-47c0-b9f5-da338615e83a
+497,80ADL62.2,60,3,3,2.2kW,80,"3""",50.0,1200,15,49,Dirty Water,https://www.hungpump.com/adl,9.0,800.0,7b0d6b67-16ba-46d0-b56f-0df551b65c61
+498,80ADL63.7,60,3,5,3.7kW,80,"3""",48.0,1680,20,66,Dirty Water,https://www.hungpump.com/adl,12.0,1080.0,05d9b023-1ba3-4cab-9733-a841f80bea4e
+499,80ADL63.7,60,3,5,3.7kW,80,"3""",48.0,1680,20,66,Dirty Water,https://www.hungpump.com/adl,12.0,1080.0,827fa36e-af69-4ff0-82a2-21eadb3a6429
+500,80ADL63.7,60,3,5,3.7kW,80,"3""",48.0,1680,20,66,Dirty Water,https://www.hungpump.com/adl,12.0,1080.0,006fe7f2-0318-4d01-bd4a-e4988300fa50
+501,80ADVS52.2,60,3,3,2.2kW,80,"3""",50.0,1100,19,62,Dirty Water,https://www.hungpump.com/advs,12.0,580.0,fdeee157-95f6-49ca-af05-74f834cd22c7
+502,80ADVS52.2,60,3,3,2.2kW,80,"3""",50.0,1100,19,62,Dirty Water,https://www.hungpump.com/advs,12.0,580.0,56704401-71ab-4ab8-8838-de7d8001ad5c
+503,80ADVS62.2,60,3,3,2.2kW,80,"3""",50.0,1100,19,62,Dirty Water,https://www.hungpump.com/advs,12.0,580.0,d9170cfd-404b-41d0-8ec9-dcff83fb50ce
+504,80ADVS53.7,60,3,5,3.7kW,80,"3""",55.0,1200,23,75,Dirty Water,https://www.hungpump.com/advs,12.0,750.0,9fc09c20-54b5-4d81-b609-4a35fb8a3814
+505,80ADVS53.7,60,3,5,3.7kW,80,"3""",55.0,1200,23,75,Dirty Water,https://www.hungpump.com/advs,12.0,750.0,d5e39da5-0c72-453e-bbaf-7d5a029411a5
+506,BAH-400,60,1,1/2,400W,32,"1-1/4""",8.0,180,20,66,Dirty Water,https://www.hungpump.com/bah,12.0,115.0,e7bf9227-17f1-488c-b7c6-597f68deff63
+508,BAH-400,60,1,1/2,400W,32,"1-1/4""",8.0,180,20,66,Dirty Water,https://www.hungpump.com/bah,12.0,115.0,701a15af-1e73-4542-86db-1742766707b3
+509,BAH-750,60,1,1,750W,50,"2""",8.0,220,25,82,Dirty Water,https://www.hungpump.com/bah,15.0,130.0,73b56c6c-1273-4a7d-acfc-af64697122ce
+510,BAH-750,60,1,1,750W,50,"2""",8.0,220,25,82,Dirty Water,https://www.hungpump.com/bah,15.0,130.0,268f41a0-4c9c-49cd-a50f-a192270fcba0
+511,BAH-750,60,3,1,750W,50,"2""",8.0,220,25,82,Dirty Water,https://www.hungpump.com/bah,15.0,130.0,7a6723b2-43c1-4a17-be6b-349bb49ee7e8
+512,BAH-750,60,3,1,750W,50,"2""",8.0,220,25,82,Dirty Water,https://www.hungpump.com/bah,15.0,130.0,33a4a482-98c8-4527-81ba-fac825aa26f5
+513,BAS-100,60,1,1/6,100W,25,"1""",6.0,90,6,20,Dirty Water,https://www.hungpump.com/bas,4.0,60.0,2b78e1a4-3512-48ec-8487-c37b3a60f907
+514,BAS-100,60,1,1/6,100W,25,"1""",6.0,90,6,20,Dirty Water,https://www.hungpump.com/bas,4.0,60.0,0254d345-9e24-42b8-bb09-b5d9db2c7f6c
+515,BAS-200,60,1,1/4,200W,32,"1-1/4""",7.0,140,7,23,Dirty Water,https://www.hungpump.com/bas,3.0,95.0,9ef4b5ab-fa91-4b42-8180-3a9bcebb59a3
+516,BAS-200,60,1,1/4,200W,32,"1-1/4""",7.0,140,7,23,Dirty Water,https://www.hungpump.com/bas,4.0,95.0,9690af66-f15a-4ebe-8f6e-69507b5f0f98
+517,BAS-300,60,1,1/3,300W,40,"1-1/2""",9.0,200,8,26,Dirty Water,https://www.hungpump.com/bas,4.0,150.0,0de12f2e-edf9-4d42-a95f-56f5aaa62b90
+518,BAS-300,60,1,1/3,300W,40,"1-1/2""",9.0,200,8,26,Dirty Water,https://www.hungpump.com/bas,4.0,150.0,16ab9128-5ef9-4906-8f99-f0bfcd70ae9c
+519,BAS-400,60,1,1/2,400W,50,"2""",12.0,270,10,33,Dirty Water,https://www.hungpump.com/bas,6.0,160.0,f9b2c29b-96b1-4e81-870d-550a43ef52dc
+520,BAS-400,60,1,1/2,400W,50,"2""",12.0,270,10,33,Dirty Water,https://www.hungpump.com/bas,6.0,160.0,bf3e445d-b20f-458a-8017-a44f63ca3365
+521,BAS-600,60,1,3/4,600W,50,"2""",15.0,300,11,36,Dirty Water,https://www.hungpump.com/bas,6.0,195.0,ca6d869c-a3f4-4cb5-af1e-270f2545cf64
+522,BAS-600,60,1,3/4,600W,50,"2""",15.0,300,11,36,Dirty Water,https://www.hungpump.com/bas,6.0,195.0,72658580-7d58-44a0-8d3c-19f12b989a08
+523,BAV-150,60,1,1/5,150W,32,"1-1/4""",10.0,160,6,20,Dirty Water,https://www.hungpump.com/bav,3.0,115.0,f39da1e1-985a-4670-94b7-7a6ae09a95f9
+524,BAV-150,60,1,1/5,150W,32,"1-1/4""",10.0,160,6,20,Dirty Water,https://www.hungpump.com/bav,3.0,115.0,28403ab4-f7e1-4320-9275-d28041239b69
+525,BAV-250,60,1,1/3,250W,40,"1-1/2""",25.0,200,8,26,Dirty Water,https://www.hungpump.com/bav,4.5,120.0,37427ca0-54b1-4a91-9a03-4fdac117567d
+528,BAV-250,60,1,1/3,250W,40,"1-1/2""",25.0,200,8,26,Dirty Water,https://www.hungpump.com/bav,4.5,120.0,6cacf548-54d5-4b47-bef6-6af74949490f
+529,BAV-250,60,3,1/3,250W,40,"1-1/2""",25.0,200,8,26,Dirty Water,https://www.hungpump.com/bav,4.5,120.0,522d2746-6ccd-40b9-9e09-766a65e66a5a
+530,BAV-250,60,3,1/3,250W,40,"1-1/2""",25.0,200,8,26,Dirty Water,https://www.hungpump.com/bav,4.5,120.0,9d3b97c0-9416-4ea4-80a0-11da3b983f84
+531,BAV-400,60,1,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,6.0,185.0,9fac880a-f1e9-419d-8683-9fc3a51f79f8
+532,BAV-400,60,1,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,6.0,185.0,7dd0602f-7f43-4dd6-88b6-f52ee7313d5a
+533,BAV-400,60,3,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,6.0,185.0,8ee15c71-316f-47ac-a63a-5e54ec18cedc
+534,BAV-400,60,3,1/2,400W,50,"2""",30.0,300,10,33,Dirty Water,https://www.hungpump.com/bav,6.0,185.0,d5c04be8-d116-425a-93e9-12bad3f7bce4
+536,BAV-550,60,1,3/4,550W,50,"2""",35.0,340,12,39,Dirty Water,https://www.hungpump.com/bav,7.5,170.0,bdc62102-203b-4849-bf93-08d43f5b911e
+538,BAV-550,60,1,3/4,550W,50,"2""",35.0,340,12,39,Dirty Water,https://www.hungpump.com/bav,7.5,170.0,993e3a4c-e54c-4efd-ab5f-9f34027e7c64
+539,BAV-550,60,3,3/4,550W,50,"2""",35.0,340,12,39,Dirty Water,https://www.hungpump.com/bav,7.5,170.0,7d49c6dc-f1ce-4ee1-80d5-8c7cd45e138f
+540,BAV-550,60,3,3/4,550W,50,"2""",35.0,340,12,39,Dirty Water,https://www.hungpump.com/bav,7.5,170.0,50adc28e-f764-4bbf-9afb-250b68bd7e30
+541,BCV-1500-35,60,1,2,1.5kW,80,"3""",35.0,680,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,440.0,ca7239dd-95fd-480a-987e-d346f86a8648
+542,BCV-1500-35,60,3,2,1.5kW,80,"3""",35.0,680,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,440.0,15c39041-dab9-438c-952e-eda26250aabe
+543,BCV-1500-35,60,3,2,1.5kW,80,"3""",35.0,680,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,440.0,2c2a624f-3bb7-4b29-a863-569824a32ad1
+544,BCV-1500-50,60,1,2,1.5kW,80,"3""",50.0,720,16,52,Dirty Water,https://www.hungpump.com/bcv,9.0,480.0,58ec1c22-c616-4856-9139-b566276e00b9
+545,BCV-1500-50,60,3,2,1.5kW,80,"3""",50.0,720,16,52,Dirty Water,https://www.hungpump.com/bcv,9.0,480.0,8744b518-ced7-4353-9d0f-14f7612e4d6f
+546,BCV-1500-50,60,3,2,1.5kW,80,"3""",50.0,720,16,52,Dirty Water,https://www.hungpump.com/bcv,9.0,480.0,7232343a-1950-4d13-95a6-d460471ebbb0
+547,BCV-1500-65,60,1,2,1.5kW,80,"3""",65.0,900,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,520.0,ca655c8f-73f5-479f-bf57-a4efb339e13e
+548,BCV-1500-65,60,3,2,1.5kW,80,"3""",65.0,900,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,520.0,0d442317-f32c-4899-9a15-1c09e7c69146
+549,BCV-1500-65,60,3,2,1.5kW,80,"3""",65.0,900,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,520.0,353cceb8-160b-4b06-9e0b-2ea986c511b8
+550,BCV-2200-35,60,3,3,2.2kW,80,"3""",35.0,800,20,66,Dirty Water,https://www.hungpump.com/bcv,12.0,540.0,0749e78a-f4ac-4858-88c1-09e23e600e37
+551,BCV-2200-35,60,3,3,2.2kW,80,"3""",35.0,800,20,66,Dirty Water,https://www.hungpump.com/bcv,12.0,540.0,2c92affc-a147-4576-9b65-fb29e6f545ae
+552,BCV-2200-50,60,3,3,2.2kW,80,"3""",50.0,900,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,430.0,9c940407-d0a6-480f-8ceb-9644e7ef94f1
+553,BCV-2200-50,60,3,3,2.2kW,80,"3""",50.0,900,18,59,Dirty Water,https://www.hungpump.com/bcv,12.0,430.0,cb73daa9-392d-4042-8e10-0da88688a204
+554,BCV-2200-65,60,3,3,2.2kW,80,"3""",65.0,1200,11,36,Dirty Water,https://www.hungpump.com/bcv,6.0,700.0,6c915c3b-620e-4378-94e3-8c596ad8ea1b
+555,BCV-2200-65,60,3,3,2.2kW,80,"3""",65.0,1200,11,36,Dirty Water,https://www.hungpump.com/bcv,6.0,700.0,62090980-a74a-407b-87d7-fa8851268c87
+556,BCV-2200-80,60,3,3,2.2kW,80,"3""",80.0,1300,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,800.0,2a9ae413-514d-4ac6-83e5-31eb95c6d94d
+557,BCV-2200-80,60,3,3,2.2kW,80,"3""",80.0,1300,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,800.0,86eb95a1-5829-4bbc-9924-efddae8e91b2
+558,BCV-3700-50,60,3,5,3.7kW,100,"4""",50.0,1100,21,69,Dirty Water,https://www.hungpump.com/bcv,12.0,690.0,8571fff8-552b-4dd0-acaa-13edb4e8cdfd
+559,BCV-3700-50,60,3,5,3.7kW,100,"4""",50.0,1100,21,69,Dirty Water,https://www.hungpump.com/bcv,12.0,690.0,980a9f77-99a7-43e9-adeb-d6d139ac83f0
+560,BCV-3700-80,60,3,5,3.7kW,100,"4""",80.0,1500,11,36,Dirty Water,https://www.hungpump.com/bcv,6.0,1060.0,aca20990-55b3-4adf-bd2a-46284b0a7ac5
+561,BCV-3700-80,60,3,5,3.7kW,100,"4""",80.0,1500,11,36,Dirty Water,https://www.hungpump.com/bcv,6.0,1060.0,83905df8-9f76-4248-865e-7610ba0e3eff
+562,BCV-400-30,60,1,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,200.0,f2dfd16d-cb77-4af4-b005-a59a927904d9
+563,BCV-400-30,60,1,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/bcv,6.0,200.0,a23385a7-f4e3-4a9b-9ae7-0ee9f0013952
+564,BCV-400-50,60,1,1/2,400W,50,"2""",50.0,380,7,23,Dirty Water,https://www.hungpump.com/bcv,4.0,250.0,92adf070-113a-4d6b-bab0-5b24681f7e99
+565,BCV-400-50,60,1,1/2,400W,50,"2""",50.0,380,7,23,Dirty Water,https://www.hungpump.com/bcv,4.0,250.0,157070ab-d8b3-4c71-b566-5ec132e22d9d
+566,BCV-5500-50,60,3,5,3.7kW,100,"4""",50.0,1200,28,92,Dirty Water,https://www.hungpump.com/bcv,15.0,850.0,09c87eec-5354-41dc-843e-ea5cfb917421
+567,BCV-5500-50,60,3,5,3.7kW,100,"4""",50.0,1200,28,92,Dirty Water,https://www.hungpump.com/bcv,15.0,850.0,db0b9ce0-37c8-40b9-8b9a-923b54a55932
+568,BCV-750-30,60,1,1,750W,50,"2""",30.0,380,12,39,Dirty Water,https://www.hungpump.com/bcv,6.0,270.0,38f616df-bf75-4e5c-8bb0-0ebcead01d4a
+569,BCV-750-30,60,1,1,750W,50,"2""",30.0,380,12,39,Dirty Water,https://www.hungpump.com/bcv,6.0,270.0,603a9808-20bc-4070-8224-d12b1efdf7c6
+570,BCV-750-50,60,1,1,750W,50,"2""",50.0,500,10,33,Dirty Water,https://www.hungpump.com/bcv,6.0,370.0,1d24cdec-4aa3-4f60-b99e-77bea5f601d0
+571,BCV-750-50,60,1,1,750W,50,"2""",50.0,500,10,33,Dirty Water,https://www.hungpump.com/bcv,6.0,370.0,bddad0fe-2c86-4477-bfb5-f791b6ab2b19
+574,BPH-300,60,1,1/3,300W,40,"1-1/2""",3.0,75,21,69,Clean Water,https://www.hungpump.com/bph,12.0,50.0,01f130d3-e5cd-4166-b732-fb4d7390cdcc
+575,BPH-300,60,1,1/3,300W,40,"1-1/2""",3.0,75,21,69,Clean Water,https://www.hungpump.com/bph,12.0,50.0,5f5dba3e-afd2-403a-a939-d3bee7140f4c
+576,BPO-100,60,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bpo,4.0,41.0,f7d3c816-c4bb-4dc6-ab7c-809767187331
+577,BPO-100,60,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bpo,4.0,41.0,819840a8-f10b-49a2-a843-1970134cb15e
+578,BPO-100,60,1,1/6,100W,25,"1""",3.0,70,6,20,Clean Water,https://www.hungpump.com/bpo,3.0,60.0,1daee839-ce47-4531-a188-0a53c45b6147
+592,BPS-100,60,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bps,4.0,41.0,b01a3606-af5b-4223-b5da-5585ccdcb227
+593,BPS-100,60,1,1/6,100W,25,"1""",3.0,70,6.5,21,Clean Water,https://www.hungpump.com/bps,4.0,41.0,296c47c2-c271-41a0-8d30-285e28da5c7d
+600,BPS-200,60,1,1/4,200W,32,"1-1/4""",5.0,140,7,23,Clean Water,https://www.hungpump.com/bps,4.0,100.0,c4443ed4-0e8a-4a1d-a70a-53db705cdcd2
+603,BPS-200,60,1,1/4,200W,32,"1-1/4""",5.0,140,7,23,Clean Water,https://www.hungpump.com/bps,4.0,100.0,1b3219e7-05a2-48e0-b0ce-471692fe49a9
+608,BPS-300,60,1,1/3,300W,40,"1-1/2""",5.0,180,8,26,Clean Water,https://www.hungpump.com/bps,4.0,120.0,8e7fa2d9-e4ca-49e6-95c6-15444fc4c219
+609,BPS-300,60,1,1/3,300W,40,"1-1/2""",5.0,180,8,26,Clean Water,https://www.hungpump.com/bps,4.0,120.0,b945c39c-d159-48e5-8c78-8380adbfda9e
+612,BPS-400,60,1,1/2,400W,50,"2""",5.0,220,9,30,Clean Water,https://www.hungpump.com/bps,6.0,100.0,6e573166-aa3c-4886-8e66-1b7b4b004a51
+613,BPS-400,60,1,1/2,400W,50,"2""",5.0,220,9,30,Clean Water,https://www.hungpump.com/bps,6.0,100.0,010f0484-1937-4a69-aef5-2d49433a576a
+618,BPS-80,60,1,1/10,80W,20,"3/4""",3.0,40,4,13,Clean Water,https://www.hungpump.com/bps,2.0,35.0,c08335bb-a614-4d48-bfa1-140073dabfb4
+619,BPS-80,60,1,1/10,80W,20,"3/4""",3.0,40,4,13,Clean Water,https://www.hungpump.com/bps,2.0,35.0,2b3b4005-cc02-4d48-98fd-5361b4ac07e4
+622,DC-1812,60,1,1/8,96W,25,"1""",3.0,115,0.75,2,Speciality Pump,https://www.hungpump.com/dc,3.0,48.0,898d607c-5f26-4f74-be63-103031da9e35
+623,DC-1812,50,1,1/8,96W,25,"1""",3.0,115,0.75,2,Speciality Pump,https://www.hungpump.com/dc,3.0,48.0,21b0b6bb-c914-4710-a7ee-1c86b23a82b9
+624,DC-1824,60,1,1/6,120W,25,"1""",3.0,115,0.75,2,Speciality Pump,https://www.hungpump.com/dc,3.0,48.0,0fad84c5-1ac7-4a3b-9314-c545d8aad9f3
+625,DC-1824,50,1,1/6,120W,25,"1""",3.0,115,0.75,2,Speciality Pump,https://www.hungpump.com/dc,3.0,48.0,65926675-42d1-4691-81ee-98d00d994064
+626,DC-2312,60,1,1/4,132W,25,"1""",3.0,145,2.3,8,Speciality Pump,https://www.hungpump.com/dc,3.0,80.0,03ca8d55-7b82-4692-afd2-9e8dd2f82c81
+627,DC-2312,50,1,1/4,132W,25,"1""",3.0,145,2.3,8,Speciality Pump,https://www.hungpump.com/dc,3.0,80.0,6627bbcb-3b3c-4659-a669-e3365f7cf43b
+628,DC-2324,60,1,1/4,132W,25,"1""",3.0,145,2.3,8,Speciality Pump,https://www.hungpump.com/dc,3.0,80.0,6c7cd719-ccab-490e-b593-085e81168f2c
+629,DC-2324,50,1,1/4,132W,25,"1""",3.0,145,2.3,8,Speciality Pump,https://www.hungpump.com/dc,3.0,80.0,b465a7c2-7141-43c5-a812-ca542ef4b7e0
+630,DC-3024,60,1,1/4,168W,32,"1-1/4""",5.0,190,5.5,18,Speciality Pump,https://www.hungpump.com/dc,3.0,120.0,4c3c753d-e3f8-41d5-8139-d1077678125a
+631,DC-3024,50,1,1/4,168W,32,"1-1/4""",5.0,190,5.5,18,Speciality Pump,https://www.hungpump.com/dc,3.0,120.0,ac6d747e-32b4-4a69-acd5-0c64b674ce19
+632,DS-05,60,1,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,bb1a602f-932f-46bb-9236-ef555d58c08e
+633,DS-05,60,1,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,d91e43a1-619e-4947-9940-b466a352b837
+634,DS-05,60,3,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,aacce71e-4614-4072-b603-f801a75d43eb
+635,DS-05,60,3,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,60e51ff8-a0b3-4407-96d4-c3699d6675f2
+636,DS-10,60,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,7c0ad02b-f755-453d-9721-e3fcc40578ee
+637,DS-10,60,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,fb4a6681-e9f6-4228-a78a-71a54d15860a
+639,DS-10,60,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,270789b5-a4f8-4036-9490-2c394788c702
+640,DS-10,60,1,1,750W,80,"3""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,1d887c16-f581-482f-85a6-f26c4a2d6dd6
+641,DS-10,60,3,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,4d03f89d-1c3e-4979-a1ad-a7646a040e40
+642,DS-10,60,3,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,7617da73-97e3-4ebb-8d54-811e5b26d036
+643,DS-100,60,3,10,7.5kW,100,"4""",27.0,1530,28,92,Dirty Water,https://www.hungpump.com/dsk,15.0,1300.0,57b457d8-0e38-45a2-8b53-aec59714bea1
+644,DS-100,60,3,10,7.5kW,100,"4""",27.0,1530,28,92,Dirty Water,https://www.hungpump.com/dsk,15.0,1300.0,b9a14422-b8c9-460d-806c-57dec1dc8606
+645,DS-20,60,1,2,1.5kW,80,"3""",15.0,660,18,59,Dirty Water,https://www.hungpump.com/dsk,9.0,480.0,fd296783-3aba-4aeb-bda2-11a1face0ce4
+646,DS-20,60,3,2,1.5kW,80,"3""",15.0,660,18,59,Dirty Water,https://www.hungpump.com/dsk,9.0,480.0,a2576de5-66d4-467b-97b7-bed62695f1db
+647,DS-20,60,3,2,1.5kW,80,"3""",15.0,660,18,59,Dirty Water,https://www.hungpump.com/dsk,9.0,480.0,d99f036b-978e-43b4-a052-2dfcebc82c27
+648,DS-20,60,3,2,1.5kW,80,"3""",35.0,960,15.5,51,Dirty Water,https://www.hungpump.com/dsk,9.0,620.0,ee16016e-cf21-40f4-805e-9d6918f5d60c
+649,DS-20,60,3,2,1.5kW,80,"3""",35.0,960,15.5,51,Dirty Water,https://www.hungpump.com/dsk,9.0,620.0,617d2bf5-9b0d-425d-a067-646044964d9e
+653,DS-30,60,3,3,2.2kW,80,"3""",15.0,820,19,62,Dirty Water,https://www.hungpump.com/dsk,9.0,580.0,cad3a8b0-b56d-4701-b335-7e1950420b4e
+654,DS-30,60,3,3,2.2kW,80,"3""",15.0,820,19,62,Dirty Water,https://www.hungpump.com/dsk,9.0,800.0,caeb93fd-d1c9-417f-82b4-3e9a27ceb8c2
+655,DS-30,60,3,3,2.2kW,80,"3""",35.0,"1,200",20,66,Dirty Water,https://www.hungpump.com/dsk,12.0,800.0,e20d3af1-389a-4a5c-ab63-534956f5f6b9
+656,DS-30,60,3,3,2.2kW,80,"3""",35.0,"1,200",20,66,Dirty Water,https://www.hungpump.com/dsk,12.0,800.0,3f6db730-89d3-48a2-a291-f62132ee2509
+657,DS-30,60,3,3,2.2kW,80,"3""",35.0,"1,200",20,66,Dirty Water,https://www.hungpump.com/dsk,12.0,800.0,7a40b258-2904-4295-989a-6585d516d456
+662,DS-50,60,3,5,3.7kW,100,"4""",15.0,1180,21,69,Dirty Water,https://www.hungpump.com/dsk,15.0,560.0,88cdce6e-da22-4367-8e4a-e6a287a1ffda
+663,DS-50,60,3,5,3.7kW,100,"4""",15.0,1180,21,69,Dirty Water,https://www.hungpump.com/dsk,15.0,560.0,5aea8b39-b878-4d5e-921c-852839a914d3
+664,DS-50,60,3,5,3.7kW,80,"3""",35.0,"1,400",26,85,Dirty Water,https://www.hungpump.com/dsk,15.0,1020.0,02f46bbb-d6b8-45b1-8a59-85d6a5ed527b
+665,DS-50,60,3,5,3.7kW,80,"3""",35.0,"1,400",26,85,Dirty Water,https://www.hungpump.com/dsk,15.0,1020.0,62887f8e-5d60-40e2-8598-c793d2c317fd
+669,DS-75,60,3,7.5,5.5kW,100,"4""",20.0,1320,24,79,Dirty Water,https://www.hungpump.com/dsk,15.0,1100.0,a688fe62-1719-41cd-a177-53e678da3dd1
+670,DS-75,60,3,7.5,5.5kW,100,"4""",20.0,1320,24,79,Dirty Water,https://www.hungpump.com/dsk,15.0,1100.0,2d7c065d-79d7-461c-a961-2e7996271c9b
+671,DSK-05,60,1,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,5f8ca2f8-2262-4607-996e-63eadfe6d2e7
+672,DSK-05,60,1,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,b29e9857-a82a-4c9d-81b8-5ae8e23da352
+673,DSK-05,60,3,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,462cb2eb-1f6b-4185-8178-ae1756985252
+674,DSK-05,60,1,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,fa771a3c-f30b-40da-bf05-cf9f86e029ca
+675,DSK-05,60,1,1/2,400W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,cca75578-019e-4c15-a1aa-eac231522414
+677,DSK-10,60,1,1,750W,50,"2""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,7ed51388-4a69-4706-b1ac-b0d0566118f2
+678,DSK-10,60,3,1,750W,80,"3""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,2777dd29-93c6-42a6-903f-51d689218be0
+679,DSK-10,60,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,79219be1-c2d1-4000-a9d7-67fb7324f966
+680,DSK-10,60,1,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,390645c6-5d65-4f23-bd47-5c6ad94e8f36
+681,DSK-10,60,3,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,4eebab98-9de1-414a-9eb1-3e427b4ea893
+682,DSK-10,60,3,1,750W,50,"2""",15.0,420,14,46,Dirty Water,https://www.hungpump.com/dsk,9.0,220.0,eaac3874-dd29-4a2b-84e5-6cb28eb01a83
+683,DSK-100,60,3,10,7.5kW,100,"4""",27.0,1530,28,92,Dirty Water,https://www.hungpump.com/dsk,15.0,1300.0,48516146-b37d-4d7e-81cb-929d21f3af43
+684,DSK-100,60,3,10,7.5kW,100,"4""",27.0,1530,28,92,Dirty Water,https://www.hungpump.com/dsk,15.0,1300.0,572c1eb1-314c-43c3-8d50-eb88dd06c4ea
+686,DSK-20,60,1,2,1.5kW,80,"3""",15.0,300,10,33,Dirty Water,https://www.hungpump.com/dsk,6.0,220.0,6e127c3a-d2ee-45ea-bf4a-84673b50258f
+687,DSK-20,60,1,2,1.5kW,80,"3""",15.0,660,18,59,Dirty Water,https://www.hungpump.com/dsk,9.0,480.0,fd408253-ea1b-4fe0-bede-b184647d825c
+688,DSK-20,60,3,2,1.5kW,80,"3""",15.0,660,18,59,Dirty Water,https://www.hungpump.com/dsk,9.0,480.0,1bcab4dd-154a-4075-8129-5530a568b020
+689,DSK-20,60,3,2,1.5kW,80,"3""",15.0,660,18,59,Dirty Water,https://www.hungpump.com/dsk,9.0,480.0,8560d693-8308-4d9b-a937-e43156ba1b9f
+690,DSK-30,60,3,3,2.2kW,80,"3""",15.0,820,19,62,Dirty Water,https://www.hungpump.com/dsk,9.0,580.0,29138371-c85a-4d46-9cb7-5d0d8ca6d568
+691,DSK-30,60,3,3,2.2kW,80,"3""",15.0,820,19,62,Dirty Water,https://www.hungpump.com/dsk,9.0,580.0,19a8e946-f93a-4a6a-9bd0-442e99282b9f
+692,DSK-50,60,3,5,3.7kW,100,"4""",15.0,1180,21,69,Dirty Water,https://www.hungpump.com/dsk,15.0,560.0,165e506e-423c-4b6d-bfcf-53e9f795a54b
+693,DSK-50,60,3,5,3.7kW,100,"4""",15.0,1180,21,69,Dirty Water,https://www.hungpump.com/dsk,15.0,560.0,f10ee640-9150-4ce3-95e2-9a0ae98f0c08
+694,DSK-75,60,3,7.5,5.5kW,100,"4""",20.0,1320,24,79,Dirty Water,https://www.hungpump.com/dsk,15.0,1100.0,f36a6262-6f4e-4bf7-b8fb-3a6f24c0e8a0
+695,DSK-75,60,3,7.5,5.5kW,100,"4""",20.0,1320,24,79,Dirty Water,https://www.hungpump.com/dsk,15.0,1100.0,51052fd2-ce99-4ba1-a3d8-b4bd968e8f12
+696,DSP-10,60,1,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,ff91e4a8-451e-4d03-bc4d-2e8d46fd9f88
+697,DSP-10,60,1,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,3c715d90-5d1b-4335-97de-6af286acfb61
+698,DSP-10,60,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,4a2a2e4b-1059-4c01-82e2-f107ce7faa3f
+699,DSP-10,60,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,84217cbb-0914-429a-8998-a0ed69fc71e8
+700,DSP-10,60,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,ff11588e-3f0a-4865-893e-925843534020
+701,DSP-100,60,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,1106025c-1bbd-4197-a4e7-ab17b010f4c7
+702,DSP-100,60,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,57e33c6d-479e-4de9-b8b2-5b8b6c63536d
+703,DSP-100,60,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,7629323a-ebf3-4430-9ca0-b9df395996ce
+704,DSP-150,60,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,c6859205-8cdb-46ac-860f-de2504514e36
+705,DSP-150,60,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,4b56c7dd-3623-4347-bf3f-5277a9df5002
+706,DSP-150,60,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,0fad96f6-c835-4526-868f-108e80ee4f5c
+707,DSP-20,60,1,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,16838cc4-0f9d-4eb0-be31-04bb58714750
+708,DSP-20,60,3,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,e8859d7d-569b-4dc1-ab85-76921c79efdb
+709,DSP-20,60,3,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,a7c65085-1228-49cc-8282-64e01172d668
+710,DSP-30,60,1,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,1ad7727c-37df-4034-96ad-4c7273a365d4
+711,DSP-30,60,3,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,0b03d5e3-5709-49a0-9df3-f66605789da0
+712,DSP-30,60,3,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,ef32cb3d-b66d-4bab-9d66-7ebbd86f62ec
+713,DSP-50,60,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,d818d8c9-1ad0-46f7-9add-25cafb844872
+714,DSP-50,60,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,5b86f59c-371f-44d3-9d45-a96bb28500d6
+715,DSP-50,60,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,1fe6961e-ec4a-4ca8-90be-fe2456eb6de2
+716,DSP-75,60,3,7.5,5.5kW,100,"4""",50.0,2100,34,112,Dirty Water,https://www.hungpump.com/dsp,9.0,1250.0,e0474ed3-3d33-4702-9502-0866bd2badab
+717,DSP-75,60,3,7.5,5.5kW,100,"4""",50.0,2100,34,112,Dirty Water,https://www.hungpump.com/dsp,9.0,1250.0,8a907c3a-ab87-4831-9ed1-661ec933ff33
+718,DSPK-10,60,1,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,a28bc144-3bb9-4717-b1ff-30b1f280d46a
+719,DSPK-10,60,1,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,bb84ee31-6ff6-4c61-8675-9ed5d3d3deb8
+721,DSPK-10,60,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,aba068d9-e20d-4961-a1ad-fc23ea9befd9
+722,DSPK-10,60,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,ff5ad4c8-d565-4085-b87d-73a02e3047ca
+723,DSPK-10,60,3,1,750W,50,"2""",30.0,400,14,46,Dirty Water,https://www.hungpump.com/dsp,9.0,180.0,2316907c-a416-40ed-91be-5e76c3bf661d
+724,DSPK-100,60,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,6d9c78a6-27f8-435a-acbf-f41fba94560f
+725,DSPK-100,60,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,d83cfb64-28af-429c-9c59-5e327d8da009
+727,DSPK-100,60,3,10,7.5kW,150,"6""",65.0,2500,28,92,Dirty Water,https://www.hungpump.com/dsp,9.0,1800.0,5046fab5-e4e8-409f-9147-d28c26765092
+728,DSPK-150,60,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,5c08b4b9-8537-487e-afbe-dda101c3a2db
+729,DSPK-150,60,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,acddb9d7-92dc-4ca9-8ab7-74e2019f1614
+731,DSPK-150,60,3,15,11kW,150,"6""",65.0,3200,32,105,Dirty Water,https://www.hungpump.com/dsp,12.0,2050.0,2b5ba6b9-379c-4aa8-bae9-d0f698c11f54
+732,DSPK-20,60,1,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,d9296fec-f6e5-4a23-9cce-c9de8f5a3d20
+733,DSPK-20,60,3,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,a4db8af2-a5c4-4243-a7a5-19d9664d585c
+734,DSPK-20,60,3,2,1.5kW,80,"3""",40.0,880,18,59,Dirty Water,https://www.hungpump.com/dsp,12.0,410.0,920f3e43-f935-4631-8fa2-afd654269956
+735,DSPK-30,60,1,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,81ff20d4-ee06-46a6-9157-6aa863698ab9
+736,DSPK-30,60,3,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,3390e362-295f-438f-b5da-4e52f9075706
+737,DSPK-30,60,3,3,2.2kW,80,"3""",40.0,1200,20,66,Dirty Water,https://www.hungpump.com/dsp,12.0,700.0,258ca6bc-6130-4ae9-b475-6d9721504ae3
+741,DSPK-50,60,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,591088be-1ac5-4130-a207-8e36f7518a29
+742,DSPK-50,60,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,bc6b449c-618d-4994-916f-4d86cd6a47ac
+745,DSPK-50,60,3,5,3.7kW,100,"4""",45.0,1300,22,72,Dirty Water,https://www.hungpump.com/dsp,12.0,870.0,8b3dc1a6-4dd1-424e-b719-771e73d78bd8
+746,DSPK-75,60,3,7.5,5.5kW,100,"4""",50.0,2100,34,112,Dirty Water,https://www.hungpump.com/dsp,9.0,1250.0,2f03effc-474c-4610-97dc-adee435177a4
+747,DSPK-75,60,3,7.5,5.5kW,100,"4""",50.0,2100,34,112,Dirty Water,https://www.hungpump.com/dsp,9.0,1250.0,2777c400-cd3c-45bb-8cbc-abcbd76e0f27
+749,FAS-150,60,1,1/5,150W,50,"2""",19.0,230,6,20,,https://www.hungpump.com/fas,4.0,100.0,3a9aeb18-4095-4a19-8206-e11af68d33bb
+750,FAS-150,60,1,1/5,150W,50,"2""",19.0,230,6,20,,https://www.hungpump.com/fas,4.0,100.0,0e35e3e9-97db-47ba-8136-df840f8aba0a
+751,FAS-250,60,1,1/3,250W,50,"2""",19.0,260,7,23,,https://www.hungpump.com/fas,4.0,155.0,783eddce-5845-4690-8375-b578cc6100b2
+753,FAS-250,60,1,1/3,250W,50,"2""",19.0,260,7,23,,https://www.hungpump.com/fas,4.0,155.0,b545213d-2720-4ffe-9f0c-5f64fc20de43
+754,FAS-400,60,1,1/2,400W,50,"2""",19.0,320,9,30,,https://www.hungpump.com/fas,6.0,200.0,dc4930d8-6207-4786-957a-f3d5537a3d08
+756,FAS-400,60,1,1/2,400W,50,"2""",19.0,320,9,30,,https://www.hungpump.com/fas,6.0,200.0,04e59019-4cc0-4348-ab26-cc70db9cc6e9
+757,FAS-750,60,1,1,750W,50,"2""",19.0,360,12,39,,https://www.hungpump.com/fas,8.0,215.0,6b6b9421-7109-4c07-96aa-1706d9206108
+758,FAS-750,60,1,1,750W,50,"2""",19.0,360,12,39,,https://www.hungpump.com/fas,8.0,215.0,fed9861e-8b3d-416e-aabf-d41114a48b95
+763,GC-07,60,1,3/4,550W,32,"1-1/4""",N/A,140,11,36,Grinder,https://www.hungpump.com/gc,6.0,110.0,0294e884-0b96-410d-95b8-a6b85804f204
+765,GC-07,60,1,3/4,550W,32,"1-1/4""",N/A,140,11,36,Grinder,https://www.hungpump.com/gc,6.0,110.0,deda16b8-0298-4a64-8307-4bc5905cebb6
+766,GC-07,60,3,3/4,550W,32,"1-1/4""",N/A,140,11,36,Grinder,https://www.hungpump.com/gc,6.0,110.0,dcd43e6d-a7ec-4e27-aa4a-df9ceee74f50
+767,GC-07,60,3,3/4,550W,32,"1-1/4""",N/A,140,11,36,Grinder,https://www.hungpump.com/gc,6.0,110.0,59272248-8550-4f3a-bf4c-53385358ec42
+768,GC-10,60,1,1,750W,32,"1-1/4""",N/A,160,16,52,Grinder,https://www.hungpump.com/gc,9.0,105.0,6ae5d8bb-173e-4ecf-b963-7a086062db3c
+770,GC-10,60,1,1,750W,32,"1-1/4""",N/A,160,16,52,Grinder,https://www.hungpump.com/gc,9.0,105.0,c620cb29-ae39-4c3e-8ac4-417a3360214c
+771,GC-10,60,3,1,750W,32,"1-1/4""",N/A,160,16,52,Grinder,https://www.hungpump.com/gc,9.0,105.0,9add69db-6c0c-4af9-ba26-e1bee8f46f6b
+772,GC-10,60,3,1,750W,32,"1-1/4""",N/A,160,16,52,Grinder,https://www.hungpump.com/gc,9.0,105.0,7ebca082-ff2d-41c0-ba38-6e7c27e79a21
+773,GC-20,60,1,2,1.5kW,32,"1-1/4""",N/A,180,26,85,Grinder,https://www.hungpump.com/gc,15.0,150.0,f8d2fe3b-64da-4976-92ee-63b8b66de340
+774,GC-20,60,3,2,1.5kW,32,"1-1/4""",N/A,180,26,85,Grinder,https://www.hungpump.com/gc,15.0,150.0,00977147-42dc-4866-a21c-be8cfaf80e36
+775,GC-20,60,3,2,1.5kW,32,"1-1/4""",N/A,180,26,85,Grinder,https://www.hungpump.com/gc,15.0,150.0,c13d2245-d208-4e0a-81d2-362d686e1e40
+776,GC-30,60,3,3,2.2kW,50,"2""",N/A,180,36,118,Grinder,https://www.hungpump.com/gc,20.0,140.0,5ad2ff82-ecee-4444-af37-5d36ed26ff8d
+777,GC-30,60,3,3,2.2kW,50,"2""",N/A,180,36,118,Grinder,https://www.hungpump.com/gc,20.0,140.0,4f9f6f8b-e521-4c37-861c-7355874dc8da
+779,GC-50,60,3,5,3.7kW,65,"2-1/2""",N/A,320,42,138,Grinder,https://www.hungpump.com/gc,30.0,240.0,1ca5317a-098d-4053-8282-eb10cbeaa6b8
+780,GC-50,60,3,5,3.7kW,65,"2-1/2""",N/A,320,42,138,Grinder,https://www.hungpump.com/gc,30.0,240.0,0c05bde5-3712-4479-a0bc-673e6fa8fe87
+782,GC-75,60,3,7.5,5.5kW,65,"2-1/2""",N/A,320,55,180,Grinder,https://www.hungpump.com/gc,30.0,260.0,99710e81-23b5-49ff-a85f-ab5741a4aecd
+783,GC-75,60,3,7.5,5.5kW,65,"2-1/2""",N/A,320,55,180,Grinder,https://www.hungpump.com/gc,30.0,260.0,0c211fa6-f7b6-4597-9f96-a10a874622d2
+785,GD-15,60,1,1.5,1.1kW,32,"1-1/4""",N/A,230,20,66,Grinder,https://www.hungpump.com/gd,10.0,170.0,a56ae021-44d0-46e1-868f-334c281e6f5a
+786,GD-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,230,20,66,Grinder,https://www.hungpump.com/gd,10.0,170.0,f38c7afb-a026-4d6e-8f4b-673fdd4d5cb2
+787,GD-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,230,20,66,Grinder,https://www.hungpump.com/gd,10.0,170.0,85024635-98ed-4d5b-ac80-5968a137988a
+788,GD-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,230,20,66,Grinder,https://www.hungpump.com/gd,10.0,170.0,c1f1d884-8923-40e8-ac5e-6dde55ad2c4b
+789,GD-20,60,1,2,1.5kW,32,"1-1/4""",N/A,235,23,75,Grinder,https://www.hungpump.com/gd,15.0,150.0,a5eeb8f7-f9df-4fa2-b95a-7f35d0163060
+790,GD-20,60,3,2,1.5kW,32,"1-1/4""",N/A,235,23,75,Grinder,https://www.hungpump.com/gd,15.0,150.0,35315d4a-ad0e-4e0a-aa78-b409eb9467f0
+791,GD-20,60,3,2,1.5kW,32,"1-1/4""",N/A,235,23,75,Grinder,https://www.hungpump.com/gd,15.0,150.0,40b834c6-d5fc-4f97-88e3-5506a190b176
+792,GD-20,60,3,2,1.5kW,32,"1-1/4""",N/A,235,23,75,Grinder,https://www.hungpump.com/gd,15.0,150.0,0b0ee865-6b6f-4a43-a5a1-e9fc4ec4ce34
+793,GD-30,60,3,3,2.2kW,32,"1-1/4""",N/A,235,28,92,Grinder,https://www.hungpump.com/gd,15.0,200.0,76409fb3-9d60-498f-92d4-e858f52ff2b4
+794,GD-30,60,3,3,2.2kW,32,"1-1/4""",N/A,235,28,92,Grinder,https://www.hungpump.com/gd,15.0,200.0,b3ffbaa4-9e3f-4cee-b79e-32018f1b28d3
+795,GDH-15,60,1,1.5,1.1kW,32,"1-1/4""",N/A,110,29,95,Grinder,https://www.hungpump.com/gdh,20.0,80.0,a5cb6b55-f2c7-40cb-b521-9688417189c7
+796,GDH-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,110,29,95,Grinder,https://www.hungpump.com/gdh,20.0,80.0,abb493fb-bb58-4bee-aa85-37209214f227
+797,GDH-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,110,29,95,Grinder,https://www.hungpump.com/gdh,20.0,80.0,eb805c76-9e25-4eb0-a246-0e10befcd877
+798,GDH-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,110,29,95,Grinder,https://www.hungpump.com/gdh,20.0,80.0,c3a7abc6-c4e5-4ea5-860f-4313853f5994
+799,GDH-20,60,1,2,1.5kW,32,"1-1/4""",N/A,175,30,98,Grinder,https://www.hungpump.com/gdh,20.0,135.0,37031430-9d59-4d6a-872d-38301d3a7593
+801,GDH-20,60,3,2,1.5kW,32,"1-1/4""",N/A,175,30,98,Grinder,https://www.hungpump.com/gdh,20.0,135.0,00ac38c7-82ca-45cf-940a-b50c4759a257
+802,GDH-20,60,3,2,1.5kW,32,"1-1/4""",N/A,175,30,98,Grinder,https://www.hungpump.com/gdh,20.0,135.0,80840570-7c99-4506-9257-c3f1905f2631
+803,GDH-20,60,3,2,1.5kW,32,"1-1/4""",N/A,175,30,98,Grinder,https://www.hungpump.com/gdh,20.0,135.0,6a10b43f-15f7-4fc7-b676-0fc7ae8cff28
+805,GS-15,60,1,1.5,1.1kW,32,"1-1/4""",N/A,50,85,280,Grinder,https://www.hungpump.com/gs,50.0,20.0,6d45b886-51f1-4493-b467-c7a8b8a6a0b6
+806,GS-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,50,85,280,Grinder,https://www.hungpump.com/gs,50.0,20.0,41af520a-ee7c-4bca-9cff-f6477bcaaacf
+807,GS-15,60,3,1.5,1.1kW,32,"1-1/4""",N/A,50,85,280,Grinder,https://www.hungpump.com/gs,50.0,20.0,b26cebd6-be02-47a1-a687-f899359d3811
+808,HD-10,60,1,1,750W,80,"3""",10.0,600,9.5,31,,https://www.hungpump.com/hd,6.0,320.0,feb47784-4d3a-4f7c-b80d-f8cee296c4c7
+809,HD-10,60,1,1,750W,80,"3""",10.0,600,9.5,31,,https://www.hungpump.com/hd,6.0,320.0,6a512c2c-564a-4438-adf8-cd3bf2456b77
+810,HD-10,60,3,1,750W,80,"3""",10.0,600,9.5,31,,https://www.hungpump.com/hd,6.0,320.0,a2032300-d391-4923-ad4f-3a986bf775c0
+811,HD-10,60,3,1,750W,80,"3""",10.0,600,9.5,31,,https://www.hungpump.com/hd,6.0,320.0,0b3f866f-f223-4fbb-90bb-48ef17c17411
+812,HD-15,60,1,1.5,1.1kW,80,"3""",10.0,820,10,33,,https://www.hungpump.com/hd,6.0,440.0,4def97bc-ab1a-4cb5-986c-8abba986d900
+813,HD-15,60,1,1.5,1.1kW,80,"3""",10.0,820,10,33,,https://www.hungpump.com/hd,6.0,440.0,973979d4-0200-4e80-84c0-60c9412bc2ee
+814,HD-15,60,3,1.5,1.1kW,80,"3""",10.0,820,10,33,,https://www.hungpump.com/hd,6.0,440.0,616953ee-54c8-426e-a357-b3ed8e73db9e
+815,HD-15,60,3,1.5,1.1kW,80,"3""",10.0,820,10,33,,https://www.hungpump.com/hd,6.0,440.0,58ca4119-88fb-4276-b722-a3c3a1e6eb15
+816,HD-20,60,1,2,1.5kW,80,"3""",10.0,1050,11.5,38,,https://www.hungpump.com/hd,6.0,790.0,26ea3a02-4d97-4caf-b24a-e28f22190563
+817,HD-20,60,3,2,1.5kW,80,"3""",10.0,1050,11.5,38,,https://www.hungpump.com/hd,6.0,790.0,2b3b9811-9664-4c6e-98fc-b8bd249d7784
+818,HD-20,60,3,2,1.5kW,80,"3""",10.0,1050,11.5,38,,https://www.hungpump.com/hd,6.0,790.0,2b3be825-9303-47e0-b04b-9f3391241cf9
+822,HF-10,60,1,1,750W,100,"4""",19.0,850,8,26,Sewage and Wastewater,https://www.hungpump.com/hf,4.5,550.0,34744af6-81a2-40c6-a8a9-595bcc1784d4
+823,HF-10,60,3,1,750W,100,"4""",19.0,850,8,26,Sewage and Wastewater,https://www.hungpump.com/hf,4.5,550.0,c73103ce-cfe5-43a7-9fd6-68ea731117a4
+824,HF-10,60,3,1,750W,100,"4""",19.0,850,8,26,Sewage and Wastewater,https://www.hungpump.com/hf,4.5,550.0,cffbf0e1-4ed4-423d-b595-34c7813b0116
+825,HF-20,60,1,2,1.5kW,100,"4""",19.0,1200,12,39,Sewage and Wastewater,https://www.hungpump.com/hf,7.5,610.0,04b5266f-8dd6-48aa-976a-15c3192b4c82
+826,HF-20,60,3,2,1.5kW,100,"4""",19.0,1200,12,39,Sewage and Wastewater,https://www.hungpump.com/hf,7.5,610.0,00a5a98e-f675-4ae8-bcc8-3cbb96f97dd7
+827,HF-20,60,3,2,1.5kW,100,"4""",19.0,1200,12,39,Sewage and Wastewater,https://www.hungpump.com/hf,7.5,610.0,e2c92698-2e48-4f26-8855-541bfb1cd42d
+846,JK-05,60,1,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/jk,6.0,190.0,1577c59e-5f95-4916-837d-aca9bca3b8de
+847,JK-05,60,1,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/jk,6.0,190.0,e4e7864e-c3a6-463f-af15-fe6cfac16dee
+848,JK-05,60,3,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/jk,6.0,190.0,caff76ba-a085-45b9-aefd-1d9d5e4cfdb4
+849,JK-05,60,3,1/2,400W,50,"2""",30.0,320,9,30,Dirty Water,https://www.hungpump.com/jk,6.0,190.0,6973458e-539a-4e71-bba8-de7add812d9b
+850,JK-10,60,1,1,750W,50,"2""",30.0,400,12,39,Dirty Water,https://www.hungpump.com/jk,6.0,270.0,d5243363-d830-43f7-a66e-3a37ad4e1730
+852,JK-10,60,1,1,750W,50,"2""",30.0,400,12,39,Dirty Water,https://www.hungpump.com/jk,6.0,270.0,ae8ce96f-40a8-48fe-a779-c014a05d9665
+853,JK-10,60,3,1,750W,50,"2""",30.0,400,12,39,Dirty Water,https://www.hungpump.com/jk,6.0,270.0,e0d9b556-6c58-489b-8b65-01f88700ed10
+854,JK-10,60,3,1,750W,50,"2""",30.0,400,12,39,Dirty Water,https://www.hungpump.com/jk,6.0,270.0,ce4a19ab-06e8-4714-b5f0-72d68b45145f
+855,JK-20,60,1,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/jk,12.0,410.0,952e6a19-8772-4adf-91dd-4e36036d93f6
+856,JK-20,60,3,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/jk,12.0,410.0,ff564022-47c6-4c86-8d0b-e948eb6be8fb
+857,JK-20,60,3,2,1.5kW,80,"3""",35.0,620,18,59,Dirty Water,https://www.hungpump.com/jk,12.0,410.0,6e07e8be-6464-4402-a713-7b9b7721cfff
+858,JK-30,60,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/jk,10.0,610.0,5731d33b-099c-443a-a6b3-74432641afac
+859,JK-30,60,3,3,2.2kW,80,"3""",35.0,780,18,59,Dirty Water,https://www.hungpump.com/jk,10.0,610.0,dd373f2e-ef8d-4d3c-86fc-300df65ce6f3
+860,JK-50,60,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/jk,15.0,590.0,15abd090-d9f4-40c7-851d-c7a64cbf28a4
+861,JK-50,60,3,5,3.7kW,100,"4""",45.0,1100,22,72,Dirty Water,https://www.hungpump.com/jk,15.0,590.0,fdd277ac-3796-40bf-bf8f-f5f95c30f263
+862,JK-75,60,3,7.5,5.5kW,100,"4""",50.0,1200,24,79,Dirty Water,https://www.hungpump.com/jk,15.0,770.0,33bd9f66-5b53-4b89-a3e4-91d2d7f7d5a9
+863,JK-75,60,3,7.5,5.5kW,100,"4""",50.0,1200,24,79,Dirty Water,https://www.hungpump.com/jk,15.0,770.0,918f63d1-cc97-447d-b04e-c7093df90705
+884,KA-2.4,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,2e9e6245-de42-449d-ac78-1f8d5bdaa640
+885,KA-2.4,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,76fee744-74ef-437b-9d3b-7b6c76ebfc28
+886,KA-2.4A,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,ba34b85e-efa4-45df-9b31-f234307ff1cc
+887,KA-2.4A,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,154c31b2-7ee5-475c-8be3-ab8a5e4a9e95
+888,KA-2.4D,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,ea9e8e3a-078c-4c6c-a4b5-ff2a8c272e3d
+889,KA-2.4D,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,e5e943c3-f9f0-4dbe-9739-cab8b517cb15
+890,KA-2.4DA,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,070fe2dc-eb86-45ec-88c7-52e7631e9168
+891,KA-2.4DA,60,1,1/2,400W,50,"2""",7.0,250,12,39,Dirty Water,https://www.hungpump.com/ka,8.0,155.0,7e939c96-ac83-49c3-991d-10f9980c7e1b
+892,KA-2.4R,60,1,1/2,400W,50,"2""",2.8,160,15.5,51,Dirty Water,https://www.hungpump.com/ka,8.0,125.0,6578b14f-ca6b-4ab3-b83d-5f96d9f83379
+893,KA-2.4R,60,1,1/2,400W,50,"2""",2.8,160,14,46,Dirty Water,https://www.hungpump.com/ka,8.0,110.0,0eb097d2-1723-46b0-9eee-3b4eac8e5a51
+894,KA-2.75D,60,1,1,750W,50,"2""",7.0,220,20,66,Dirty Water,https://www.hungpump.com/ka,12.0,155.0,6ae00c38-ae94-476a-8340-8d694889a99e
+895,KA-2.75D,60,1,1,750W,50,"2""",7.0,220,20,66,Dirty Water,https://www.hungpump.com/ka,12.0,155.0,762a728c-6ca5-4dab-84fe-974b5a2e331d
+896,KA-2.75DA,60,1,1,750W,50,"2""",7.0,220,20,66,Dirty Water,https://www.hungpump.com/ka,12.0,155.0,8c0a90ae-9fdc-459d-b160-85399e5e2dec
+897,KA-2.75DA,60,1,1,750W,50,"2""",7.0,220,20,66,Dirty Water,https://www.hungpump.com/ka,12.0,155.0,eda7298d-5bce-4cd7-959f-f18b46216fcd
+898,KA-3.75D,60,1,1,750W,80,"3""",7.0,250,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,175.0,8c16b3e4-2b8e-43aa-aaf7-86588e64b8a2
+899,KA-3.75D,60,1,1,750W,80,"3""",7.0,250,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,175.0,d049fc09-cc11-4a50-a9b4-0a6c755e06d0
+900,KA-3.75DA,60,1,1,750W,80,"3""",7.0,250,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,175.0,90f9985d-d289-4288-98fe-efaf43981d56
+901,KA-3.75DA,60,1,1,750W,80,"3""",7.0,250,19,62,Dirty Water,https://www.hungpump.com/ka,12.0,175.0,33dedbe0-4a7c-414a-a2e0-62a95ddb8668
+902,KHL-100,60,3,10,7.5kW,100,"4""",15.0,1680,38,125,,https://www.hungpump.com/khl,,1300.0,55c6dae7-e1c5-4471-9861-9c28d9077af5
+903,KHL-100,60,3,10,7.5kW,100,"4""",15.0,1680,38,125,,https://www.hungpump.com/khl,25.0,1300.0,58ec1ed1-a3a2-4c5b-bd43-fbcd8f48eb1a
+904,KHL-20,60,1,2,1.5kW,50,"2""",12.0,415,25,82,,https://www.hungpump.com/khl,15.0,370.0,0f153660-ede2-46d5-b171-fefacd135b8a
+905,KHL-20,60,3,2,1.5kW,50,"2""",12.0,415,25,82,,https://www.hungpump.com/khl,15.0,370.0,7a7b02e8-d492-4d2f-88db-0f2bf2b552b3
+906,KHL-20,60,3,2,1.5kW,50,"2""",12.0,415,25,82,,https://www.hungpump.com/khl,15.0,370.0,966678c4-d687-4175-a2cd-cc1ed96561a8
+907,KHL-30,60,3,3,2.2kW,50,"2""",12.0,620,28,92,,https://www.hungpump.com/khl,15.0,490.0,ceafd1b3-c45b-467b-bfda-6fe2ea202fa7
+908,KHL-30,60,3,3,2.2kW,50,"2""",12.0,620,28,92,,https://www.hungpump.com/khl,15.0,490.0,05db253d-d651-49ed-8725-cbde9e60db07
+909,KHL-50,60,3,5,3.7kW,50,"2""",15.0,770,32,105,,https://www.hungpump.com/khl,20.0,620.0,3d99590f-2056-4b62-a714-14037990646c
+910,KHL-50,60,3,5,3.7kW,50,"2""",15.0,770,32,105,,https://www.hungpump.com/khl,20.0,620.0,175ed250-9717-499c-8809-c2c181fcfd8b
+911,KHL-75,60,3,7.5,5.5kW,80,"3""",15.0,1380,31,102,,https://www.hungpump.com/khl,20.0,1050.0,e1139413-833e-421e-948f-ec5dc2b8fe96
+912,KHL-75,60,3,7.5,5.5kW,80,"3""",15.0,1380,31,102,,https://www.hungpump.com/khl,20.0,1050.0,3b7d85e0-a846-42c4-ab0e-4e6d3e52788f
+915,KS-10,60,1,1,750W,50,"2""",6.0,420,14,46,,https://www.hungpump.com/ks,9.0,190.0,0f19314c-f5e1-430b-b538-7721ca22abf9
+916,KS-10,60,1,1,750W,50,"2""",6.0,420,14,46,,https://www.hungpump.com/ks,9.0,190.0,ace1ce10-1612-4141-96e9-d6fae70fd8f8
+917,KS-10,60,3,1,750W,50,"2""",6.0,420,14,46,,https://www.hungpump.com/ks,9.0,190.0,5cb6f4d9-e024-41b7-9c69-48b07d482956
+918,KS-10,60,3,1,750W,50,"2""",6.0,420,14,46,,https://www.hungpump.com/ks,9.0,190.0,7adce4a1-d29e-46e2-9b1d-d65e6a7804ca
+919,KS-100,60,3,10,7.5kW,100,"4""",11.0,2400,28,92,,https://www.hungpump.com/ks,15.0,1400.0,5e7a6de5-b75a-4fce-a346-a8998f81ec8d
+920,KS-100,60,3,10,7.5kW,100,"4""",11.0,2400,28,92,,https://www.hungpump.com/ks,15.0,1400.0,7ca9089b-4b07-4b45-bee7-b98b34624935
+921,KS-20,60,1,2,1.5kW,80,"3""",9.0,700,17,56,,https://www.hungpump.com/ks,9.0,520.0,48b8fe6c-176f-4985-a140-271c34dce828
+922,KS-20,60,3,2,1.5kW,80,"3""",9.0,700,17,56,,https://www.hungpump.com/ks,9.0,520.0,90d54c33-5280-43a3-9c30-d003f4648599
+923,KS-20,60,3,2,1.5kW,80,"3""",9.0,700,17,56,,https://www.hungpump.com/ks,9.0,520.0,7fa42419-61b0-473d-bc29-c6d4622cd27d
+924,KS-20,60,3,2,1.5kW,80,"3""",12.0,960,15.5,51,,https://www.hungpump.com/ks,9.0,620.0,377c051a-451d-4b6d-bcbf-861cdd7e4d2d
+925,KS-30,60,3,3,2.2kW,80,"3""",11.0,900,18,59,,https://www.hungpump.com/ks,10.0,530.0,938a4dd8-2045-430c-a4df-37be0a73d008
+926,KS-30,60,3,3,2.2kW,80,"3""",11.0,900,18,59,,https://www.hungpump.com/ks,10.0,530.0,98fd0842-ee33-4548-87c1-b7de2fed505a
+927,KS-30,60,3,3,2.2kW,80,"3""",12.0,"1,200",20,66,,https://www.hungpump.com/ks,12.0,800.0,1dcaa9ba-31a2-41ee-8741-091dc1c3b431
+928,KS-50,60,3,5,3.7kW,100,"4""",11.0,1200,22,72,,https://www.hungpump.com/ks,15.0,630.0,e3441bdd-b204-44fe-9bc3-43ba9ebfa9c5
+929,KS-50,60,3,5,3.7kW,100,"4""",11.0,1200,22,72,,https://www.hungpump.com/ks,15.0,630.0,08b0b103-7501-47c9-8ffd-00f67c33a0d9
+930,KS-50,60,3,5,3.7kW,80,"3""",12.0,"1,400",26,85,,https://www.hungpump.com/ks,15.0,1020.0,f49b29ee-07a4-472b-b78d-4275126445d8
+931,KS-75,60,3,7.5,5.5kW,100,"4""",11.0,1900,24,79,,https://www.hungpump.com/ks,15.0,880.0,b67b2516-6547-4b2f-941a-96c54aaf9810
+932,KS-75,60,3,7.5,5.5kW,100,"4""",11.0,1900,24,79,,https://www.hungpump.com/ks,15.0,880.0,c383eb55-2840-43f8-8355-9236095932c8
+933,KSL-10,60,1,1,750W,80,"3""",9.0,560,13,43,,https://www.hungpump.com/ksl,7.5,325.0,6af56f47-3d9c-49c3-a2f3-4b43ff606b7d
+934,KSL-10,60,3,1,750W,80,"3""",9.0,560,13,43,,https://www.hungpump.com/ksl,7.5,325.0,6370374f-e4b0-4370-b7dc-ea7aae68c561
+967,KT-215,60,1,2,1.5kW,50,"2""",N/A,460,26,85,Construction,https://www.hungpump.com/kt,15.0,345.0,3da96a7f-726b-46d5-8fc3-7ac8ad2c61a0
+968,KT-215,60,3,2,1.5kW,50,"2""",N/A,460,26,85,Construction,https://www.hungpump.com/kt,15.0,345.0,9c85ae76-37e3-4d41-b00f-1c717e2b7921
+969,KT-215,60,3,2,1.5kW,50,"2""",N/A,460,26,85,Construction,https://www.hungpump.com/kt,15.0,345.0,aad5d685-8c1e-4cf6-8f61-d15909bebe19
+970,KT-222,60,3,3,2.2kW,50,"2""",N/A,720,33,108,Construction,https://www.hungpump.com/kt,20.0,460.0,8d46a703-f235-4330-8f1e-10842dffcd5e
+971,KT-222,60,3,3,2.2kW,50,"2""",N/A,720,33,108,Construction,https://www.hungpump.com/kt,20.0,460.0,17a76810-94f2-437a-9a9e-02fc4f2ab143
+972,KT-237,60,3,5,3.7kW,50,"2""",N/A,550,37,121,Construction,https://www.hungpump.com/kt,20.0,500.0,4991d890-20fc-4eb3-b34b-d120a7880311
+973,KT-237,60,3,5,3.7kW,50,"2""",N/A,550,37,121,Construction,https://www.hungpump.com/kt,20.0,500.0,9ca6a446-7bd5-4fa8-90bf-5a84fd5780ce
+974,KT-315,60,1,2,1.5kW,80,"3""",N/A,610,17,56,Construction,https://www.hungpump.com/kt,10.0,450.0,c98d4934-5f20-4e52-851f-9277ab3bd37b
+975,KT-315,60,3,2,1.5kW,80,"3""",N/A,610,17,56,Construction,https://www.hungpump.com/kt,10.0,450.0,efa9499a-1b51-4577-8860-e4d7c79529e4
+976,KT-315,60,3,2,1.5kW,80,"3""",N/A,610,17,56,Construction,https://www.hungpump.com/kt,10.0,450.0,be24b02e-e1af-4590-b114-8483ead73660
+977,KT-322,60,3,3,2.2kW,80,"3""",N/A,800,22,72,Construction,https://www.hungpump.com/kt,15.0,560.0,5adfa22b-87b5-432b-8f13-a18ea7252fb6
+978,KT-322,60,3,3,2.2kW,80,"3""",N/A,800,22,72,Construction,https://www.hungpump.com/kt,15.0,560.0,8ba9fc38-d8af-4814-99d0-20cd5a52b1c3
+979,KT-322,60,3,3,2.2kW,80,"3""",N/A,800,22,72,Construction,https://www.hungpump.com/kt,15.0,560.0,83478ad8-9c2e-4a4e-98e4-253ae222a141
+980,KT-337,60,3,5,3.7kW,80,"3""",N/A,950,31,102,Construction,https://www.hungpump.com/kt,20.0,645.0,1be78228-7766-4fee-9ad6-76ea5245cb72
+981,KT-337,60,3,5,3.7kW,80,"3""",N/A,950,31,102,Construction,https://www.hungpump.com/kt,20.0,645.0,02edb338-986e-4e0b-99c1-7d7328398f45
+982,KT-355,60,3,7.5,5.5kW,80,"3""",N/A,970,40,131,Construction,https://www.hungpump.com/kt,25.0,730.0,b5846dbd-7b69-43c3-8881-a804f48c96d9
+983,KT-355,60,3,7.5,5.5kW,80,"3""",N/A,970,40,131,Construction,https://www.hungpump.com/kt,25.0,730.0,d68f1dee-b73a-459a-80ff-f088a99ae64a
+984,KT-4110,60,3,15,11kW,100,"4""",N/A,1630,48,157,Construction,https://www.hungpump.com/kt,30.0,1180.0,65759947-92af-4e71-be5a-8d3308fa2968
+985,KT-4110,60,3,15,11kW,100,"4""",N/A,1630,48,157,Construction,https://www.hungpump.com/kt,30.0,1180.0,e833c6a4-2670-40f5-a282-c62d5a53901a
+986,KT-4150,60,3,20,15kW,100,"4""",N/A,1930,52,171,Construction,https://www.hungpump.com/kt,30.0,1780.0,8eaf9e0a-4481-4f72-aa97-3d499c6e0dea
+987,KT-4150,60,3,20,15kW,100,"4""",N/A,1930,52,171,Construction,https://www.hungpump.com/kt,30.0,1780.0,a37540d8-e24f-48b2-a121-fd71d5910e16
+988,KT-437,60,3,5,3.7kW,100,"4""",N/A,1560,18,59,Construction,https://www.hungpump.com/kt,10.0,1090.0,526957fb-f442-47bf-aebb-1661c752a147
+989,KT-437,60,3,5,3.7kW,100,"4""",N/A,1560,18,59,Construction,https://www.hungpump.com/kt,10.0,1090.0,43214923-589d-40ed-be2d-45a8932c2a00
+990,KT-455,60,3,7.5,5.5kW,100,"4""",N/A,1520,28,92,Construction,https://www.hungpump.com/kt,20.0,800.0,fe87e6aa-c926-4d2e-970a-7042c27c94ef
+991,KT-455,60,3,7.5,5.5kW,100,"4""",N/A,1520,28,92,Construction,https://www.hungpump.com/kt,20.0,800.0,5c936958-90d4-492a-8ab7-5fc64b2dfadb
+992,KT-475,60,3,10,7.5kW,100,"4""",N/A,1590,38,125,Construction,https://www.hungpump.com/kt,20.0,1200.0,dc5c8fe9-c37d-4b32-bf11-8252d41b0d01
+993,KT-475,60,3,10,7.5kW,100,"4""",N/A,1590,38,125,Construction,https://www.hungpump.com/kt,20.0,1200.0,582cf495-7707-4c12-8f0f-11809628e1b5
+994,KT-6110,60,3,15,11kW,150,"6""",N/A,2450,34,112,Construction,https://www.hungpump.com/kt,20.0,1810.0,a032ecc0-c689-48aa-8410-0a4905d545ea
+995,KT-6110,60,3,15,11kW,150,"6""",N/A,2450,34,112,Construction,https://www.hungpump.com/kt,20.0,1810.0,ab72b954-6f4e-43e5-9467-9b1fce40d4b4
+996,KT-6150,60,3,20,15kW,100,"4""",N/A,2960,40,131,Construction,https://www.hungpump.com/kt,25.0,2560.0,5d96c739-d00b-44af-9fcc-1362d7f9167d
+997,KT-6150,60,3,20,15kW,100,"4""",N/A,2960,40,131,Construction,https://www.hungpump.com/kt,25.0,2560.0,241d2a7a-5f54-47a5-baed-71f6b895e123
+998,KT-675,60,3,10,7.5kW,150,"6""",N/A,2060,28,92,Construction,https://www.hungpump.com/kt,15.0,1600.0,4bf98bf3-eb8d-45b4-bf08-f6fcc899cfd6
+999,KT-675,60,3,10,7.5kW,150,"6""",N/A,2060,28,92,Construction,https://www.hungpump.com/kt,15.0,1600.0,c17ba6ad-f06a-459c-bfc2-aec9ec435c79
+1000,MAS-150,60,1,1/5,150W,40,"1-1/2""",19.0,220,6.5,21,Clean Water,https://www.hungpump.com/mas,4.0,120.0,b861df81-5bab-47b0-8a41-e464d57db40c
+1001,MAS-150,60,1,1/5,150W,40,"1-1/2""",19.0,220,6.5,21,Clean Water,https://www.hungpump.com/mas,4.0,120.0,da1faf41-ef16-4e47-bf02-d484945b024c
+1002,MAS-250,60,1,1/3,250W,40,"1-1/2""",19.0,280,9,30,Clean Water,https://www.hungpump.com/mas,6.0,140.0,9df49350-a50a-462c-a4bb-f716fe2b4530
+1003,MAS-250,60,1,1/3,250W,50,"2""",19.0,280,9,30,Clean Water,https://www.hungpump.com/mas,6.0,140.0,9d8714a2-d460-4428-9ae0-713554f539c7
+1004,MAS-250,60,1,1/3,250W,40,"1-1/2""",19.0,280,9,30,Clean Water,https://www.hungpump.com/mas,6.0,140.0,c53258bd-7faa-4c73-847c-d63542f59fca
+1005,MAS-250,60,1,1/3,250W,50,"2""",19.0,280,9,30,Clean Water,https://www.hungpump.com/mas,6.0,140.0,90701a18-c8dd-41a7-9ccf-941d8a4f5630
+1006,MAS-400,60,1,1/2,400W,50,"2""",19.0,320,10.5,34,Clean Water,https://www.hungpump.com/mas,6.0,230.0,7eeaec43-c5fe-4c14-a6e2-35a766fcc57a
+1007,MAS-400,60,1,1/2,400W,50,"2""",19.0,320,10.5,34,Clean Water,https://www.hungpump.com/mas,6.0,230.0,4245e028-35ef-4d61-a759-cdba98f39e52
+1008,MAS-750,60,1,1,750W,50,"2""",19.0,380,13,43,Clean Water,https://www.hungpump.com/mas,8.0,260.0,f3ee46e6-d4d3-4ede-b202-8b588caa7cd5
+1009,MAS-750,60,1,1,750W,50,"2""",19.0,380,13,43,Clean Water,https://www.hungpump.com/mas,8.0,260.0,b8db9cbd-a2fb-4d40-99e0-6832cde7133e
+1010,MH-150,60,1,1/5,150W,50,"2""",6.0,210,6,20,Clean Water,https://www.hungpump.com/mh,4.0,110.0,2a6486e5-c528-4e1f-a486-818d2ebee620
+1011,MH-150,60,1,1/5,150W,50,"2""",6.0,210,6,20,Clean Water,https://www.hungpump.com/mh,4.0,110.0,0cc5fe50-cb68-4afb-a207-a1bc4276300f
+1012,MH-250,60,1,1/3,250W,50,"2""",6.0,230,7,23,Clean Water,https://www.hungpump.com/mh,4.0,155.0,6b8dca36-b8ae-40fd-b74d-036e01cf0f83
+1013,MH-250,60,1,1/3,250W,50,"2""",6.0,230,7,23,Clean Water,https://www.hungpump.com/mh,4.0,155.0,7801a705-f5d2-4ac3-80a1-3110944220d4
+1014,MH-400,60,1,1/2,400W,50,"2""",6.0,320,10,33,Clean Water,https://www.hungpump.com/mh,6.0,185.0,fccca80d-6e24-4f6d-98b0-16ae0a723d88
+1015,MH-400-FR,60,1,1/2,400W,50,"2""",6.0,320,10,33,Clean Water,https://www.hungpump.com/mh,6.0,185.0,b34f7779-f8ce-4a50-ba16-89c65fba859a
+1016,MH-400,60,1,1/2,400W,50,"2""",6.0,320,10,33,Clean Water,https://www.hungpump.com/mh,6.0,185.0,293c6854-a085-4435-baff-177366faed9f
+1017,MH-400-FR,60,1,1/2,400W,50,"2""",6.0,320,10,33,Clean Water,https://www.hungpump.com/mh,6.0,185.0,0cb00f7c-5b19-4993-a0a0-896efd3de9eb
+1018,MH-750,60,1,1,750W,50,"2""",6.0,390,12.5,41,Clean Water,https://www.hungpump.com/mh,8.0,265.0,b9dd3d3a-7904-469c-9dc0-4d268d840e91
+1019,MH-750-FR,60,1,1,750W,50,"2""",6.0,390,12.5,41,Clean Water,https://www.hungpump.com/mh,8.0,265.0,8b1c4a8a-bde5-4ef5-ac0d-06a84a1b01e2
+1020,MH-750,60,1,1,750W,50,"2""",6.0,390,12.5,41,Clean Water,https://www.hungpump.com/mh,8.0,265.0,0a9a740b-6887-41dd-845d-7992016972e8
+1021,MH-750-FR,60,1,1,750W,50,"2""",6.0,390,12.5,41,Clean Water,https://www.hungpump.com/mh,8.0,265.0,8ca76c95-fb3e-47ff-ae92-7de2a3e87850
+1022,MH-750,60,3,1,750W,50,"2""",6.0,390,12.5,41,Clean Water,https://www.hungpump.com/mh,8.0,265.0,e6485458-d6c9-4f19-a6f1-a8d09f4ce651
+1023,MH-750,60,3,1,750W,50,"2""",6.0,390,12.5,41,Clean Water,https://www.hungpump.com/mh,8.0,265.0,b4790011-5f3c-44e9-8528-9b8dd2f889cc
+1024,MVH-10,60,1,3/4,550W,25,"1""",3.0,100,32,105,High Pressure,https://www.hungpump.com/mvh,20.0,65.0,d1df6fe9-d799-4ee9-9366-671ef87b46e8
+1025,MVH-10,60,1,3/4,550W,25,"1""",3.0,100,32,105,High Pressure,https://www.hungpump.com/mvh,20.0,65.0,71fa63dd-f84e-4274-9a1c-99dc2dadfe86
+1029,CBP-330T,50,3,3,2.2kW,100,"4""",3.0,1200,11.5,38,Clean Water,https://www.hungpump.com/cbp,7.0,1000.0,94fd9c80-5466-48d0-bb4e-3251c8d1f0bc
+1031,CBP-440T,50,3,4,3kW,100,"4""",3.0,1300,13,43,Clean Water,https://www.hungpump.com/cbp,8.0,1070.0,1dd709bd-f778-4809-84ba-7ec9d8434539
+1033,CBP-540T,50,3,5,3.7kW,100,"4""",3.0,1550,17.5,57,Clean Water,https://www.hungpump.com/cbp,10.0,1280.0,c738703f-4b48-4656-ad0c-48d98fab44c1
+1035,CBP-740T,50,3,7.5,5.5kW,100,"4""",3.0,11700,23,75,Clean Water,https://www.hungpump.com/cbp,14.0,1380.0,715a5ebe-2e66-480f-82de-db5fcca87a47
+1041,HI-168,50,1,1/4,200W,25,"1""",N/A,34,24,92,Booster,https://www.hungpump.com/hi,15.0,15.0,1f1bfcd1-c2c5-4335-a509-58ec0d08ac20
+1042,HI-200,50,1,1/4,200W,20,"3/4""",N/A,55,24,79,Booster,https://www.hungpump.com/hi,15.0,33.0,be067219-c00f-48d1-87e6-1e492a835832
+1043,HI-200,50,1,1/4,200W,25,"1""",N/A,55,24,79,Booster,https://www.hungpump.com/hi,15.0,33.0,9bcea175-4828-4a90-827c-5317402ca9b0
+1044,HI-200R,50,1,1/4,200W,25,"1""",N/A,55,24,79,Booster,https://www.hungpump.com/hi,15.0,33.0,0566bf8b-f5aa-4bf8-bbc9-f5e471b78ef0
+1049,HI-400,50,1,1/2,400W,25,"1""",N/A,70,28,92,Booster,https://www.hungpump.com/hi,20.0,45.0,cde626c7-231b-494a-96e9-b051d387c499
+1060,HOME-05,50,1,1/2,400W,25,"1""",3.0,60,36,118,,https://www.hungpump.com/home,20.0,27.0,88bb2ba7-1e3f-4a89-84b4-0fe8b5fb1cef
+1061,HOME-10,50,1,1,750W,25,"1""",3.0,75,42,138,,https://www.hungpump.com/home,30.0,28.0,b76304bc-d903-4d8d-a736-b0287777f767
+1065,HWCP ll-FS,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,ece2f7c1-9f08-4cd2-8331-862306842b42
+1066,HWCP ll-FT,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,c6b18f6f-e8dc-412a-bf5c-8e53e73e8b86
+1067,HWCP lll-FS,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,297247c6-2ae6-46fe-b67d-cfeb4d9b8ebe
+1068,HWCP lll-FT,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,40088f56-0aa9-4ce7-b65c-881550600449
+1069,HWCP lll-NS,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,3a7917a1-0f9c-4252-b604-7c0ce2ec0c38
+1070,HWCP lll-ST,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,3c6caf29-72e8-447c-ab26-15c54eb756b2
+1071,HWCP ll-NS,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,51dad1c5-9011-4fbc-858f-adb54369de37
+1072,HWCP ll-ST,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,4a25acf4-576e-447d-9a1e-44b2302c674c
+1073,HWCPⅡ,50,1,3/4,550W,32,"1-1/4""",N/A,138,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,108.0,2c26e15c-932a-45b2-848c-6c67d6072234
+1075,JA-80,50,1,1/10,80W,20,"3/4""",1.0,23,8.5,28,Booster,https://www.hungpump.com/ja,6.0,11.0,314ff7af-f1ec-4ca0-a5ed-88b8139aab1f
+1076,JA-80S,50,1,1/10,80W,20,"3/4""",1.0,23,8.5,28,Booster,https://www.hungpump.com/ja,6.0,11.0,7adb2f08-3f88-4097-b2c0-6eafc86b759f
+1077,LSJ-05,50,1,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,74cae22c-6c96-4e05-a95c-041769dd7002
+1078,LSJ-05,50,3,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,58eff614-e78c-42ff-906e-158ec00b7cff
+1079,LSJ-05,50,1,1/2,400W,25,"1""",3.0,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,b180b029-293f-4c23-8177-4deb80c5a302
+1083,LSJ-05E,50,1,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,814a3ccb-5fa0-4769-b9c1-ef2408e22f3d
+1084,LSJ-05E,50,3,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,ef8fee95-3d11-431b-a757-96ae98e8b683
+1085,LSJ-10,50,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,16a29b4a-804b-4c81-bed3-8822cf931731
+1086,LSJ-10,50,3,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,d02b1a94-5e2b-45e7-acce-0e895570d134
+1087,LSJ-10,50,1,1,750W,25,"1""",3.0,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,394f73c9-37ef-4ed1-8473-480cd0fca587
+1088,LSJ-10E,50,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,49ce2f3a-f868-4480-9721-75d300966b10
+1091,MT-105T,50,3,3,2.2kW,50,"2""",2.0,320,50,164,Booster,https://www.hungpump.com/mt,30.0,240.0,2acc221a-09f8-4b87-8dce-43fc36378991
+1093,MT-43T,50,3,1,750W,25,"1""",2.0,130,37,121,Booster,https://www.hungpump.com/mt,20.0,68.0,0ab1340d-579e-404f-8874-f74ebcc1ce39
+1095,MT-44T,50,3,1.5,1.1kW,25,"1""",2.0,130,50,164,Booster,https://www.hungpump.com/mt,30.0,65.0,c1122ed5-a43e-47e1-a3eb-b462cace152a
+1097,MT-45T,50,3,2,1.5kW,25,"1""",2.0,130,60,197,Booster,https://www.hungpump.com/mt,40.0,68.0,dfa45622-2cfb-441b-a4c9-5ba6dd408ac6
+1099,MT-46T,50,3,2,1.5kW,25,"1""",2.0,130,75,246,Booster,https://www.hungpump.com/mt,50.0,65.0,b9b75185-f172-48fa-a52e-c485352d585f
+1100,MT-46T,50,3,2,1.5kW,25,"1""",2.0,130,75,246,Booster,https://www.hungpump.com/mt,50.0,87.0,0630e7a0-7790-4b8a-b3d4-9b7fdef87e77
+1102,MT-83T,50,3,1.5,1.1kW,32,"1-1/4""",2.0,320,31,102,Booster,https://www.hungpump.com/mt,20.0,180.0,e0e8f778-a38d-4530-9f8e-8f5ad9c75f7e
+1104,MT-84T,50,3,2,1.5kW,32,"1-1/4""",2.0,320,40,131,Booster,https://www.hungpump.com/mt,30.0,130.0,3b90478a-d983-4075-a9eb-4b95a269d496
+1105,MT-84T,50,3,2,1.5kW,32,"1-1/4""",2.0,320,40,131,Booster,https://www.hungpump.com/mt,20.0,225.0,1d4aeb9d-dab5-43f2-b26a-73ef672dbfd2
+1107,MT-85T,50,3,3,2.2kW,32,"1-1/4""",2.0,320,47,154,Booster,https://www.hungpump.com/mt,30.0,180.0,e13c8946-4372-4a03-af62-f32eb3bf769e
+1108,MT-85T,50,3,3,2.2kW,32,"1-1/4""",3.0,320,47,154,Booster,https://www.hungpump.com/mt,30.0,180.0,2a09511c-fc48-454f-b4d5-050cfc745656
+1109,MTS-162,50,1,2,1.5kW,50,"2""",N/A,540,28,92,,https://www.hungpump.com/mts-8-16,10.0,480.0,068fef44-2cfd-4bd5-b4d8-a70995aac672
+1114,MTS-163,50,1,3,2.2kW,50,"2""",N/A,540,40,131,,https://www.hungpump.com/mts-8-16,30.0,330.0,061ffbbe-00ac-4603-8315-f57db09525f8
+1118,MTS-32,50,1,1/3,250W,25,"1""",N/A,85,20,66,,https://www.hungpump.com/mts-3-5,10.0,70.0,0d4af3f4-c198-4d8d-ac75-cf40e9ab7c8d
+1120,MTS-33,50,1,1/2,400W,25,"1""",N/A,85,27,89,,https://www.hungpump.com/mts-3-5,15.0,65.0,7c372346-e87d-4454-8614-c2ce7870cbeb
+1122,MTS-34,50,1,3/4,550W,25,"1""",N/A,85,36,118,,https://www.hungpump.com/mts-3-5,20.0,65.0,e925b3d9-da57-43ac-b9b3-1b79efbf370e
+1124,MTS-35,50,1,1,750W,25,"1""",N/A,85,44,144,,https://www.hungpump.com/mts-3-5,30.0,55.0,2e18b147-20dc-4146-8b53-9de21cf77727
+1126,MTS-36,50,1,1.5,1.1kW,25,"1""",N/A,85,53,174,,https://www.hungpump.com/mts-3-5,30.0,65.0,e0e3cde9-ebe9-43f1-a309-5f85feb06c1b
+1128,MTS-52,50,1,1/2,400W,25,"1""",N/A,140,19,62,,https://www.hungpump.com/mts-3-5,10.0,100.0,0eb85e3d-bbaa-4899-8efa-1e466901405f
+1130,MTS-53,50,1,3/4,550W,25,"1""",N/A,140,29,95,,https://www.hungpump.com/mts-3-5,15.0,100.0,23807e43-d98c-4900-9e95-771746aca4a8
+1132,MTS-54,50,1,1,750W,25,"1""",N/A,140,38,125,,https://www.hungpump.com/mts-3-5,20.0,105.0,8778bf88-6957-497f-a3c9-0cc3799d08d5
+1133,MTS-54,50,3,1,750W,25,"1""",N/A,140,38,125,,https://www.hungpump.com/mts-3-5,20.0,105.0,d37d9529-f23b-4df8-8d51-608e352a2dfa
+1135,MTS-55,50,1,1.5,1.1kW,25,"1""",N/A,140,47,154,,https://www.hungpump.com/mts-3-5,30.0,95.0,658db93d-662d-4387-8e56-38e6316a7820
+1137,MTS-56,50,1,2,1.5kW,25,"1""",N/A,140,56,184,,https://www.hungpump.com/mts-3-5,40.0,92.0,993101c9-ab34-477d-a96b-35a9f8b15c74
+1139,MTS-83,50,1,1.5,1.1kW,40,"1-1/2""",N/A,310,33,108,,https://www.hungpump.com/mts-8-16,20.0,200.0,6c623f06-b3d4-413e-8cdf-43443a5fc060
+1141,MTS-84,50,1,2,1.5kW,40,"1-1/2""",N/A,310,44,144,,https://www.hungpump.com/mts-8-16,30.0,185.0,9b6ab8b5-8c9a-4a63-a06a-44da3102b064
+1143,MTS-85,50,1,3,2.2kW,40,"1-1/2""",N/A,310,55,180,,https://www.hungpump.com/mts-8-16,40.0,185.0,00c3eaa5-cd36-48c1-9396-b2e08568f58b
+1156,SMP-10,50,1,1,750W,40,"1-1/2""",N/A,310,14,46,Clean Water,https://www.hungpump.com/smp,9.0,175.0,7525c531-6db6-4639-ba8b-ce50ed49e7fc
+1157,SMP-10,50,3,1,750W,40,"1-1/2""",N/A,310,14,46,Clean Water,https://www.hungpump.com/smp,9.0,175.0,875ef2fa-a545-4e86-824c-0f569c9d698a
+1158,SMP-20,50,1,2,1.5kW,50,"2""",N/A,460,16,52,Clean Water,https://www.hungpump.com/smp,9.0,350.0,8d374376-f1d2-4237-9727-7b76741aeeee
+1159,SMP-20,50,3,2,1.5kW,50,"2""",N/A,460,16,52,Clean Water,https://www.hungpump.com/smp,9.0,350.0,14a141e2-e76d-4f7a-9d49-2c6e8384a19d
+1160,SMP-30,50,1,3,2.2kW,50,"2""",N/A,520,20,66,Clean Water,https://www.hungpump.com/smp,12.0,395.0,6f1d71e0-c745-460f-bda3-11c871374da9
+1161,SMP-30,50,3,3,2.2kW,50,"2""",N/A,520,20,66,Clean Water,https://www.hungpump.com/smp,12.0,395.0,32dd70a9-924b-4006-9e03-c84fd9f0952a
+1162,SMP-30,50,3,3,2.2kW,50,"2""",2.0,520,20,66,Clean Water,https://www.hungpump.com/smp,12.0,395.0,74577ee8-ca4d-412a-86cd-01db73d1fb49
+1164,SPA-10,50,1,1,750W,40,"1-1/2""",N/A,320,13.5,44,,https://www.hungpump.com/spa-10,8.0,190.0,c2e32dde-a456-4382-9e28-177c549ae0e1
+1165,SPA-150B,50,1,1,750W,40,"1-1/2""",N/A,350,15.5,51,,https://www.hungpump.com/spa-150b,10.0,145.0,8872e47a-878f-44af-a640-154234f1dcc6
+1172,SW-120S,50,1,1 1/4,1kW,25,"1""",3.0,140,28,92,,https://www.hungpump.com/sw-60-120-250,20.0,110.0,50420b14-0681-4695-9539-fda229b410a2
+1176,SW-220T,50,3,2,1.5kW,50,"2""",N/A,630,24,79,,https://www.hungpump.com/sw-220-320-420,15.0,410.0,cb7b84a6-c6b0-42ad-a614-acc806f38ad4
+1179,SW-250S,50,1,2.5,1.85kW,32,"1-1/4""",3.0,300,30,98,,https://www.hungpump.com/sw-60-120-250,25.0,180.0,c0a0e80e-b61b-4294-9e65-4c2195ad7c8c
+1182,SW-320T,50,3,3,2.2kW,50,"2""",N/A,650,29,95,,https://www.hungpump.com/sw-220-320-420,18.0,500.0,8b646005-8797-4a5d-8c3b-5dc7b945e248
+1184,SW-420T,50,3,4,3kW,50,"2""",3.0,680,31,102,,https://www.hungpump.com/sw-220-320-420,18.0,540.0,85c81a22-9ce7-4b4b-83d7-b4ca47024c1a
+1185,SW-60,50,1,1/2,400W,25,"1""",3.0,120,17,56,,https://www.hungpump.com/sw-60-120-250,10.0,85.0,175d5af9-335a-43ef-9f4b-30d14017c459
+1190,SWO-220T,50,3,2,1.5kW,50,"2""",8.0,620,14,46,Booster,https://www.hungpump.com/swo,8.0,430.0,523a206f-fba2-42d8-bb5f-9a6f7f2bbbec
+1192,SWO-320T,50,3,3,2.2kW,50,"2""",8.0,660,16,52,Booster,https://www.hungpump.com/swo,10.0,490.0,885735d9-b236-4c07-b362-e8625cfb78ca
+1193,SWO-420T,50,3,4,3kW,50,"2""",8.0,730,20,66,Booster,https://www.hungpump.com/swo,12.0,560.0,d512a971-9267-4488-b063-a8a68a0f24b9
+1218,HI-168,60,1,1/4,200W,20,"3/4""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,8fd15727-5e65-44a7-834d-fc68a0cd4b2e
+1219,HI-168,60,1,1/4,200W,25,"1""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,7b6707ae-9548-4786-a2c1-d8974b5709ae
+1220,HI-168,60,1,1/4,200W,20,"3/4""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,3ce371aa-11a3-4fdd-9b6f-83880749bb44
+1221,HI-168,60,1,1/4,200W,25,"1""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,e6f303ad-6389-4b97-8f58-8f51436382be
+1222,HI-168,60,1,1/4,200W,20,"3/4""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,54789794-5eae-42e6-ac4a-c92ebbef852e
+1223,HI-168,60,1,1/4,200W,25,"1""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,454d492d-384f-42ad-980e-a03585a7efa1
+1224,HI-168,60,1,1/4,200W,20,"3/4""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,315fdd59-d7de-4840-aec2-4c8d1ac5bfab
+1225,HI-168,60,1,1/4,200W,25,"1""",N/A,35,28,92,Booster,https://www.hungpump.com/hi,15.0,22.0,4a15ebea-06ee-4a09-9d81-0dd13da11353
+1226,HI-200,60,1,1/4,200W,20,"3/4""",N/A,60,25,82,Booster,https://www.hungpump.com/hi,15.0,38.0,735e21da-2980-42a4-bd49-803363d55ca6
+1227,HI-200,60,1,1/4,200W,25,"1""",N/A,60,25,82,Booster,https://www.hungpump.com/hi,15.0,38.0,0e94e0e3-0c48-4134-b6ff-7f8f35f5d674
+1228,HI-200,60,1,1/4,200W,20,"3/4""",N/A,60,25,82,Booster,https://www.hungpump.com/hi,15.0,38.0,53109b27-9b7f-4825-a11f-e1aaa0feba50
+1229,HI-200,60,1,1/4,200W,25,"1""",N/A,60,25,82,Booster,https://www.hungpump.com/hi,15.0,38.0,79f0ce0f-f04d-421a-900d-60ea5ebdcc7d
+1230,HI-200,60,1,1/4,200W,20,"3/4""",N/A,60,25,82,Booster,https://www.hungpump.com/hi,15.0,38.0,ce17c710-acaf-42b5-8d0f-c1a84e58f25e
+1231,HI-200,60,1,1/4,200W,25,"1""",N/A,60,25,82,Booster,https://www.hungpump.com/hi,15.0,38.0,89e5a95e-7bb1-40b5-8d3a-c4f7f186deed
+1238,HI-400,60,1,1/2,400W,25,"1""",N/A,70,28,92,Booster,https://www.hungpump.com/hi,20.0,50.0,19887ae8-838f-444f-91f3-881e67c3fd9c
+1239,HI-400,60,1,1/2,400W,25,"1""",N/A,70,28,92,Booster,https://www.hungpump.com/hi,20.0,50.0,10909353-f8a6-406e-b5d9-7c369c366f39
+1240,HI-400,60,1,1/2,400W,25,"1""",N/A,70,28,92,Booster,https://www.hungpump.com/hi,20.0,50.0,1a6612ca-e508-4af4-9b7f-6f65cf0f0dd9
+1269,HWCPⅡ,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,b3f4477c-96da-47c9-afa8-4f11303b9cc4
+1270,HWCPⅡ,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,51b7e690-cf7e-49a9-86fa-c8566d0732db
+1271,HWCPⅡ-FS,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,2dc4675c-162f-4af2-909e-c18955c08d14
+1272,HWCPⅡ-FS,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,4d225362-b680-4a30-92f0-9ac85c1798a0
+1273,HWCPⅡ-FT,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,ccdd69c8-9e5a-43c0-9fd7-48e6e684500b
+1274,HWCPⅡ-FT,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,fa482282-6f11-4f54-a404-3dff8bbc8ee9
+1275,HWCPⅡ-ST,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,fcbee146-7e77-44ef-a6b6-eedf96fcdfde
+1276,HWCPⅡ-ST,60,1,3/4,550W,32,"1-1/4""",N/A,165,11,36,BLDC,https://www.hungpump.com/data-234533,6.0,135.0,702b724a-ab63-4010-9e89-5a2ecdacc6eb
+1279,JA-200,60,1,1/4,200W,25,"1""",N/A,80,18,59,Booster,https://www.hungpump.com/ja,12.0,45.0,ba26daa0-ca13-4939-a143-f1acca11bb36
+1280,JA-200,60,1,1/4,200W,25,"1""",N/A,80,18,59,Booster,https://www.hungpump.com/ja,12.0,45.0,ad21a7f5-f44a-421f-a4df-9574d7385ba2
+1281,JA-80,60,1,1/10,80W,20,"3/4""",1.0,26,10,33,Booster,https://www.hungpump.com/ja,6.0,13.0,11182796-34b4-4196-9154-2bf323cae7dc
+1282,JA-80,60,1,1/10,80W,20,"3/4""",1.0,26,10,33,Booster,https://www.hungpump.com/ja,6.0,13.0,61cbbdfa-d57e-447c-889d-25de6e2e6523
+1283,JA-80S,60,1,1/10,80W,20,"3/4""",1.0,26,10,33,Booster,https://www.hungpump.com/ja,6.0,13.0,a4999ac4-61e0-4eef-bfaf-64eddf8845ed
+1284,JA-80S,60,1,1/10,80W,20,"3/4""",1.0,26,10,33,Booster,https://www.hungpump.com/ja,6.0,13.0,1121e692-cf85-424b-b5b3-c31186ed7e36
+1285,LSJ-05,60,1,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,4a12c38c-3893-4f6a-a4e9-e5de53839e61
+1286,LSJ-05,60,1,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,ea0ff1f2-8be0-4f9a-8199-880d427d6874
+1287,LSJ-05,60,3,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,f13b3f4e-b2e7-4a08-b0fe-ebd8ee1a4de1
+1288,LSJ-05,60,3,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,27ea33dd-584c-4012-932b-abd607f83d30
+1290,LSJ-05E,60,1,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,c3f8f218-d914-4e6f-bbf1-21cc843ebafd
+1291,LSJ-05E,60,1,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,186a2a6a-f2f2-44e6-a571-a28f086f3ba5
+1292,LSJ-05E,60,3,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,ecd121aa-c899-48d7-903a-0ded9753b0b8
+1293,LSJ-05E,60,3,1/2,400W,25,"1""",N/A,60,36,118,Booster,https://www.hungpump.com/lsj,20.0,27.0,795c4ac6-684f-42bf-87b7-70a4dc90c890
+1294,LSJ-10,60,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,3082e348-0a37-4b7f-a9be-10cc47c60522
+1295,LSJ-10-24H,60,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,859b2774-7f13-48bb-86a9-4b3ff50c2398
+1296,LSJ-10,60,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,78b85bc8-d749-4968-b73b-8bd33b924a8a
+1297,LSJ-10,60,3,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,91987502-a6a6-4b7e-996e-0c746b96d309
+1298,LSJ-10,60,3,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,5fbfc36a-95a4-4eef-ad03-9495a80c66a8
+1299,LSJ-10,60,3,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,ee665573-b118-4821-9d1c-7f8d403b29bb
+1300,LSJ-10E,60,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,2843215f-7e57-4ade-bce8-c6e56a132537
+1301,LSJ-10E,60,1,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,7a7ff15e-63eb-485c-ae9d-f83cd695737e
+1302,LSJ-10E,60,3,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,c8ee1950-606a-4712-9538-3eaa1b0c04dd
+1303,LSJ-10E,60,3,1,750W,25,"1""",N/A,75,42,138,Booster,https://www.hungpump.com/lsj,30.0,28.0,fa7c1028-25b5-4584-899c-5d0711bfa786
+1320,MTS-161,60,1,3,2.2kW,50,"2""",N/A,550,18,59,,https://www.hungpump.com/mts-8-16,10.0,420.0,9a6860d8-0187-46e0-b460-0c7aad515aa7
+1321,MTS-161,60,3,3,2.2kW,50,"2""",N/A,550,18,59,,https://www.hungpump.com/mts-8-16,10.0,420.0,f7add0ac-8bb9-45fa-a89a-a7e77cecf913
+1322,MTS-161,60,3,3,2.2kW,50,"2""",N/A,550,18,59,,https://www.hungpump.com/mts-8-16,10.0,420.0,93882492-3eb7-44ba-bc02-f714e48bde7c
+1323,MTS-162,60,3,4,3kW,50,"2""",N/A,550,37,121,,https://www.hungpump.com/mts-8-16,20.0,420.0,bb49f1bf-ee15-4651-9eb1-9517b63b80a1
+1324,MTS-162,60,3,4,3kW,50,"2""",N/A,550,37,121,,https://www.hungpump.com/mts-8-16,20.0,420.0,f2dd63a3-6972-4a68-9a42-91dae8175326
+1326,MTS-163,60,3,5,3.7kW,50,"2""",N/A,550,55,180,,https://www.hungpump.com/mts-8-16,30.0,420.0,7e44c02e-302a-4789-8ae0-0e715b4c0ab1
+1327,MTS-163,60,4,5,3.7kW,50,"2""",N/A,550,55,180,,https://www.hungpump.com/mts-8-16,30.0,420.0,ecf4537d-a513-424d-98a6-71119ce07c1c
+1329,MTS-32,60,1,1/2,400W,25,"1""",N/A,90,28,92,,https://www.hungpump.com/mts-3-5,20.0,55.0,af8429ad-8a35-4afe-87a1-8ba48e60ceb4
+1330,MTS-32,60,1,1/2,400W,25,"1""",N/A,90,28,92,,https://www.hungpump.com/mts-3-5,20.0,55.0,c379646c-d76e-4147-8e0d-c8ce8323c9a6
+1331,MTS-32,60,3,1/2,400W,25,"1""",N/A,90,28,92,,https://www.hungpump.com/mts-3-5,20.0,55.0,4e712a1b-b082-4ca9-bfdf-0ac4d9edbba5
+1332,MTS-32,60,3,1/2,400W,25,"1""",N/A,90,28,92,,https://www.hungpump.com/mts-3-5,20.0,55.0,f4f42945-1679-4cf3-bcf1-ff861868b681
+1335,MTS-33,60,1,3/4,550W,25,"1""",N/A,90,40,131,,https://www.hungpump.com/mts-3-5,30.0,55.0,ae667789-abe4-44f9-bf48-c5c745c23190
+1336,MTS-33,60,1,3/4,550W,25,"1""",N/A,90,40,131,,https://www.hungpump.com/mts-3-5,30.0,55.0,a1d6cf5b-4bf2-4955-94b0-1197d2a3545e
+1340,MTS-34,60,1,1,750W,25,"1""",N/A,90,55,180,,https://www.hungpump.com/mts-3-5,40.0,55.0,95bc7c45-c40d-410b-a71e-48f6ceea13d3
+1341,MTS-34,60,1,1,750W,25,"1""",N/A,90,55,180,,https://www.hungpump.com/mts-3-5,40.0,55.0,93ba7d9c-c883-4708-b38a-03cf1442c6f7
+1346,MTS-35,60,1,1.5,1.1kW,25,"1""",N/A,90,68,223,,https://www.hungpump.com/mts-3-5,50.0,55.0,6e2a0c4b-ddea-439d-a348-f99830d2699d
+1347,MTS-35,60,1,1.5,1.1kW,25,"1""",N/A,90,68,223,,https://www.hungpump.com/mts-3-5,50.0,55.0,b7e99ef3-7003-423f-b2dd-b87de73e5d14
+1350,MTS-36,60,1,2,1.5kW,25,"1""",N/A,90,82,269,,https://www.hungpump.com/mts-3-5,50.0,70.0,a60ec1f2-e184-479e-bed4-5cad88b54114
+1351,MTS-36,60,3,2,1.5kW,25,"1""",N/A,90,82,269,,https://www.hungpump.com/mts-3-5,50.0,70.0,4e9d933a-6724-4050-a84d-47b731ad6be7
+1352,MTS-36,60,3,2,1.5kW,25,"1""",N/A,90,82,269,,https://www.hungpump.com/mts-3-5,50.0,70.0,da4995de-377f-41d9-b620-ecb6e9bf10d4
+1353,MTS-52,60,1,3/4,550W,25,"1""",N/A,145,28,92,,https://www.hungpump.com/mts-3-5,20.0,95.0,a9e553bf-9825-45e3-a6ac-6950051c0256
+1354,MTS-52,60,1,3/4,550W,25,"1""",N/A,145,28,92,,https://www.hungpump.com/mts-3-5,20.0,95.0,8a9573bd-b07f-4a9a-a900-624a8763f83d
+1355,MTS-52,60,3,3/4,550W,25,"1""",N/A,145,28,92,,https://www.hungpump.com/mts-3-5,20.0,95.0,c0309300-4628-443a-a99e-991e4780c84e
+1356,MTS-52,60,3,3/4,550W,25,"1""",N/A,145,28,92,,https://www.hungpump.com/mts-3-5,20.0,95.0,6f34a013-95ab-4315-93ff-0de61fb28792
+1357,MTS-53,60,1,1,750W,25,"1""",N/A,145,42,138,,https://www.hungpump.com/mts-3-5,30.0,95.0,275adbe9-1fc4-4f7f-a4c6-8854b87c5825
+1358,MTS-53,60,1,1,750W,25,"1""",N/A,145,42,138,,https://www.hungpump.com/mts-3-5,30.0,95.0,e6689766-8e7c-401d-a92d-cdbb9ca52256
+1360,MTS-53,60,3,1,750W,25,"1""",N/A,145,42,138,,https://www.hungpump.com/mts-3-5,30.0,95.0,80d58879-3c0e-4e72-81c3-6c5202792240
+1361,MTS-53,60,3,1,750W,25,"1""",N/A,145,42,138,,https://www.hungpump.com/mts-3-5,30.0,95.0,a8c26a05-62b6-4f4a-bccc-bc7b37aab240
+1363,MTS-54,60,1,1.5,1.1kW,25,"1""",N/A,145,55,180,,https://www.hungpump.com/mts-3-5,40.0,95.0,7f930974-afea-4aee-bd8b-a64f5a05801f
+1364,MTS-54,60,1,1.5,1.1kW,25,"1""",N/A,145,55,180,,https://www.hungpump.com/mts-3-5,40.0,95.0,e1d28e10-f451-42a4-b93c-b5102a9c8c88
+1365,MTS-54,60,3,1.5,1.1kW,25,"1""",N/A,145,55,180,,https://www.hungpump.com/mts-3-5,40.0,95.0,4bec792e-7cde-47fb-b30e-a4cb5f1c4d6a
+1366,MTS-54,60,3,1.5,1.1kW,25,"1""",N/A,145,55,180,,https://www.hungpump.com/mts-3-5,40.0,95.0,788bd360-3cac-47f3-8a3c-ebd8d81027eb
+1368,MTS-55,60,1,2,1.5kW,25,"1""",N/A,145,68,223,,https://www.hungpump.com/mts-3-5,50.0,95.0,4ced21f8-8abd-461f-92d0-6f9e86fef007
+1369,MTS-55,60,3,2,1.5kW,25,"1""",N/A,145,68,223,Booster,https://www.hungpump.com/mts-3-5,50.0,95.0,89668ad5-4cfb-4139-b1bd-c5d8f0084363
+1371,MTS-82,60,1,2,1.5kW,40,"1-1/2""",N/A,330,30,98,Booster,https://www.hungpump.com/mts-8-16,20.0,200.0,ba65d0a6-e5c2-4000-8686-7fff20f1c47f
+1373,MTS-82,60,3,2,1.5kW,40,"1-1/2""",N/A,330,30,98,Booster,https://www.hungpump.com/mts-8-16,20.0,200.0,0922fd60-3bb6-497d-8ddc-b3809dd0f4f7
+1374,MTS-82,60,3,2,1.5kW,40,"1-1/2""",N/A,330,30,98,Booster,https://www.hungpump.com/mts-8-16,20.0,200.0,437695df-c35b-4fcd-82af-53407b7c66ee
+1376,MTS-83,60,1,3,2.2kW,40,"1-1/2""",N/A,330,45,148,Booster,https://www.hungpump.com/mts-8-16,30.0,200.0,a0c81100-3c78-4e8f-b727-d75ea21511bb
+1377,MTS-83,60,3,3,2.2kW,40,"1-1/2""",N/A,330,45,148,Booster,https://www.hungpump.com/mts-8-16,30.0,200.0,5e95e256-0f68-4501-83c9-492ad8c7efd9
+1378,MTS-83,60,3,3,2.2kW,40,"1-1/2""",N/A,330,45,148,,https://www.hungpump.com/mts-8-16,30.0,200.0,f86d65c5-f034-449d-84ad-a11dc58bc297
+1380,MTS-84,60,3,4,3kW,40,"1-1/2""",N/A,330,60,197,,https://www.hungpump.com/mts-8-16,40.0,200.0,4f8a8cd0-404c-4359-8f7b-7a1b423a47e5
+1381,MTS-84,60,3,4,3kW,40,"1-1/2""",N/A,330,60,197,,https://www.hungpump.com/mts-8-16,40.0,200.0,a2e27191-ba53-4d3b-893f-335b157f58e2
+1383,MTS-85,60,3,5,3.7kW,40,"1-1/2""",N/A,330,72,236,,https://www.hungpump.com/mts-8-16,50.0,200.0,24e61169-a237-441c-a7c3-210778cc411e
+1384,MTS-85,60,3,5,3.7kW,40,"1-1/2""",N/A,330,72,236,,https://www.hungpump.com/mts-8-16,50.0,200.0,ea80a5ec-46b5-436a-9b95-6eda1ca2099f
+1394,SMP-10,60,1,1,750W,40,"1-1/2""",N/A,310,14,46,Clean Water,https://www.hungpump.com/smp,9.0,175.0,32b00d44-1542-4ca7-922b-c75de3518d4f
+1395,SMP-10,60,1,1,750W,40,"1-1/2""",N/A,310,14,46,Clean Water,https://www.hungpump.com/smp,9.0,175.0,013c624a-66b4-4462-a5f7-ce1b2487cf26
+1396,SMP-10,60,3,1,750W,40,"1-1/2""",N/A,310,14,46,Clean Water,https://www.hungpump.com/smp,9.0,175.0,4f4fa566-812a-44b7-b33f-4cd5ded729d2
+1397,SMP-10,60,3,1,750W,40,"1-1/2""",N/A,310,14,46,Clean Water,https://www.hungpump.com/smp,9.0,175.0,754c3c12-2fbc-4849-a998-c4223199cb03
+1398,SMP-20,60,1,2,1.5kW,50,"2""",N/A,460,16,52,Clean Water,https://www.hungpump.com/smp,9.0,350.0,e8e75902-4d25-4851-b444-dfa38f56f34f
+1399,SMP-20,60,3,2,1.5kW,50,"2""",N/A,460,16,52,Clean Water,https://www.hungpump.com/smp,9.0,350.0,1be891c7-af8e-44c8-88f0-8386108cfacf
+1400,SMP-20,60,3,2,1.5kW,50,"2""",N/A,460,16,52,Clean Water,https://www.hungpump.com/smp,9.0,350.0,c136bd7f-3280-4d3d-bb3d-0d3466c3e588
+1402,SMP-30,60,1,3,2.2kW,50,"2""",N/A,520,20,66,Clean Water,https://www.hungpump.com/smp,12.0,395.0,f0edba81-f553-4529-9b80-920f51727b27
+1403,SMP-30,60,3,3,2.2kW,50,"2""",N/A,520,20,66,Clean Water,https://www.hungpump.com/smp,12.0,395.0,23a421f8-3b71-4c18-80aa-01fe0b5f89af
+1404,SMP-30,60,3,3,2.2kW,50,"2""",N/A,520,20,66,Clean Water,https://www.hungpump.com/smp,12.0,395.0,ecc47904-66c7-46d6-b8b4-689c69ca78ae
+1408,SPA-10,60,1,1,750W,40,"1-1/2""",N/A,320,13.5,44,,https://www.hungpump.com/spa-10,8.0,190.0,fdfdadcc-ddf1-4c9c-9e43-0b2f42f682db
+1409,SPA-10,60,1,1,750W,40,"1-1/2""",N/A,320,13.5,44,,https://www.hungpump.com/spa-10,8.0,190.0,b0e02375-c0db-4bc5-8f09-e23993986f77
+1410,SPA-150B,60,1,1.5,1100W,40,"1-1/2""",N/A,350,15.5,51,,https://www.hungpump.com/spa-150b,10.0,145.0,bc9c30b1-1ba5-4e1c-bb07-6555bafa9cb9
+1411,SPA-150B,60,1,1.5,1100W,40,"1-1/2""",N/A,350,15.5,51,,https://www.hungpump.com/spa-150b,10.0,145.0,dc14ebbb-9629-4382-8f4d-1a3279c425bc
+1416,SW-120S,60,1,1 1/4,1kW,25,"1""",3.0,140,28,92,,https://www.hungpump.com/sw-60-120-250,15.0,125.0,f5747ea5-bd37-4f28-bbbc-48b6809e29d8
+1417,SW-120S,60,1,1 1/4,1kW,25,"1""",3.0,140,28,92,,https://www.hungpump.com/sw-60-120-250,15.0,125.0,8b790c17-16ad-4340-b831-fb3ec5403d4c
+1418,SW-120S,60,3,1 1/4,1kW,25,"1""",3.0,140,28,92,,https://www.hungpump.com/sw-60-120-250,15.0,125.0,f679669b-5e14-4911-9062-fb0b73a8c6e8
+1419,SW-120S,60,3,1 1/4,1kW,25,"1""",3.0,140,28,92,,https://www.hungpump.com/sw-60-120-250,15.0,125.0,922c47d4-bb27-4d74-96d3-0d489847a363
+1423,SW-220T,60,3,2,1.5kW,50,"2""",N/A,630,24,79,,https://www.hungpump.com/sw-220-320-420,15.0,410.0,841af222-8f56-47e7-a938-b582f6196969
+1427,SW-250S,60,1,2.5,1.85kW,32,"1-1/4""",N/A,300,30,98,,https://www.hungpump.com/sw-60-120-250,20.0,235.0,eaf35e31-f1d2-4bbe-977a-d34333eec4ff
+1428,SW-250S,60,3,2.5,1.85kW,32,"1-1/4""",3.0,300,30,98,,https://www.hungpump.com/sw-60-120-250,20.0,235.0,9cbafc12-bf3e-4ff0-85df-9732e71e176e
+1429,SW-250S,60,3,2.5,1.85kW,32,"1-1/4""",3.0,300,30,98,,https://www.hungpump.com/sw-60-120-250,20.0,235.0,7e78d91c-8cb3-408e-8fba-b1751fd745a9
+1433,SW-320T,60,3,3,2.2kW,50,"2""",3.0,650,29,95,,https://www.hungpump.com/sw-220-320-420,18.0,500.0,6fbfb540-4dcc-48da-8d52-9d6df4fd5adb
+1436,SW-420T,60,3,4,3kW,50,"2""",N/A,680,31,102,,https://www.hungpump.com/sw-220-320-420,18.0,540.0,0f993aec-ff86-4a35-8231-70c8bedbcf81
+1437,SW-60,60,1,1/2,400W,25,"1""",N/A,120,17,56,,https://www.hungpump.com/sw-60-120-250,10.0,85.0,76c4c593-17a0-4bbd-8e29-c23cbd4d74f1
+1438,SW-60,60,1,1/2,400W,25,"1""",N/A,120,17,56,,https://www.hungpump.com/sw-60-120-250,10.0,85.0,e1964fff-2f8f-43dc-bc3d-7aef56860e39
+1439,SW-60,60,3,1/2,400W,25,"1""",3.0,120,17,56,,https://www.hungpump.com/sw-60-120-250,10.0,85.0,ffba668e-9cb0-4790-9027-cbc1b1114eea
+1440,SW-60,60,3,1/2,400W,25,"1""",3.0,120,17,56,,https://www.hungpump.com/sw-60-120-250,10.0,85.0,07d13d83-eda0-4564-bbc5-15b1e0c93751
+1448,SWO-220T,60,3,2,1.5kW,50,"2""",8.0,620,14,46,Booster,https://www.hungpump.com/swo,8.0,430.0,f41dc742-8b76-42a5-94a8-bad71ea05b76
+1449,SWO-220T,60,3,2,1.5kW,50,"2""",3.0,620,14,46,Booster,https://www.hungpump.com/swo,8.0,430.0,5a1c243d-0b61-4fbb-96c4-07706e128f77
+1453,SWO-320T,60,3,3,2.2kW,50,"2""",8.0,660,16,52,Booster,https://www.hungpump.com/swo,10.0,490.0,03e8f92d-9be7-4a9f-add0-f0a5315021ba
+1454,SWO-320T,60,3,3,2.2kW,50,"2""",8.0,660,16,52,Booster,https://www.hungpump.com/swo,10.0,490.0,b4d8c196-6e2c-4757-8763-97bdc81e22f9
+1465,HI-200,50,1,1/4,200W,25,"1""",N/A,55,24,79,Booster,https://www.hungpump.com/hi,15.0,33.0,b704d081-f586-4583-b8d8-1e2b2b13dee4
